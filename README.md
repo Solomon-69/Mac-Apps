@@ -12,9 +12,9 @@ Little games for little breaks, right from your menu bar or tray. 43 quick mini 
 
 <img src="ludus/showcase/ludus-covers.png" width="560" alt="Cover art of all 43 Ludus games">
 
-Version 1.10.0, 43 games.
+Version 1.5, 43 games.
 
-Download: [Mac (.zip)](https://github.com/Solomon-69/Mac-Apps/releases/latest/download/Ludus-mac.zip) | [Windows](https://github.com/Solomon-69/Mac-Apps/releases/latest/download/Ludus-windows.zip)
+Download: [Mac (.zip)](https://github.com/Solomon-69/Ludus/releases/latest/download/Ludus-mac.zip) | [Windows](https://github.com/Solomon-69/Ludus/releases/latest/download/Ludus-windows.zip)
 
 ## Memo
 
@@ -24,9 +24,9 @@ Everything you copy, one shortcut away. Memo keeps a searchable history of text,
 
 <img src="memo/showcase/memo-1-light.png" width="420" alt="Memo panel"> <img src="memo/showcase/memo-3-light.png" width="420" alt="Searching Memo"> <img src="memo/intro/memo-welcome-1.png" width="260" alt="Memo welcome window">
 
-Version 1.1.1.
+Version 1.2.
 
-Download: [Mac](https://github.com/Solomon-69/Mac-Apps/releases/latest/download/Memo-mac.zip) | [Windows](https://github.com/Solomon-69/Mac-Apps/releases/latest/download/Memo-windows.zip)
+Download: [Mac](https://github.com/Solomon-69/Memo/releases/latest/download/Memo-mac.zip) | [Windows](https://github.com/Solomon-69/Memo/releases/latest/download/Memo-windows.zip)
 
 ## Nox
 
@@ -36,9 +36,9 @@ One switch for light and dark. Flip your Mac between light and dark, set a sched
 
 <img src="nox/img/panel-light.png" width="300" alt="Nox panel"> <img src="nox/showcase/nox-2-light.png" width="420" alt="A page before and after Nox"> <img src="nox/intro/nox-welcome-1.png" width="260" alt="Nox welcome window">
 
-Version 1.0.1.
+Version 1.1.
 
-Download: [Mac (.dmg)](https://github.com/Solomon-69/Mac-Apps/releases/latest/download/Nox.dmg) | [Mac (.zip)](https://github.com/Solomon-69/Mac-Apps/releases/latest/download/Nox-mac.zip) | [Windows](https://github.com/Solomon-69/Mac-Apps/releases/latest/download/Nox-windows.zip)
+Download: [Mac (.dmg)](https://github.com/Solomon-69/Nox/releases/latest/download/Nox.dmg) | [Mac (.zip)](https://github.com/Solomon-69/Nox/releases/latest/download/Nox-mac.zip) | [Windows](https://github.com/Solomon-69/Nox/releases/latest/download/Nox-windows.zip)
 
 ## Awayke
 
@@ -48,9 +48,9 @@ Keep your MacBook awake with the lid closed. Set a timer or a low-battery cutoff
 
 <img src="awayke/img/panel-light.png" width="300" alt="Awayke panel"> <img src="awayke/showcase/aw-3-light.png" width="420" alt="Awayke timer"> <img src="awayke/intro/awayke-welcome-1.png" width="260" alt="Awayke welcome window">
 
-Version 1.4.1.
+Version 1.5.
 
-Download: [Mac (.dmg)](https://github.com/Solomon-69/Mac-Apps/releases/latest/download/Awayke.dmg) | [Mac (.zip)](https://github.com/Solomon-69/Mac-Apps/releases/latest/download/Awayke-1.4.0.zip)
+Download: [Mac (.dmg)](https://github.com/Solomon-69/Awayke/releases/latest/download/Awayke.dmg) | [Mac (.zip)](https://github.com/Solomon-69/Awayke/releases/latest/download/Awayke-mac.zip)
 
 ## Installing
 
@@ -58,7 +58,7 @@ Download: [Mac (.dmg)](https://github.com/Solomon-69/Mac-Apps/releases/latest/do
 
 **Windows:** unzip the download and run the app. If Windows SmartScreen warns you, click **More info**, then **Run anyway**.
 
-All downloads are on the [Releases page](https://github.com/Solomon-69/Mac-Apps/releases). The download links give the last published builds.
+Each app has its own Releases page (for example [Ludus](https://github.com/Solomon-69/Ludus/releases)); the download links above always give the latest build.
 
 ## Unsigned apps: how to open them, and how to check your download
 
