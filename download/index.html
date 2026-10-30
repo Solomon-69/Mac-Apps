@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Download Awayke and Ludus</title>
+<meta name="description" content="One click, one zip file. Download Awayke or Ludus for Mac or Windows.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="../awayke/img/icon.png">
+<style>
+:root{--bg:#f4efe6;--surface:#fffcf7;--ink:#201c17;--ink-2:#6b6256;--line:rgba(32,28,23,.10);--accent:#a85432;--btn:#201c17;--btn-ink:#fffcf7}
+@media (prefers-color-scheme:dark){:root{--bg:#1b1814;--surface:#25211b;--ink:#f3ede3;--ink-2:#a79d8f;--line:rgba(243,237,227,.12);--accent:#e07f57;--btn:#f3ede3;--btn-ink:#1b1814}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+main{max-width:860px;margin:0 auto;padding:64px 16px 48px}
+h1{font-size:clamp(32px,6vw,52px);line-height:1.05;letter-spacing:-.03em;margin:0 0 12px}
+.lede{color:var(--ink-2);font-size:18px;max-width:520px;margin:0 0 36px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:24px;display:flex;flex-direction:column;gap:14px;opacity:0;transform:translateY(14px);animation:in .6s cubic-bezier(.2,.8,.2,1) forwards}
+.card:nth-child(2){animation-delay:.08s}
+@keyframes in{to{opacity:1;transform:none}}
+.top{display:flex;gap:14px;align-items:center}
+.top img{width:60px;height:60px;border-radius:14px}
+h2{margin:0;font-size:24px;letter-spacing:-.02em}
+.card p{margin:0;color:var(--ink-2)}
+.btns{display:flex;flex-direction:column;gap:10px;margin-top:auto}
+.btn{display:flex;justify-content:space-between;align-items:center;min-height:44px;padding:0 18px;border-radius:12px;background:var(--btn);color:var(--btn-ink);text-decoration:none;font-weight:600;transition:transform .2s cubic-bezier(.2,.8,.2,1)}
+.btn small{font-weight:500;opacity:.7}
+.btn span{display:inline-block;transition:transform .25s}
+.btn:hover span{transform:translateX(4px)}
+.btn:active{transform:scale(.97)}
+.btn.alt{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.note{color:var(--ink-2);font-size:14px;margin-top:28px;max-width:640px}
+.note b{color:var(--ink)}
+a.back{color:var(--accent);font-weight:600;text-decoration:none}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;opacity:1!important;transform:none!important}}
+</style>
+</head>
+<body>
+<main>
+  <h1>Download.</h1>
+  <p class="lede">One tap, one zip file with just the app inside. Open the zip and the app is ready.</p>
+  <div class="grid">
+    <section class="card">
+      <div class="top"><img src="../awayke/img/icon.png" alt=""><div><h2>Awayke</h2><p>Keeps your MacBook awake with the lid closed.</p></div></div>
+      <div class="btns">
+        <a class="btn" href="https://github.com/Solomon-69/Awayke/releases/latest/download/Awayke-mac.zip">Mac <small>Awayke-mac.zip</small><span>&darr;</span></a>
+        <a class="btn alt" href="https://github.com/Solomon-69/Awayke/releases/latest/download/Awayke-windows.zip">Windows <small>Awayke-windows.zip</small><span>&darr;</span></a>
+      </div>
+    </section>
+    <section class="card">
+      <div class="top"><img src="../ludus/img/icon-light.png" alt=""><div><h2>Ludus</h2><p>43 little games from your menu bar. Works offline.</p></div></div>
+      <div class="btns">
+        <a class="btn" href="https://github.com/Solomon-69/Ludus/releases/latest/download/Ludus-mac.zip">Mac <small>Ludus-mac.zip</small><span>&darr;</span></a>
+        <a class="btn alt" href="https://github.com/Solomon-69/Ludus/releases/latest/download/Ludus-windows.zip">Windows <small>Ludus-windows.zip</small><span>&darr;</span></a>
+      </div>
+    </section>
+  </div>
+  <p class="note"><b>First time on Mac:</b> right-click the app and choose Open (once). <b>Already installed?</b> Open Settings in the app and tap Update now. The links always give the newest version.</p>
+  <p class="note"><a class="back" href="../index.html">&larr; All apps</a></p>
+</main>
+</body>
+</html>
