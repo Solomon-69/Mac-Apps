@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Download Awayke and Ludus</title>
-<meta name="description" content="One click, one zip file. Download Awayke or Ludus for Mac or Windows.">
+<title>Download Awayke, Ludus, Memo and Nox</title>
+<meta name="description" content="One click, one zip file. Download Awayke, Ludus, Memo or Nox for Mac or Windows.">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" type="image/png" href="../awayke/img/icon.png">
 <style>
@@ -30,6 +30,8 @@ h2{margin:0;font-size:24px;letter-spacing:-.02em}
 .btn:hover span{transform:translateX(4px)}
 .btn:active{transform:scale(.97)}
 .btn.alt{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.cmd{font:inherit;font-size:14px;min-height:44px;border-radius:12px;border:1px dashed var(--line);background:transparent;color:var(--ink-2);display:flex;justify-content:space-between;align-items:center;padding:0 16px;cursor:pointer;transition:transform .2s}
+.cmd:active{transform:scale(.97)}.cmd span{color:var(--accent);font-weight:600}
 .note{color:var(--ink-2);font-size:14px;margin-top:28px;max-width:640px}
 .note b{color:var(--ink)}
 a.back{color:var(--accent);font-weight:600;text-decoration:none}
@@ -47,6 +49,7 @@ a.back{color:var(--accent);font-weight:600;text-decoration:none}
         <a class="btn" href="https://github.com/Solomon-69/Awayke/releases/latest/download/Awayke-mac.zip">Mac <small>Awayke-mac.zip</small><span>&darr;</span></a>
         <a class="btn alt" href="https://github.com/Solomon-69/Awayke/releases/latest/download/Awayke-windows.zip">Windows <small>Awayke-windows.zip</small><span>&darr;</span></a>
       </div>
+      <button class="cmd" data-cmd="curl -fsSL https://solomon-69.github.io/Mac-Apps/download/install.sh | bash -s awayke" title="Copy">Mac, no warning: copy install line<span>copy</span></button>
     </section>
     <section class="card">
       <div class="top"><img src="../ludus/img/icon-light.png" alt=""><div><h2>Ludus</h2><p>43 little games from your menu bar. Works offline.</p></div></div>
@@ -54,10 +57,31 @@ a.back{color:var(--accent);font-weight:600;text-decoration:none}
         <a class="btn" href="https://github.com/Solomon-69/Ludus/releases/latest/download/Ludus-mac.zip">Mac <small>Ludus-mac.zip</small><span>&darr;</span></a>
         <a class="btn alt" href="https://github.com/Solomon-69/Ludus/releases/latest/download/Ludus-windows.zip">Windows <small>Ludus-windows.zip</small><span>&darr;</span></a>
       </div>
+      <button class="cmd" data-cmd="curl -fsSL https://solomon-69.github.io/Mac-Apps/download/install.sh | bash -s ludus" title="Copy">Mac, no warning: copy install line<span>copy</span></button>
+    </section>
+    <section class="card">
+      <div class="top"><img src="../memo/img/icon-light.png" alt=""><div><h2>Memo</h2><p>Everything you copy, one shortcut away.</p></div></div>
+      <div class="btns">
+        <a class="btn" href="https://github.com/Solomon-69/Memo/releases/latest/download/Memo-mac.zip">Mac <small>Memo-mac.zip</small><span>&darr;</span></a>
+        <a class="btn alt" href="https://github.com/Solomon-69/Memo/releases/latest/download/Memo-windows.zip">Windows <small>Memo-windows.zip</small><span>&darr;</span></a>
+      </div>
+      <button class="cmd" data-cmd="curl -fsSL https://solomon-69.github.io/Mac-Apps/download/install.sh | bash -s memo" title="Copy">Mac, no warning: copy install line<span>copy</span></button>
+    </section>
+    <section class="card">
+      <div class="top"><img src="../nox/img/icon.png" alt=""><div><h2>Nox</h2><p>One switch for light and dark.</p></div></div>
+      <div class="btns">
+        <a class="btn" href="https://github.com/Solomon-69/Nox/releases/latest/download/Nox-mac.zip">Mac <small>Nox-mac.zip</small><span>&darr;</span></a>
+        <a class="btn alt" href="https://github.com/Solomon-69/Nox/releases/latest/download/Nox-windows.zip">Windows <small>Nox-windows.zip</small><span>&darr;</span></a>
+      </div>
+      <button class="cmd" data-cmd="curl -fsSL https://solomon-69.github.io/Mac-Apps/download/install.sh | bash -s nox" title="Copy">Mac, no warning: copy install line<span>copy</span></button>
     </section>
   </div>
-  <p class="note"><b>First time on Mac:</b> right-click the app and choose Open (once). <b>Already installed?</b> Open Settings in the app and tap Update now. The links always give the newest version.</p>
+  <p class="note"><b>Mac says it can't verify the app?</b> These apps are free and not signed with a paid Apple certificate, so a browser download gets a warning. Two ways around it: (1) tap <b>copy install line</b> above, open the <b>Terminal</b> app, paste and press Return. It installs and opens the app with no warning. (2) Or open the app once, then go to <b>System Settings &rarr; Privacy &amp; Security</b>, scroll down and tap <b>Open Anyway</b> next to the app's name.</p>
+  <p class="note"><b>Already installed?</b> Open Settings in the app and tap Update now. The links always give the newest version.</p>
   <p class="note"><a class="back" href="../index.html">&larr; All apps</a></p>
 </main>
+<script>
+document.querySelectorAll('.cmd').forEach(b=>b.onclick=async()=>{const t=b.dataset.cmd;try{await navigator.clipboard.writeText(t)}catch(e){const x=document.createElement('textarea');x.value=t;document.body.append(x);x.select();document.execCommand('copy');x.remove()}const s=b.querySelector('span');s.textContent='copied';setTimeout(()=>s.textContent='copy',1800)});
+</script>
 </body>
 </html>
