@@ -48,9 +48,9 @@ Keep your MacBook awake with the lid closed. Set a timer or a low-battery cutoff
 
 <img src="awayke/img/panel-light.png" width="300" alt="Awayke panel"> <img src="awayke/showcase/aw-3-light.png" width="420" alt="Awayke timer"> <img src="awayke/intro/awayke-welcome-1.png" width="260" alt="Awayke welcome window">
 
-Version 1.6.0.
+Version 1.7.0.
 
-Download: [Mac (.dmg)](https://github.com/Solomon-69/Awayke/releases/latest/download/Awayke.dmg) | [Mac (.zip)](https://github.com/Solomon-69/Awayke/releases/latest/download/Awayke-1.6.0.zip)
+Download: [Mac (.dmg)](https://github.com/Solomon-69/Awayke/releases/latest/download/Awayke.dmg) | [Mac (.zip)](https://github.com/Solomon-69/Awayke/releases/latest/download/Awayke-mac.zip)
 
 ## Installing
 
