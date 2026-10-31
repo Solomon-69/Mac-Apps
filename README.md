@@ -12,7 +12,7 @@ Little games for little breaks, right from your menu bar or tray. 43 quick mini 
 
 <img src="ludus/showcase/ludus-covers.png" width="560" alt="Cover art of all 43 Ludus games">
 
-Version 1.12.39, 43 games.
+Version 1.12.42, 43 games.
 
 Download: [Mac (.zip)](https://github.com/Solomon-69/Ludus/releases/latest/download/Ludus-mac.zip) | [Windows](https://github.com/Solomon-69/Ludus/releases/latest/download/Ludus-windows.zip)
 
