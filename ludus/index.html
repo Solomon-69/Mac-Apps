@@ -398,7 +398,7 @@
       </div>
 
       <div class="group">
-        <h3 class="reveal">2 Player <small>Two people, one keyboard</small></h3>
+        <h3 class="reveal">Same laptop <small>Two people, one keyboard</small></h3>
         <ul class="games">
           <li class="game reveal" style="--t:#6aa56b"><i><picture><img src="covers/tag.webp" width="221" height="78" alt="" loading="lazy" decoding="async"></picture></i><div><b>Tag</b><span>One of you is it. Touch the other to pass it on.</span></div></li>
           <li class="game reveal" style="--t:#3f8fb5"><i><picture><img src="covers/pong.webp" width="221" height="78" alt="" loading="lazy" decoding="async"></picture></i><div><b>paddle game</b><span>Two-paddle table tennis.</span></div></li>
@@ -569,20 +569,7 @@
       <p class="kicker reveal">A closer look</p>
       <h2 class="reveal">Small panel, lots to play</h2>
       <div class="os-row"><p class="intro reveal">Screenshots of the panel<span class="os-name"> on a Mac</span>. Ludus follows your light or dark setting, or you can pick one.</p><div class="os-switch" role="group" aria-label="Show the Mac or Windows version"><button type="button" data-os-pick="mac" aria-pressed="true"><svg aria-hidden="true"><use href="#apple"/></svg>Mac</button><button type="button" data-os-pick="windows" aria-pressed="false"><svg aria-hidden="true"><use href="#windows"/></svg>Windows</button></div></div>
-      <div class="gallery">
-        <figure class="reveal">
-          <picture data-shot="home"><source media="(prefers-color-scheme: dark)" srcset="img/home-dark.png"><img src="img/home-light.png" width="448" height="648" loading="lazy" alt="The games list"></picture>
-          <figcaption>Every game in one list</figcaption>
-        </figure>
-        <figure class="reveal">
-          <picture data-shot="game"><source media="(prefers-color-scheme: dark)" srcset="img/game-dark.png"><img src="img/game-light.png" width="448" height="648" loading="lazy" alt="A game of 2048 in progress"></picture>
-          <figcaption>Close it mid-game, it waits for you</figcaption>
-        </figure>
-        <figure class="reveal">
-          <picture data-shot="settings"><source media="(prefers-color-scheme: dark)" srcset="img/settings-dark.png"><img src="img/settings-light.png" width="448" height="648" loading="lazy" alt="The settings screen"></picture>
-          <figcaption>Make it yours in Settings</figcaption>
-        </figure>
-      </div>
+      <div class="pvgrid"><figure class="reveal" style="--w:320px"><div class="pv"><picture data-shot="home"><source media="(prefers-color-scheme: dark)" srcset="img/home-dark.png"><img src="img/home-light.png" width="448" height="648" loading="lazy" alt="The games list"></picture></div><figcaption>Every game in one list</figcaption></figure><figure class="reveal" style="--w:320px"><div class="pv"><picture data-shot="game"><source media="(prefers-color-scheme: dark)" srcset="img/game-dark.png"><img src="img/game-light.png" width="448" height="648" loading="lazy" alt="A game of 2048 in progress"></picture></div><figcaption>Close it mid-game, it waits for you</figcaption></figure><figure class="reveal" style="--w:320px"><div class="pv"><picture data-shot="settings"><source media="(prefers-color-scheme: dark)" srcset="img/settings-dark.png"><img src="img/settings-light.png" width="448" height="648" loading="lazy" alt="The settings screen"></picture></div><figcaption>Make it yours in Settings</figcaption></figure></div>
     </div>
   </section>
 
@@ -590,31 +577,31 @@
   <section id="install">
     <div class="wrap">
       <p class="kicker reveal">Install</p>
-      <h2 class="reveal">Two minutes, then it lives by the clock</h2>
-      <p class="intro reveal">Ludus is not sold through an app store, so your computer asks you to confirm the first time you open it. That is expected; the steps below show where to click.</p>
+      <h2 class="reveal">Install Ludus</h2>
+      <p class="intro reveal">Download it, unzip it, drag it into Applications. Mac builds are signed and checked by Apple, so Ludus opens like any normal app.</p>
       <div class="install">
         <div class="card mac reveal">
-          <h3><svg aria-hidden="true"><use href="#apple"/></svg>Mac<span class="yours">Your computer</span></h3>
+          <h3><svg aria-hidden="true" viewBox="0 0 24 24"><path fill="currentColor" d="M16.4 12.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8 1.6 0 2 .8 3.4.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9-.1 0-2.7-1-2.7-4.1zM13.9 5c.7-.9 1.2-2 1.1-3.2-1-.0-2.3.7-3 1.6-.7.8-1.2 2-1.1 3.1 1.2.1 2.3-.6 3-1.5z"/></svg>Mac<span class="yours">Your computer</span></h3>
           <p class="req">macOS 14 Sonoma or later, any Mac (Apple silicon or Intel)</p>
+          <a class="dl" href="https://github.com/Solomon-69/Ludus/releases/latest/download/Ludus-mac.zip">Download for Mac <small>Ludus-mac.zip</small></a>
+          <p class="or">Or paste this into Terminal. It downloads, installs and opens Ludus in one go.</p>
+          <div class="code"><code>curl -fsSL https://solomon-69.github.io/Mac-Apps/download/install.sh | bash -s ludus</code><button type="button" class="copy" data-copy>Copy</button></div>
           <ol>
-            <li><b>Easiest, no warning:</b> open the <b>Terminal</b> app, paste this line and press Return. It downloads Ludus and opens it. <code id="mac-cmd" style="display:block;margin:6px 0;padding:8px 10px;border-radius:10px;background:rgba(127,127,127,.15);font-size:.85em;word-break:break-all">curl -fsSL https://raw.githubusercontent.com/Solomon-69/Ludus/main/install.sh | bash</code> <button type="button" onclick="navigator.clipboard&amp;&amp;navigator.clipboard.writeText(document.getElementById('mac-cmd').textContent);this.textContent='Copied'">Copy</button></li>
-            <li><b>Or download Ludus-mac.zip</b>, unzip it and drag Ludus into Applications.</li>
-            <li>If macOS says it cannot be verified: open <b>System Settings, Privacy &amp; Security</b>, scroll down and click <b>Open Anyway</b> next to Ludus. On older macOS you can right-click Ludus and choose Open instead.</li>
-            <li>Look for the <b>controller icon</b> in the menu bar and click it.</li>
+            <li>Double-click <b>Ludus-mac.zip</b> to unzip it, then drag <b>Ludus</b> into Applications.</li>
+            <li>Open Ludus from Applications. Look for the <b>controller icon</b> in the menu bar and click it.</li>
           </ol>
-          <p class="why">Why the extra step: builds that are not notarised by Apple need you to confirm once. A notarised build opens straight away. Homebrew install is coming soon.</p>
         </div>
         <div class="card win reveal">
-          <h3><svg aria-hidden="true"><use href="#windows"/></svg>Windows<span class="yours">Your computer</span></h3>
+          <h3><svg aria-hidden="true" viewBox="0 0 24 24"><path fill="currentColor" d="M3 5.3l7.4-1v7.2H3zM11.3 4.2L21 2.8v8.7h-9.7zM3 12.4h7.4v7.2L3 18.6zM11.3 12.4H21v8.8l-9.7-1.4z"/></svg>Windows<span class="yours">Your computer</span></h3>
           <p class="req">Windows 10 or 11, 64-bit</p>
+          <a class="dl" href="https://github.com/Solomon-69/Ludus/releases/latest/download/Ludus-windows.zip">Download for Windows <small>Ludus-windows.zip</small></a>
           <ol>
-            <li><b>Download</b> Ludus-windows.zip, right-click it and choose <b>Extract All</b>. Keep the Ludus folder somewhere permanent, for example Documents.</li>
+            <li>Right-click <b>Ludus-windows.zip</b> and choose <b>Extract All</b>. Keep the folder somewhere permanent, for example Documents.</li>
             <li>Open the folder and run <b>Ludus.exe</b>.</li>
-            <li>If Windows shows "Windows protected your PC", click <b>More info</b>, then <b>Run anyway</b>.</li>
-            <li>If Windows asks for the <b>.NET Desktop Runtime</b> (or WebView2 on some Windows 10 PCs), accept the free Microsoft download, then run Ludus.exe again.</li>
+            <li>If Windows shows "Windows protected your PC", click <b>More info</b>, then <b>Run anyway</b>. This build is not code signed yet.</li>
+            <li>If Windows asks for the free <b>.NET Desktop Runtime</b> (or WebView2), accept the Microsoft download, then run Ludus.exe again.</li>
             <li>Click the <b>controller icon</b> in the system tray. If you cannot see it, click the small arrow next to the tray icons.</li>
           </ol>
-          <p class="why">Why the warning: this build is not code signed yet, so SmartScreen does not recognise it.</p>
         </div>
       </div>
     </div>

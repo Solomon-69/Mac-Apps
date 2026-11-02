@@ -74,3 +74,11 @@
     });
   });
 })();
+
+// copy buttons inside terminal boxes
+document.addEventListener('click', function (e) {
+  var b = e.target.closest && e.target.closest('[data-copy]'); if (!b) return;
+  var t = b.parentElement.querySelector('code'); if (!t) return;
+  var done = function () { var o = b.textContent; b.textContent = 'Copied'; b.classList.add('done'); setTimeout(function () { b.textContent = o === 'Copied' ? 'Copy' : o; b.classList.remove('done'); }, 1600); };
+  try { navigator.clipboard.writeText(t.textContent.trim()).then(done, done); } catch (err) { done(); }
+});

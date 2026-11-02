@@ -382,24 +382,31 @@
   <section id="install">
     <div class="wrap">
       <p class="kicker reveal">Install</p>
-      <h2 class="reveal">Two minutes to set up</h2>
-      <p class="intro reveal">Memo is not sold through the Mac App Store, so macOS asks you to confirm it the first time you open it.</p>
+      <h2 class="reveal">Install Memo</h2>
+      <p class="intro reveal">Download it, unzip it, drag it into Applications. Memo is signed and checked by Apple, so it opens like any normal app.</p>
       <div class="install">
         <div class="card mac reveal">
-          <h3><svg aria-hidden="true" viewBox="0 0 24 24"><path fill="currentColor" d="M16.4 12.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8 1.6 0 2 .8 3.4.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9-.1 0-2.7-1-2.7-4.1zM13.9 5c.7-.9 1.2-2 1.1-3.2-1 0-2.3.7-3 1.6-.7.8-1.2 2-1.1 3.1 1.2.1 2.3-.6 3-1.5z"/></svg>Mac<span class="yours">Your computer</span></h3>
+          <h3><svg aria-hidden="true" viewBox="0 0 24 24"><path fill="currentColor" d="M16.4 12.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8 1.6 0 2 .8 3.4.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9-.1 0-2.7-1-2.7-4.1zM13.9 5c.7-.9 1.2-2 1.1-3.2-1-.0-2.3.7-3 1.6-.7.8-1.2 2-1.1 3.1 1.2.1 2.3-.6 3-1.5z"/></svg>Mac<span class="yours">Your computer</span></h3>
           <p class="req">macOS 14 Sonoma or later, Apple silicon</p>
+          <a class="dl" href="https://github.com/Solomon-69/Memo/releases/latest/download/Memo-mac.zip">Download for Mac <small>Memo-mac.zip</small></a>
+          <p class="or">Or paste this into Terminal. It downloads, installs and opens Memo in one go.</p>
+          <div class="code"><code>curl -fsSL https://solomon-69.github.io/Mac-Apps/download/install.sh | bash -s memo</code><button type="button" class="copy" data-copy>Copy</button></div>
           <ol>
-            <li><b>Download</b> Memo-mac.zip and double-click it to unzip.</li>
-            <li><b>Drag Memo into Applications</b>, then open it from there.</li>
-            <li>The first time, <b>right-click Memo and choose Open</b>, then Open again.</li>
+            <li>Double-click <b>Memo-mac.zip</b> to unzip it, then drag <b>Memo</b> into Applications.</li>
+            <li>Open Memo from Applications. Look for the <b>Memo icon</b> in the menu bar and click it.</li>
             <li>To paste straight into apps, allow <b>Accessibility</b> in System Settings, Privacy &amp; Security. Without it, Memo copies the item and you press Command V yourself.</li>
           </ol>
-          <p class="why">Why the extra step: Memo is not notarised by Apple yet, so macOS asks once.</p>
         </div>
         <div class="card win reveal">
-          <h3>Windows<span class="yours">Your computer</span></h3>
-          <p class="req">Windows 10 and 11</p>
-          <p>Memo lives in the tray. Press Ctrl+Shift+V to open your history, then pick an item to paste it back. Windows may warn once because the app is not signed yet.</p>
+          <h3><svg aria-hidden="true" viewBox="0 0 24 24"><path fill="currentColor" d="M3 5.3l7.4-1v7.2H3zM11.3 4.2L21 2.8v8.7h-9.7zM3 12.4h7.4v7.2L3 18.6zM11.3 12.4H21v8.8l-9.7-1.4z"/></svg>Windows<span class="yours">Your computer</span></h3>
+          <p class="req">Windows 10 or 11, 64-bit</p>
+          <a class="dl" href="https://github.com/Solomon-69/Memo/releases/latest/download/Memo-windows.zip">Download for Windows <small>Memo-windows.zip</small></a>
+          <ol>
+            <li>Right-click <b>Memo-windows.zip</b> and choose <b>Extract All</b>. Keep the folder somewhere permanent, for example Documents.</li>
+            <li>Open the folder and run <b>Memo.exe</b>. Memo lives in the tray.</li>
+            <li>Press <b>Ctrl+Shift+V</b> to open your history, then pick an item to paste it back.</li>
+            <li>If Windows shows a warning, click <b>More info</b>, then <b>Run anyway</b>. The Windows app is not code signed yet.</li>
+          </ol>
         </div>
       </div>
     </div>
