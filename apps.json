@@ -1,0 +1,47 @@
+[
+ {
+  "key": "ludus",
+  "name": "Ludus",
+  "blurb": "43 little games for little breaks, right from your menu bar. Works offline.",
+  "short": "43 little games from your menu bar. Works offline.",
+  "platforms": "Mac and Windows",
+  "mac": "Ludus-mac.zip",
+  "win": "Ludus-windows.zip",
+  "icon": "ludus/img/icon-light.png",
+  "icon_dark": "ludus/img/icon-dark.png",
+  "version": "1.12.44"
+ },
+ {
+  "key": "memo",
+  "name": "Memo",
+  "blurb": "Everything you copy, one shortcut away. Search it and paste it back.",
+  "short": "Everything you copy, one shortcut away.",
+  "platforms": "Mac and Windows",
+  "mac": "Memo-mac.zip",
+  "win": "Memo-windows.zip",
+  "icon": "memo/img/icon-light.png",
+  "icon_dark": "memo/img/icon-dark.png",
+  "version": "1.2"
+ },
+ {
+  "key": "nox",
+  "name": "Nox",
+  "blurb": "One switch for light and dark, on a schedule if you like.",
+  "short": "One switch for light and dark.",
+  "platforms": "Mac and Windows",
+  "mac": "Nox.dmg",
+  "win": "Nox-windows.zip",
+  "icon": "nox/img/icon.png",
+  "version": "1.4.2"
+ },
+ {
+  "key": "awayke",
+  "name": "Awayke",
+  "blurb": "Keep your MacBook awake with the lid closed.",
+  "short": "Keeps your MacBook awake with the lid closed.",
+  "platforms": "Mac",
+  "mac": "Awayke.dmg",
+  "icon": "awayke/img/icon.png",
+  "version": "1.7.0"
+ }
+]
