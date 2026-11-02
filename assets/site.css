@@ -56,11 +56,11 @@ a:not(.btn):not(.dlmac):not(.cardlink):hover { text-underline-offset: 4px; }
 
 /* ---- big previews: clean cut-outs on a soft glow (no posters, no hard edges) ---- */
 .pv { position: relative; display: block; margin: 0 auto; width: min(var(--w, 460px), 100%); }
-.pv::before { content: ""; position: absolute; inset: -14% -22%; z-index: 0; pointer-events: none;
-  background: radial-gradient(closest-side, color-mix(in srgb, var(--accent, #7a5af5) 24%, transparent), color-mix(in srgb, var(--accent, #7a5af5) 8%, transparent) 55%, transparent 100%); filter: blur(10px); }
+.pv::before { content: ""; position: absolute; inset: -12% -26%; z-index: 0; pointer-events: none;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--accent, #7a5af5) 9%, transparent), color-mix(in srgb, var(--accent, #7a5af5) 3%, transparent) 55%, transparent 100%); }
 .pv picture, .pv img { position: relative; z-index: 1; display: block; width: 100%; height: auto; }
 .pv img, .gallery .pv img, .shot .pv img { border-radius: 0 !important; box-shadow: none !important;
-  filter: drop-shadow(0 22px 34px rgba(20, 16, 40, .20)) drop-shadow(0 2px 5px rgba(20, 16, 40, .10)); }
+  filter: drop-shadow(0 18px 30px rgba(20, 16, 40, .13)) drop-shadow(0 1px 3px rgba(20, 16, 40, .08)); }
 @media (prefers-color-scheme: dark) { .pv img { filter: drop-shadow(0 22px 34px rgba(0, 0, 0, .55)) drop-shadow(0 2px 5px rgba(0, 0, 0, .35)); } }
 .stagebox .pv { --w: 480px; }
 .pvgrid { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 56px 64px; margin-top: 12px; }
@@ -110,3 +110,5 @@ header.top { background: var(--bg) !important; -webkit-backdrop-filter: none !im
 .ossbtn:hover { transform: translateY(-2px); box-shadow: inset 0 0 0 1px var(--tint, var(--ink)), 0 18px 34px -20px rgba(0,0,0,.4); }
 .ossbtn:hover i { transform: translateX(4px); }
 .ossbtn:active { transform: scale(.98); }
+
+.stagebox .glow, section .glow { opacity: .4; }
