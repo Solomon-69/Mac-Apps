@@ -57,7 +57,7 @@ def dcard(a):
             f'      <div class="btns">\n'
             f'        <a class="btn" href="{rel(a, a["mac"])}">Mac <small>{mac}</small><span>&darr;</span></a>{win}\n'
             f'      </div>\n'
-            f'      <button class="cmd" data-cmd="curl -fsSL https://solomon-69.github.io/Mac-Apps/download/install.sh | bash -s {a["key"]}" title="Copy">Mac: copy install line (recommended)<span>copy</span></button>\n'
+            f'      <button class="cmd" data-cmd="curl -fsSL https://solomon-69.github.io/Mac-Apps/download/install.sh | bash -s {a["key"]}" title="Copy">Mac install line (recommended)<span>copy</span></button>\n'
             f'    </section>')
 
 def put(path, start, end, body):

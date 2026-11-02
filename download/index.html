@@ -35,7 +35,7 @@ h2{margin:0;font-size:24px;letter-spacing:-.02em}
 .note b{color:var(--ink)}
 a.back{color:var(--accent);font-weight:600;text-decoration:none}
 @media (min-width:980px){
-main{max-width:1240px;padding:40px 32px 32px}
+main{max-width:1240px;padding:32px 32px 24px;min-height:100vh;display:flex;flex-direction:column;justify-content:center}
 .layout{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:40px;align-items:start}
 .lede{margin-bottom:22px}
 h1{margin-bottom:8px}
@@ -44,8 +44,9 @@ h1{margin-bottom:8px}
 .top img{width:48px;height:48px;border-radius:12px}
 h2{font-size:21px}.card p{font-size:14px;line-height:1.4}
 .btns{gap:8px}.btn,.cmd{min-height:40px}
-.right{position:sticky;top:40px;padding-top:calc(clamp(32px,6vw,52px) + 8px + 56px)}
-.help{margin-top:0}.note{margin-top:16px}
+.right{position:sticky;top:32px;padding-top:12px}
+.lede{max-width:none}.cmd{white-space:nowrap;font-size:13.5px}
+.help{margin-top:0;padding:20px 22px}.help li{margin:8px 0}.note{margin-top:16px}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;opacity:1!important;transform:none!important}}
 </style>
@@ -66,7 +67,7 @@ h2{font-size:21px}.card p{font-size:14px;line-height:1.4}
         <a class="btn" href="https://github.com/Solomon-69/Ludus/releases/latest/download/Ludus.dmg">Mac <small>Ludus.dmg</small><span>&darr;</span></a>
         <a class="btn alt" href="https://github.com/Solomon-69/Ludus/releases/latest/download/Ludus-windows.zip">Windows <small>Ludus-windows.zip</small><span>&darr;</span></a>
       </div>
-      <button class="cmd" data-cmd="curl -fsSL https://solomon-69.github.io/Mac-Apps/download/install.sh | bash -s ludus" title="Copy">Mac: copy install line (recommended)<span>copy</span></button>
+      <button class="cmd" data-cmd="curl -fsSL https://solomon-69.github.io/Mac-Apps/download/install.sh | bash -s ludus" title="Copy">Mac install line (recommended)<span>copy</span></button>
     </section>
     <section class="card" style="--tint:#3552aa">
       <div class="top"><img src="../memo/img/icon-light.png" alt=""><div><h2>Memo</h2><p>Everything you copy, one shortcut away.</p></div></div>
@@ -74,7 +75,7 @@ h2{font-size:21px}.card p{font-size:14px;line-height:1.4}
         <a class="btn" href="https://github.com/Solomon-69/Memo/releases/latest/download/Memo.dmg">Mac <small>Memo.dmg</small><span>&darr;</span></a>
         <a class="btn alt" href="https://github.com/Solomon-69/Memo/releases/latest/download/Memo-windows.zip">Windows <small>Memo-windows.zip</small><span>&darr;</span></a>
       </div>
-      <button class="cmd" data-cmd="curl -fsSL https://solomon-69.github.io/Mac-Apps/download/install.sh | bash -s memo" title="Copy">Mac: copy install line (recommended)<span>copy</span></button>
+      <button class="cmd" data-cmd="curl -fsSL https://solomon-69.github.io/Mac-Apps/download/install.sh | bash -s memo" title="Copy">Mac install line (recommended)<span>copy</span></button>
     </section>
     <section class="card" style="--tint:#5a44c3">
       <div class="top"><img src="../nox/img/icon.png" alt=""><div><h2>Nox</h2><p>One switch for light and dark.</p></div></div>
@@ -82,14 +83,14 @@ h2{font-size:21px}.card p{font-size:14px;line-height:1.4}
         <a class="btn" href="https://github.com/Solomon-69/Nox/releases/latest/download/Nox.dmg">Mac <small>Nox.dmg</small><span>&darr;</span></a>
         <a class="btn alt" href="https://github.com/Solomon-69/Nox/releases/latest/download/Nox-windows.zip">Windows <small>Nox-windows.zip</small><span>&darr;</span></a>
       </div>
-      <button class="cmd" data-cmd="curl -fsSL https://solomon-69.github.io/Mac-Apps/download/install.sh | bash -s nox" title="Copy">Mac: copy install line (recommended)<span>copy</span></button>
+      <button class="cmd" data-cmd="curl -fsSL https://solomon-69.github.io/Mac-Apps/download/install.sh | bash -s nox" title="Copy">Mac install line (recommended)<span>copy</span></button>
     </section>
     <section class="card" style="--tint:#e66c0e">
       <div class="top"><img src="../awayke/img/icon.png" alt=""><div><h2>Awayke</h2><p>Keeps your MacBook awake with the lid closed.</p></div></div>
       <div class="btns">
         <a class="btn" href="https://github.com/Solomon-69/Awayke/releases/latest/download/Awayke.dmg">Mac <small>Awayke.dmg</small><span>&darr;</span></a>
       </div>
-      <button class="cmd" data-cmd="curl -fsSL https://solomon-69.github.io/Mac-Apps/download/install.sh | bash -s awayke" title="Copy">Mac: copy install line (recommended)<span>copy</span></button>
+      <button class="cmd" data-cmd="curl -fsSL https://solomon-69.github.io/Mac-Apps/download/install.sh | bash -s awayke" title="Copy">Mac install line (recommended)<span>copy</span></button>
     </section>
     <!-- APPS:END -->
   </div>
