@@ -1,0 +1,51 @@
+/* Shared motion for every Mac Apps page. Transform and opacity only; quick (140-220ms), one easing, calm on purpose. */
+:root { --mo-ease: cubic-bezier(0.22, 1, 0.36, 1); --mo-spring: cubic-bezier(0.34, 1.4, 0.5, 1); }
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+/* reading progress line */
+.mo-progress { position: fixed; inset: 0 0 auto 0; height: 2px; z-index: 9999; transform-origin: 0 50%; transform: scaleX(0); background: var(--accent, #a85432); pointer-events: none; }
+
+/* cards: lift, soft shadow, a faint light that follows the pointer */
+.card, .game, .point { transition: transform .28s var(--mo-ease), box-shadow .28s var(--mo-ease); will-change: transform; }
+@media (hover: hover) {
+  .card:hover { transform: translateY(-5px); box-shadow: 0 22px 44px -22px rgba(0,0,0,.38); }
+  .point:hover, .game:hover { transform: translateY(-3px); }
+}
+.card, .point { position: relative; }
+@media (hover: hover) { .js .reveal.in.card:hover, .js .reveal.in.point:hover, .mo-ready .mo-reveal.mo-in.card:hover { transform: translateY(-5px); } }
+.card::after, .point::after { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity .3s var(--mo-ease);
+  background: radial-gradient(260px circle at var(--mx, 50%) var(--my, 0%), color-mix(in srgb, var(--accent, #a85432) 14%, transparent), transparent 70%); }
+@media (hover: hover) { .card:hover::after, .point:hover::after { opacity: 1; } }
+
+/* buttons: arrows lean, press sinks to .97, primary buttons follow the pointer a little */
+.btn, .dlmac, .cmd, a.btn, button.btn { transition: transform .2s var(--mo-ease), box-shadow .2s var(--mo-ease), background-color .2s, opacity .2s; will-change: transform; }
+@media (hover: hover) {
+  .btn:hover, .dlmac:hover { box-shadow: 0 10px 22px -12px rgba(0,0,0,.5); }
+  .btn:hover .arrow, .dlmac:hover span, .cardlink:hover .go span, .btn:hover span { transform: translateX(3px); }
+  .dlmac:hover span { transform: translateY(2px); }
+}
+.btn .arrow, .dlmac span, .go span, .btn span { display: inline-block; transition: transform .22s var(--mo-ease); }
+.btn:active, .dlmac:active, .cmd:active, .card:active { transform: scale(.97); transition-duration: .08s; }
+
+/* links and small controls */
+a { transition: color .18s, opacity .18s, text-underline-offset .18s; }
+a:not(.btn):not(.dlmac):not(.cardlink):hover { text-underline-offset: 4px; }
+.os-switch button, .opt, summary, nav a, .top a { transition: transform .2s var(--mo-ease), background-color .2s, color .2s; }
+@media (hover: hover) { .opt:hover, summary:hover { transform: translateX(2px); } }
+
+/* pictures and screenshots: gentle zoom inside their frame */
+.shot, .gallery figure, .stagebox, .winstage, .wingal figure { overflow: hidden; }
+.shot img, .gallery img, .gallery figure img, .stagebox img { transition: transform .6s var(--mo-ease); }
+@media (hover: hover) { .shot:hover img, .gallery figure:hover img { transform: scale(1.025); } }
+
+/* scroll reveal that replays each time a block enters view, down and back up (js adds .mo-in / .mo-out) */
+.mo-ready .mo-reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s var(--mo-ease), transform .7s var(--mo-ease); transition-delay: var(--mo-d, 0ms); }
+.mo-ready .mo-reveal.mo-in { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .card, .game, .point, .btn, .dlmac, .cmd, .shot img, .gallery img { transition: none !important; transform: none !important; }
+  .mo-ready .mo-reveal { opacity: 1; transform: none; transition: none; }
+  .mo-progress { display: none; }
+}

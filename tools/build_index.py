@@ -16,8 +16,8 @@ def version(a):
     return a.get("version", "")
 
 def cols(n):
-    # as square and even as possible: no lonely card on the last row
-    return {1: 1, 2: 2, 3: 3, 4: 2, 5: 3, 6: 3, 7: 4, 8: 4, 9: 3, 10: 5, 12: 4}.get(n, 3)
+    # one even row when it fits (up to 5), otherwise even rows with no lonely card on the last one
+    return {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 3, 7: 4, 8: 4, 9: 3, 10: 5, 12: 4}.get(n, 4)
 
 def icon(a):
     img = f'<img src="{a["icon"]}" alt="{a["name"]} icon">'

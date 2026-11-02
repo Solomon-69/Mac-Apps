@@ -16,9 +16,7 @@ main{max-width:860px;margin:0 auto;padding:64px 16px 48px}
 h1{font-size:clamp(32px,6vw,52px);line-height:1.05;letter-spacing:-.03em;margin:0 0 12px}
 .lede{color:var(--ink-2);font-size:18px;max-width:520px;margin:0 0 36px}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:24px;display:flex;flex-direction:column;gap:14px;opacity:0;transform:translateY(14px);animation:in .6s cubic-bezier(.2,.8,.2,1) forwards}
-.card:nth-child(2){animation-delay:.08s}
-@keyframes in{to{opacity:1;transform:none}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:24px;display:flex;flex-direction:column;gap:14px;}
 .top{display:flex;gap:14px;align-items:center}
 .top img{width:60px;height:60px;border-radius:14px}
 h2{margin:0;font-size:24px;letter-spacing:-.02em}
@@ -38,6 +36,8 @@ h2{margin:0;font-size:24px;letter-spacing:-.02em}
 a.back{color:var(--accent);font-weight:600;text-decoration:none}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;opacity:1!important;transform:none!important}}
 </style>
+<link rel="stylesheet" href="../assets/site.css">
+<script src="../assets/site.js" defer></script>
 </head>
 <body>
 <main>
