@@ -2,14 +2,14 @@
  {
   "key": "ludus",
   "name": "Ludus",
-  "blurb": "44 little games for little breaks, right from your menu bar. Works offline.",
-  "short": "44 little games from your menu bar. Works offline.",
+  "blurb": "45 little games for little breaks, right from your menu bar. Works offline.",
+  "short": "45 little games from your menu bar. Works offline.",
   "platforms": "Mac and Windows",
   "mac": "Ludus.dmg",
   "win": "Ludus-windows.zip",
   "icon": "ludus/img/icon-light.png",
   "icon_dark": "ludus/img/icon-dark.png",
-  "version": "1.12.50",
+  "version": "1.12.51",
   "color": "#c16545"
  },
  {
