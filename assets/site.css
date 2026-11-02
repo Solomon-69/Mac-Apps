@@ -100,7 +100,8 @@ header.top { background: var(--bg) !important; -webkit-backdrop-filter: none !im
   animation: none !important; transform: none !important; transition: none !important; }
 .stagebox .pv:hover, .stagebox .shot:hover { transform: none !important; }
 
-.oss { padding: 8px 0 40px; }
+.oss { padding: 56px 0 72px; }
+section[style*="max-width:720px"] { margin: 0 auto !important; padding: 64px 20px 0 !important; }
 .ossbtn { display: flex; align-items: center; gap: 16px; max-width: 640px; margin: 0 auto; padding: 18px 22px; border-radius: 18px; background: var(--surface); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ink) 12%, transparent), 0 14px 30px -20px rgba(0,0,0,.35); color: var(--ink); text-decoration: none; transition: transform .25s cubic-bezier(.34,1.4,.5,1), box-shadow .3s; }
 .ossbtn svg { width: 34px; height: 34px; flex: none; }
 .ossbtn span { flex: 1; display: grid; gap: 2px; }
