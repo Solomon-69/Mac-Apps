@@ -145,6 +145,11 @@
   html[data-os="windows"] .menubar .strip { display: none; }
   html[data-os="windows"] .taskbar { display: grid; }
   html[data-os="windows"] .shot .nub { display: none; }
+  .winpic { display: none !important; }
+  html[data-os="windows"] .winpic { display: block !important; }
+  html[data-os="windows"] .macpic { display: none !important; }
+  .macpic img { filter: drop-shadow(0 -1px 1px rgba(60, 40, 20, .22)) drop-shadow(0 18px 30px rgba(20, 16, 40, .13)) drop-shadow(0 1px 3px rgba(20, 16, 40, .08)) !important; }
+  @media (prefers-color-scheme: dark) { .macpic img { filter: drop-shadow(0 -1px 1px rgba(255, 245, 230, .18)) drop-shadow(0 18px 30px rgba(0, 0, 0, .55)) !important; } }
 
   /* Mac / Windows switch */
   .os-switch { display: inline-flex; gap: 2px; padding: 3px; border-radius: 12px; background: color-mix(in srgb, var(--ink) 6%, transparent); border: 1px solid var(--line); margin: 0 0 18px; }
@@ -319,10 +324,13 @@
       <div class="menubar">
         <div class="strip" aria-hidden="true"><div class="side l"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15 15l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M2 9a15 15 0 0 1 20 0M5.5 12.5a10 10 0 0 1 13 0M9 16a5 5 0 0 1 6 0"/><circle cx="12" cy="19.5" r="1.4" fill="currentColor"/></svg><svg viewBox="0 0 24 24" style="width:19px"><rect x="2" y="7" width="17" height="10" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="4.5" y="9.5" width="10" height="5" rx="1" fill="currentColor"/><path d="M21 10.5v3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div><b class="pad"><svg viewBox="0 0 88 55"><use href="#ludus-mark"/></svg></b><div class="side r"><i class="clock">Wed 9:41</i></div></div>
         <div class="shot" id="heroShot">
-          <i class="nub" aria-hidden="true"><svg viewBox="0 0 22 11"><path fill="currentColor" d="M0 11C5 11 8 1.5 11 0.5C14 1.5 17 11 22 11Z"/></svg></i>
-          <picture class="float" data-shot="panel">
+          <div class="pv macpic" style="--w:448px"><picture class="float" data-shot="shot-panel">
+            <source media="(prefers-color-scheme: dark)" srcset="img/shot-panel-dark.png">
+            <img src="img/shot-panel-light.png" width="448" height="671" fetchpriority="high" alt="The Ludus panel open under the menu bar, with a grid of games">
+          </picture></div>
+          <picture class="float winpic" data-shot="panel">
             <source media="(prefers-color-scheme: dark)" srcset="img/panel-dark.png">
-            <img src="img/panel-light.png" width="448" height="648" fetchpriority="high" alt="The Ludus panel open under the menu bar, with a grid of games">
+            <img src="img/panel-light.png" width="448" height="648" alt="The Ludus panel open above the Windows taskbar, with a grid of games">
           </picture>
         </div>
         <div class="taskbar" aria-hidden="true">
