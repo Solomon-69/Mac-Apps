@@ -15,7 +15,8 @@
       document.addEventListener('click', function (e) {
         var a = e.target.closest && e.target.closest('a[href^="#"]');
         if (!a || a.getAttribute('href').length < 2) return;
-        var el = document.querySelector(a.getAttribute('href'));
+        var el = a.getAttribute('href') === '#top' ? 0 : document.querySelector(a.getAttribute('href'));
+        if (el === 0) { e.preventDefault(); lenis.scrollTo(0); return; }
         if (el) { e.preventDefault(); lenis.scrollTo(el, { offset: -16 }); }
       });
       window.__lenis = lenis;
