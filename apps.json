@@ -9,7 +9,8 @@
   "win": "Ludus-windows.zip",
   "icon": "ludus/img/icon-light.png",
   "icon_dark": "ludus/img/icon-dark.png",
-  "version": "1.12.44"
+  "version": "1.12.44",
+  "color": "#c16545"
  },
  {
   "key": "memo",
@@ -21,7 +22,8 @@
   "win": "Memo-windows.zip",
   "icon": "memo/img/icon-light.png",
   "icon_dark": "memo/img/icon-dark.png",
-  "version": "1.2"
+  "version": "1.2",
+  "color": "#3552aa"
  },
  {
   "key": "nox",
@@ -32,7 +34,8 @@
   "mac": "Nox.dmg",
   "win": "Nox-windows.zip",
   "icon": "nox/img/icon.png",
-  "version": "1.4.2"
+  "version": "1.4.2",
+  "color": "#5a44c3"
  },
  {
   "key": "awayke",
@@ -42,6 +45,7 @@
   "platforms": "Mac",
   "mac": "Awayke.dmg",
   "icon": "awayke/img/icon.png",
-  "version": "1.7.0"
+  "version": "1.7.0",
+  "color": "#e66c0e"
  }
 ]

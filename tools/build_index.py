@@ -15,6 +15,19 @@ def version(a):
     except Exception: pass
     return a.get("version", "")
 
+def tint(a):
+    """The app's own colour: set "color" in apps.json, or it is sampled from the icon."""
+    if a.get("color"): return a["color"]
+    try:
+        import colorsys
+        from PIL import Image
+        px = [q for q in Image.open(root / a["icon"]).convert("RGBA").resize((64, 64)).getdata() if q[3] > 200]
+        sel = [q for q in px if (lambda h: h[1] > .5 and .45 < h[2] < .95)(colorsys.rgb_to_hsv(q[0]/255, q[1]/255, q[2]/255))] or px
+        c = "#%02x%02x%02x" % tuple(sum(q[i] for q in sel) // len(sel) for i in range(3))
+        a["color"] = c; return c
+    except Exception:
+        return "#a85432"
+
 def cols(n):
     # one even row when it fits (up to 5), otherwise even rows with no lonely card on the last one
     return {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 3, 7: 4, 8: 4, 9: 3, 10: 5, 12: 4}.get(n, 4)
@@ -29,7 +42,7 @@ def rel(a, f): return f"https://github.com/{OWNER}/{a['name']}/releases/latest/d
 
 def card(a):
     v = version(a); a["version"] = v
-    return (f'    <div class="card"><a class="cardlink" href="{a["key"]}/index.html">\n'
+    return (f'    <div class="card" style="--tint:{tint(a)}"><a class="cardlink" href="{a["key"]}/index.html">\n'
             f'      <span class="ico">{icon(a)}</span>\n'
             f'      <h2>{a["name"]}</h2><p>{a["blurb"]} {a["platforms"]}. Version {v}.</p>\n'
             f'      <span class="go">See {a["name"]} <span>&rarr;</span></span>\n'
@@ -39,7 +52,7 @@ def dcard(a):
     ic = a["icon"]
     win = f'\n        <a class="btn alt" href="{rel(a, a["win"])}">Windows <small>{a["win"]}</small><span>&darr;</span></a>' if a.get("win") else ""
     mac = a["mac"] if a["mac"].endswith(".zip") else a["mac"]
-    return (f'    <section class="card">\n'
+    return (f'    <section class="card" style="--tint:{tint(a)}">\n'
             f'      <div class="top"><img src="../{ic}" alt=""><div><h2>{a["name"]}</h2><p>{a["short"]}</p></div></div>\n'
             f'      <div class="btns">\n'
             f'        <a class="btn" href="{rel(a, a["mac"])}">Mac <small>{mac}</small><span>&darr;</span></a>{win}\n'

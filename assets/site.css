@@ -16,8 +16,12 @@ html.lenis, html.lenis body { height: auto; }
 .card, .point { position: relative; }
 @media (hover: hover) { .js .reveal.in.card:hover, .js .reveal.in.point:hover, .mo-ready .mo-reveal.mo-in.card:hover { transform: translateY(-5px); } }
 .card::after, .point::after { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity .3s var(--mo-ease);
-  background: radial-gradient(260px circle at var(--mx, 50%) var(--my, 0%), color-mix(in srgb, var(--accent, #a85432) 14%, transparent), transparent 70%); }
-@media (hover: hover) { .card:hover::after, .point:hover::after { opacity: 1; } }
+  background: radial-gradient(260px circle at var(--mx, 50%) var(--my, 0%), color-mix(in srgb, var(--tint, var(--accent, #a85432)) 22%, transparent), transparent 70%); }
+@media (hover: hover) {
+  .card:hover::after, .point:hover::after { opacity: 1; }
+  .card[style*="--tint"]:hover { border-color: color-mix(in srgb, var(--tint) 45%, var(--line, transparent)); box-shadow: 0 22px 44px -22px color-mix(in srgb, var(--tint) 55%, transparent); }
+}
+.card[style*="--tint"] .go { color: var(--tint); }
 
 /* buttons: arrows lean, press sinks to .97, primary buttons follow the pointer a little */
 .btn, .dlmac, .cmd, a.btn, button.btn { transition: transform .2s var(--mo-ease), box-shadow .2s var(--mo-ease), background-color .2s, opacity .2s; will-change: transform; }
