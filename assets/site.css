@@ -93,3 +93,9 @@ a:not(.btn):not(.dlmac):not(.cardlink):hover { text-underline-offset: 4px; }
 
 /* sticky header: solid, so page content never shows through it */
 header.top { background: var(--bg) !important; -webkit-backdrop-filter: none !important; backdrop-filter: none !important; border-bottom: 1px solid var(--line, rgba(0,0,0,.08)) !important; z-index: 50 !important; }
+
+/* the panel under the menu bar in each page's top section stays perfectly still: no breathing, no tilt, no hover movement */
+.stagebox .shot, .stagebox .shot .float, .stagebox .shot picture, .stagebox .shot img,
+.stagebox .pv, .stagebox .pv picture, .stagebox .pv img, .stagebox .menubar, .stagebox .menubar * {
+  animation: none !important; transform: none !important; transition: none !important; }
+.stagebox .pv:hover, .stagebox .shot:hover { transform: none !important; }
