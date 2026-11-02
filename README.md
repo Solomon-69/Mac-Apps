@@ -36,7 +36,7 @@ One switch for light and dark. Flip your Mac between light and dark, set a sched
 
 <img src="nox/img/panel-light.png" width="300" alt="Nox panel"> <img src="nox/showcase/nox-2-light.png" width="420" alt="A page before and after Nox"> <img src="nox/intro/nox-welcome-1.png" width="260" alt="Nox welcome window">
 
-Version 1.4.1.
+Version 1.4.2.
 
 Download: [Mac (.dmg)](https://github.com/Solomon-69/Nox/releases/latest/download/Nox.dmg) | [Mac (.zip)](https://github.com/Solomon-69/Nox/releases/latest/download/Nox-mac.zip) | [Windows](https://github.com/Solomon-69/Nox/releases/latest/download/Nox-windows.zip)
 
