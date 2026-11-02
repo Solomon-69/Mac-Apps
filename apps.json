@@ -42,8 +42,9 @@
   "name": "Awayke",
   "blurb": "Keep your MacBook awake with the lid closed.",
   "short": "Keeps your MacBook awake with the lid closed.",
-  "platforms": "Mac",
+  "platforms": "Mac and Windows",
   "mac": "Awayke.dmg",
+  "win": "Awayke-windows.zip",
   "icon": "awayke/img/icon.png",
   "version": "1.7.2",
   "color": "#e66c0e"
