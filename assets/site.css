@@ -113,3 +113,16 @@ section[style*="max-width:720px"] { margin: 0 auto !important; padding: 0 20px !
 .ossbtn:active { transform: scale(.98); }
 
 .stagebox .glow, section .glow { opacity: .4; }
+
+/* menu bar the dropdown arrow points to */
+.shot.mac-only { display: grid; justify-items: center; }
+.mbar { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 14px; height: 36px; padding: 0 16px; margin: 0 auto -2px; border-radius: 13px; background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.66)); border: 1px solid rgba(255,255,255,.75); box-shadow: 0 1px 0 rgba(255,255,255,.9) inset, 0 10px 24px -12px rgba(40,28,16,.32), 0 1px 3px rgba(40,28,16,.10); color: var(--ink); }
+@media (prefers-color-scheme: dark) { .mbar { background: linear-gradient(180deg, rgba(60,60,66,.92), rgba(40,40,46,.78)); border-color: rgba(255,255,255,.12); box-shadow: 0 1px 0 rgba(255,255,255,.1) inset, 0 12px 26px -12px rgba(0,0,0,.7); } }
+.mbar .side { display: flex; align-items: center; gap: 16px; color: color-mix(in srgb, var(--ink) 78%, transparent); }
+.mbar .side.l { justify-content: flex-end; }
+.mbar .side.r { justify-content: flex-start; }
+.mbar .side svg { width: 15px; height: 15px; }
+.mbar .clock { font: 600 12px/1 var(--font, system-ui); font-style: normal; color: color-mix(in srgb, var(--ink) 70%, transparent); white-space: nowrap; }
+.mbar .pad { position: relative; width: 22px; height: 18px; display: grid; place-items: center; color: var(--ink); }
+.mbar .pad svg { width: 17px; height: 17px; }
+.mbar .pad::after { content: ""; position: absolute; inset: -6px -8px; border-radius: 8px; background: color-mix(in srgb, var(--ink) 11%, transparent); z-index: -1; }

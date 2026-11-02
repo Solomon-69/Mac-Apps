@@ -141,7 +141,6 @@
   .taskbar .tray svg { width: 20px; height: 13px; }
   .taskbar .tray::after { content: ""; position: absolute; left: 50%; bottom: 2px; width: 14px; height: 3px; border-radius: 2px; transform: translateX(-50%); background: var(--accent); }
   .taskbar .clock { margin-left: auto; text-align: right; font-size: 11.5px; line-height: 1.3; color: var(--ink); white-space: nowrap; }
-  .menubar .strip { display: none; }
   html[data-os="windows"] .menubar .strip { display: none; }
   html[data-os="windows"] .taskbar { display: grid; }
   html[data-os="windows"] .shot .nub { display: none; }
@@ -326,7 +325,7 @@
         <div class="shot" id="heroShot">
           <div class="pv macpic" style="--w:448px"><picture class="float" data-shot="shot-panel">
             <source media="(prefers-color-scheme: dark)" srcset="img/shot-panel-dark.png">
-            <img src="img/shot-panel-light.png" width="448" height="671" fetchpriority="high" alt="The Ludus panel open under the menu bar, with a grid of games">
+            <img src="img/shot-panel-light.png" width="448" height="660" fetchpriority="high" alt="The Ludus panel open under the menu bar, with a grid of games">
           </picture></div>
           <picture class="float winpic" data-shot="panel">
             <source media="(prefers-color-scheme: dark)" srcset="img/panel-dark.png">
