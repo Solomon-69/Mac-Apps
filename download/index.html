@@ -34,19 +34,21 @@ h2{margin:0;font-size:24px;letter-spacing:-.02em}
 .note{color:var(--ink-2);font-size:14px;margin-top:28px;max-width:640px}
 .note b{color:var(--ink)}
 a.back{color:var(--accent);font-weight:600;text-decoration:none}
+.titlebox{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:20px 24px;margin-bottom:18px}
+.titlebox h1{margin:0 0 6px}.titlebox .lede{margin:0}
+.help h4{margin:16px 0 4px;font-size:16px}.help ul{margin:0 0 14px;padding-left:20px;color:var(--ink-2)}.help ul li{margin:4px 0}
+.help .foot{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);color:var(--ink-2);font-size:14px}.help .foot p{margin:0 0 8px}.help .foot b{color:var(--ink)}
 @media (min-width:980px){
 main{max-width:1240px;padding:32px 32px 24px;min-height:100vh;display:flex;flex-direction:column;justify-content:center}
-.layout{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:40px;align-items:start}
-.lede{margin-bottom:22px}
-h1{margin-bottom:8px}
-.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.layout{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);grid-template-areas:"title ." "apps help";gap:14px 40px;align-items:stretch}
+.titlebox{grid-area:title;margin:0;padding:16px 22px}.titlebox h1{font-size:40px;margin-bottom:4px}.titlebox .lede{font-size:16px;max-width:none}
+.grid{grid-area:apps;grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:1fr;gap:14px}
 .card{padding:18px;gap:10px;border-radius:20px}
 .top img{width:48px;height:48px;border-radius:12px}
 h2{font-size:21px}.card p{font-size:14px;line-height:1.4}
 .btns{gap:8px}.btn,.cmd{min-height:40px}
-.right{position:sticky;top:32px;padding-top:12px}
-.lede{max-width:none}.cmd{white-space:nowrap;font-size:13.5px}
-.help{margin-top:0;padding:20px 22px}.help li{margin:8px 0}.note{margin-top:16px}
+.help{grid-area:help;margin:0;padding:20px 22px;font-size:15px;line-height:1.45;display:flex;flex-direction:column}.help li{margin:6px 0}.help .foot{margin-top:auto}
+.cmd{white-space:nowrap;font-size:13.5px}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;opacity:1!important;transform:none!important}}
 </style>
@@ -56,9 +58,10 @@ h2{font-size:21px}.card p{font-size:14px;line-height:1.4}
 <body>
 <main>
   <div class="layout">
-  <div class="left">
-  <h1>Download.</h1>
-  <p class="lede">One tap, one download. Open it, drag the app into Applications and it is ready.</p>
+  <div class="titlebox">
+    <h1>Download.</h1>
+    <p class="lede">One tap, one download. Open it, drag the app into Applications and it is ready.</p>
+  </div>
   <div class="grid">
     <!-- APPS:START -->
     <section class="card" style="--tint:#c16545">
@@ -94,20 +97,25 @@ h2{font-size:21px}.card p{font-size:14px;line-height:1.4}
     </section>
     <!-- APPS:END -->
   </div>
-  </div>
-  <aside class="right">
-  <div class="help">
+  <aside class="help">
     <h3>Opening a Mac app</h3>
     <p>Every Mac app here is signed and checked by Apple, so it opens like any other app:</p>
     <ol>
       <li>Tap <b>Mac</b> on the app you want. The file downloads straight away.</li>
       <li>Open the file, drag the app into <b>Applications</b>, and double-click it.</li>
       <li>On Windows, extract the zip first, then open the app inside.</li>
-      <li><b>The "install line" is a shortcut.</b> It is one line of text you paste into Terminal, the app that comes with every Mac, and it downloads and installs the app for you. To use it: press <b>Command</b> and <b>Space</b>, type <b>Terminal</b> and press <b>Return</b>. Tap <b>copy</b> on the app's card here, click inside the Terminal window, press <b>Command</b> and <b>V</b> to paste, then press <b>Return</b>. Wait a few seconds and the app opens by itself. You never have to use it: the <b>Mac</b> button does the same thing.</li>
     </ol>
-  </div>
-  <p class="note"><b>Already installed?</b> Open Settings in the app and tap Update now. The links always give the newest version.</p>
-  <p class="note"><a class="back" href="../index.html">&larr; All apps</a></p>
+    <h4>The install line (optional shortcut)</h4>
+    <ul>
+      <li>One line of text that downloads and installs the app for you.</li>
+      <li>Press <b>Command</b> + <b>Space</b>, type <b>Terminal</b>, press <b>Return</b>.</li>
+      <li>Tap <b>copy</b> on the app's card, click in Terminal, press <b>Command</b> + <b>V</b>, then <b>Return</b>.</li>
+      <li>Wait a few seconds and the app opens. The <b>Mac</b> button does the same thing.</li>
+    </ul>
+    <div class="foot">
+      <p><b>Already installed?</b> Open Settings in the app and tap Update now. The links always give the newest version.</p>
+      <a class="back" href="../index.html">&larr; All apps</a>
+    </div>
   </aside>
   </div>
 </main>
