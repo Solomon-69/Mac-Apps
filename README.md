@@ -6,13 +6,13 @@ Four small, free apps by Solomon. Quiet, fast and made to stay out of your way. 
 
 <img src="ludus/img/icon-light.png" width="72" alt="Ludus icon">
 
-Little games for little breaks, right from your menu bar or tray. 43 quick mini games that work offline: arcade, puzzles, duels against the computer and two-player games.
+Little games for little breaks, right from your menu bar or tray. 44 quick mini games that work offline: arcade, puzzles, duels against the computer and two-player games.
 
 <img src="ludus/img/panel-light.png" width="300" alt="Ludus panel"> <img src="ludus/intro/ludus-mac-1-light.png" width="240" alt="Ludus welcome screen">
 
-<img src="ludus/showcase/ludus-covers.png" width="560" alt="Cover art of all 43 Ludus games">
+<img src="ludus/showcase/ludus-covers.png" width="560" alt="Cover art of all 44 Ludus games">
 
-Version 1.12.44, 43 games.
+Version 1.12.45, 44 games.
 
 Download: [Mac (.zip)](https://github.com/Solomon-69/Ludus/releases/latest/download/Ludus-mac.zip) | [Windows](https://github.com/Solomon-69/Ludus/releases/latest/download/Ludus-windows.zip)
 
