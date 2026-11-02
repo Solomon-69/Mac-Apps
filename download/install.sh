@@ -31,6 +31,8 @@ mkdir -p "$DEST" "$TMP/x"
 ditto -x -k "$TMP/app.zip" "$TMP/x"
 APP="$(find "$TMP/x" -maxdepth 2 -name "$NAME.app" -print -quit)"
 [ -n "$APP" ] || { echo "The download had no $NAME.app inside."; exit 1; }
+EXE="$(/usr/libexec/PlistBuddy -c "Print :CFBundleExecutable" "$APP/Contents/Info.plist" 2>/dev/null || echo "$NAME")"
+pkill -x "$EXE" 2>/dev/null || true
 pkill -x "$NAME" 2>/dev/null || true
 rm -rf "$DEST/$NAME.app"
 ditto "$APP" "$DEST/$NAME.app"
