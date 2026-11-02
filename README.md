@@ -12,7 +12,7 @@ Little games for little breaks, right from your menu bar or tray. 44 quick mini 
 
 <img src="ludus/showcase/ludus-covers.png" width="560" alt="Cover art of all 44 Ludus games">
 
-Version 1.12.47, 44 games.
+Version 1.12.49, 44 games.
 
 Download: [Mac (.zip)](https://github.com/Solomon-69/Ludus/releases/latest/download/Ludus-mac.zip) | [Windows](https://github.com/Solomon-69/Ludus/releases/latest/download/Ludus-windows.zip)
 
@@ -36,7 +36,7 @@ One switch for light and dark. Flip your Mac between light and dark, set a sched
 
 <img src="nox/img/panel-light.png" width="300" alt="Nox panel"> <img src="nox/showcase/nox-2-light.png" width="420" alt="A page before and after Nox"> <img src="nox/intro/nox-welcome-1.png" width="260" alt="Nox welcome window">
 
-Version 1.4.2.
+Version 1.4.3.
 
 Download: [Mac (.dmg)](https://github.com/Solomon-69/Nox/releases/latest/download/Nox.dmg) | [Mac (.zip)](https://github.com/Solomon-69/Nox/releases/latest/download/Nox-mac.zip) | [Windows](https://github.com/Solomon-69/Nox/releases/latest/download/Nox-windows.zip)
 
