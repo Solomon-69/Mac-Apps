@@ -34,6 +34,19 @@ h2{margin:0;font-size:24px;letter-spacing:-.02em}
 .note{color:var(--ink-2);font-size:14px;margin-top:28px;max-width:640px}
 .note b{color:var(--ink)}
 a.back{color:var(--accent);font-weight:600;text-decoration:none}
+@media (min-width:980px){
+main{max-width:1240px;padding:40px 32px 32px}
+.layout{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:40px;align-items:start}
+.lede{margin-bottom:22px}
+h1{margin-bottom:8px}
+.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.card{padding:18px;gap:10px;border-radius:20px}
+.top img{width:48px;height:48px;border-radius:12px}
+h2{font-size:21px}.card p{font-size:14px;line-height:1.4}
+.btns{gap:8px}.btn,.cmd{min-height:40px}
+.right{position:sticky;top:40px;padding-top:calc(clamp(32px,6vw,52px) + 8px + 56px)}
+.help{margin-top:0}.note{margin-top:16px}
+}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;opacity:1!important;transform:none!important}}
 </style>
 <link rel="stylesheet" href="../assets/site.css">
@@ -41,6 +54,8 @@ a.back{color:var(--accent);font-weight:600;text-decoration:none}
 </head>
 <body>
 <main>
+  <div class="layout">
+  <div class="left">
   <h1>Download.</h1>
   <p class="lede">One tap, one download. Open it, drag the app into Applications and it is ready.</p>
   <div class="grid">
@@ -78,6 +93,8 @@ a.back{color:var(--accent);font-weight:600;text-decoration:none}
     </section>
     <!-- APPS:END -->
   </div>
+  </div>
+  <aside class="right">
   <div class="help">
     <h3>Opening a Mac app</h3>
     <p>Every Mac app here is signed and checked by Apple, so it opens like any other app:</p>
@@ -90,6 +107,8 @@ a.back{color:var(--accent);font-weight:600;text-decoration:none}
   </div>
   <p class="note"><b>Already installed?</b> Open Settings in the app and tap Update now. The links always give the newest version.</p>
   <p class="note"><a class="back" href="../index.html">&larr; All apps</a></p>
+  </aside>
+  </div>
 </main>
 <script>
 document.querySelectorAll('.cmd').forEach(b=>b.onclick=async()=>{const t=b.dataset.cmd;try{await navigator.clipboard.writeText(t)}catch(e){const x=document.createElement('textarea');x.value=t;document.body.append(x);x.select();document.execCommand('copy');x.remove()}const s=b.querySelector('span');s.textContent='copied';setTimeout(()=>s.textContent='copy',1800)});
