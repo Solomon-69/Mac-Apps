@@ -267,12 +267,7 @@
 
     <div class="stagebox">
       <div class="glow" aria-hidden="true"></div>
-      <div class="shot mac-only">
-        <picture class="float">
-          <source media="(prefers-color-scheme: dark)" srcset="showcase/nox-1-dark.png">
-          <img src="showcase/nox-1-light.png" width="1760" height="1120" fetchpriority="high" alt="The Nox panel open under its menu bar switch">
-        </picture>
-      </div>
+      <div class="shot mac-only"><div class="pv" style="--w:440px"><picture class="float"><source media="(prefers-color-scheme: dark)" srcset="img/shot-panel-dark.png"><img src="img/shot-panel-light.png" width="440" height="640" alt="The Nox panel open under its menu bar switch" fetchpriority="high"></picture></div></div>
       <div class="winstage win-only">
         <picture><source media="(prefers-color-scheme: dark)" srcset="img/win/nox-panel-dark.png"><img src="img/win/nox-panel-light.png" alt="The Nox panel open above the Windows tray" loading="lazy"></picture>
         <picture class="tray"><source media="(prefers-color-scheme: dark)" srcset="img/win/nox-tray-dark.png"><img src="img/win/nox-tray-light.png" alt="" loading="lazy"></picture>
@@ -301,16 +296,7 @@
           <h3>Private by design</h3>
           <p>No account, no network access and no analytics. The extension only checks whether Nox's switch is on. It never reads or sends what you browse.</p>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="v2">
-    <div class="wrap">
-      <p class="kicker reveal">New in V2</p>
-      <h2 class="reveal">A smoother switch, and a better Windows setup</h2>
-      <p class="intro reveal">V2 makes the change from light to dark gentler and easier to live with.</p>
-      <div class="points">
+      
         <div class="point reveal">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M4 12a8 8 0 1 0 16 0 8 8 0 0 0-16 0zM12 8v4l2.5 2"/></svg>
           <h3>A smooth fade</h3>
@@ -345,34 +331,9 @@
     </div>
   </section>
 
-  <section id="screens">
-    <div class="wrap">
-      <p class="kicker reveal">A closer look</p>
-      <h2 class="reveal">Set the night, skip the glare</h2>
-      <p class="intro reveal">Screenshots of Nox. It also turns on by itself at the times you choose.</p>
-      <div class="gallery mac-only">
-        <figure class="reveal">
-          <picture><source media="(prefers-color-scheme: dark)" srcset="showcase/nox-2-dark.png"><img src="showcase/nox-2-light.png" width="1760" height="1120" loading="lazy" alt="The same web page before and with Nox: bright on the left, dark on the right"></picture>
-          <figcaption>Bright pages, dark when Nox is on</figcaption>
-        </figure>
-        <figure class="reveal">
-          <picture><source media="(prefers-color-scheme: dark)" srcset="showcase/nox-3-dark.png"><img src="showcase/nox-3-light.png" width="1760" height="1120" loading="lazy" alt="The Nox Settings window with dark at night times and quick picks"></picture>
-          <figcaption>Dark at night, on its own schedule</figcaption>
-        </figure>
-        <figure class="reveal">
-          <picture><source media="(prefers-color-scheme: dark)" srcset="showcase/nox-4-dark.png"><img src="showcase/nox-4-light.png" width="1760" height="1120" loading="lazy" alt="Three windows fading from light to dark"></picture>
-          <figcaption>A soft fade, never a flash</figcaption>
-        </figure>
-      </div>
-      <div class="wingal win-only">
-        <figure class="reveal"><picture><source media="(prefers-color-scheme: dark)" srcset="img/win/nox-panel-dark.png"><img src="img/win/nox-panel-light.png" alt="The tray panel: Light now in light mode, Dark now in dark mode" loading="lazy"></picture><figcaption>The tray panel: Light now in light mode, Dark now in dark mode</figcaption></figure>
-      </div>
-    </div>
-  </section>
-
   <section id="welcome">
     <div class="wrap">
-      <p class="kicker reveal">Version 1.4.2</p>
+      <p class="kicker reveal">First launch</p>
       <h2 class="reveal">A calm first minute</h2>
       <p class="intro reveal">Three short pages: what Nox does, the permissions it asks for, and three tips. A frosted glass panel, and each page plays its animation once.</p>
       <div class="gallery welcome">
@@ -391,6 +352,19 @@
       </div>
     </div>
   </section>
+
+  <section id="screens">
+    <div class="wrap">
+      <p class="kicker reveal">A closer look</p>
+      <h2 class="reveal">Set the night, skip the glare</h2>
+      <p class="intro reveal">Screenshots of Nox. It also turns on by itself at the times you choose.</p>
+      <div class="pvgrid mac-only"><figure class="reveal" style="--w:420px"><div class="pv"><picture><source media="(prefers-color-scheme: dark)" srcset="img/panel-dark.png"><img src="img/panel-light.png" width="360" height="424" alt="The Nox panel with its switches" loading="lazy"></picture></div><figcaption>One switch, the whole Mac follows</figcaption></figure><figure class="reveal" style="--w:340px"><div class="pv"><picture><source media="(prefers-color-scheme: dark)" srcset="img/settings-dark.png"><img src="img/settings-light.png" width="300" height="502" alt="The Nox settings" loading="lazy"></picture></div><figcaption>Choose when it goes dark</figcaption></figure></div>
+      <div class="wingal win-only">
+        <figure class="reveal"><picture><source media="(prefers-color-scheme: dark)" srcset="img/win/nox-panel-dark.png"><img src="img/win/nox-panel-light.png" alt="The tray panel: Light now in light mode, Dark now in dark mode" loading="lazy"></picture><figcaption>The tray panel: Light now in light mode, Dark now in dark mode</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
 
   <section id="install">
     <div class="wrap">

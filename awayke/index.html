@@ -268,12 +268,7 @@
 
     <div class="stagebox">
       <div class="glow" aria-hidden="true"></div>
-      <div class="shot mac-only">
-        <picture class="float">
-          <source media="(prefers-color-scheme: dark)" srcset="showcase/aw-1-dark.png">
-          <img src="showcase/aw-1-light.png" width="1760" height="1120" fetchpriority="high" alt="The Awayke panel open under its menu bar icon">
-        </picture>
-      </div>
+      <div class="shot mac-only"><div class="pv" style="--w:440px"><picture class="float"><source media="(prefers-color-scheme: dark)" srcset="img/shot-panel-dark.png"><img src="img/shot-panel-light.png" width="440" height="628" alt="The Awayke panel open under its menu bar icon" fetchpriority="high"></picture></div></div>
       <div class="winstage win-only">
         <picture><source media="(prefers-color-scheme: dark)" srcset="img/win/awayke-panel-light.png"><img src="img/win/awayke-panel-light.png" alt="The Awayke panel open above the Windows tray" loading="lazy"></picture>
         <picture class="tray"><source media="(prefers-color-scheme: dark)" srcset="img/win/awayke-tray-light.png"><img src="img/win/awayke-tray-light.png" alt="" loading="lazy"></picture>
@@ -306,35 +301,9 @@
     </div>
   </section>
 
-  <section id="screens">
-    <div class="wrap">
-      <p class="kicker reveal">A closer look</p>
-      <h2 class="reveal">The panel and the settings</h2>
-      <p class="intro reveal">Screenshots of Awayke. Pick an accent colour, and choose how a click works.</p>
-      <div class="gallery mac-only">
-        <figure class="reveal">
-          <picture><source media="(prefers-color-scheme: dark)" srcset="showcase/aw-2-dark.png"><img src="showcase/aw-2-light.png" width="1760" height="1120" loading="lazy" alt="The Awayke panel with the low-battery cutoff magnified"></picture>
-          <figcaption>A low-battery cutoff you pick</figcaption>
-        </figure>
-        <figure class="reveal">
-          <picture><source media="(prefers-color-scheme: dark)" srcset="showcase/aw-3-dark.png"><img src="showcase/aw-3-light.png" width="1760" height="1120" loading="lazy" alt="The Awayke panel with the auto-off timer magnified"></picture>
-          <figcaption>A timer with a live countdown</figcaption>
-        </figure>
-        <figure class="reveal">
-          <picture><source media="(prefers-color-scheme: dark)" srcset="showcase/aw-4-dark.png"><img src="showcase/aw-4-light.png" width="1760" height="1120" loading="lazy" alt="The Awayke Settings window, General section"></picture>
-          <figcaption>One tidy Settings window</figcaption>
-        </figure>
-      </div>
-      <div class="wingal win-only">
-        <figure class="reveal"><picture><source media="(prefers-color-scheme: dark)" srcset="img/win/awayke-panel-light.png"><img src="img/win/awayke-panel-light.png" alt="The tray panel: keep awake, lid closed and the auto-off timer" loading="lazy"></picture><figcaption>The tray panel: keep awake, lid closed and the auto-off timer</figcaption></figure>
-        <figure class="reveal"><picture><source media="(prefers-color-scheme: dark)" srcset="img/win/awayke-settings-dark.png"><img src="img/win/awayke-settings-dark.png" alt="Settings: what stays awake and your own timer buttons" loading="lazy"></picture><figcaption>Settings: what stays awake and your own timer buttons</figcaption></figure>
-      </div>
-    </div>
-  </section>
-
   <section id="welcome">
     <div class="wrap">
-      <p class="kicker reveal">Version 1.7.0</p>
+      <p class="kicker reveal">First launch</p>
       <h2 class="reveal">A calm first minute</h2>
       <p class="intro reveal">A short welcome with a frosted glass panel: what Awayke does, the one permission it needs for lid-closed mode, and where to find it. Each page plays its animation once.</p>
       <div class="gallery welcome">
@@ -353,6 +322,20 @@
       </div>
     </div>
   </section>
+
+  <section id="screens">
+    <div class="wrap">
+      <p class="kicker reveal">A closer look</p>
+      <h2 class="reveal">The panel and the settings</h2>
+      <p class="intro reveal">Screenshots of Awayke. Pick an accent colour, and choose how a click works.</p>
+      <div class="pvgrid mac-only"><figure class="reveal" style="--w:400px"><div class="pv"><picture><source media="(prefers-color-scheme: dark)" srcset="img/panel-dark.png"><img src="img/panel-light.png" width="340" height="417" alt="The Awayke panel" loading="lazy"></picture></div><figcaption>Keep awake, with a timer and a battery guard</figcaption></figure><figure class="reveal" style="--w:560px"><div class="pv"><picture><source media="(prefers-color-scheme: dark)" srcset="img/settings-dark.png"><img src="img/settings-light.png" width="520" height="404" alt="The Awayke settings" loading="lazy"></picture></div><figcaption>Choose what stays awake</figcaption></figure></div>
+      <div class="wingal win-only">
+        <figure class="reveal"><picture><source media="(prefers-color-scheme: dark)" srcset="img/win/awayke-panel-light.png"><img src="img/win/awayke-panel-light.png" alt="The tray panel: keep awake, lid closed and the auto-off timer" loading="lazy"></picture><figcaption>The tray panel: keep awake, lid closed and the auto-off timer</figcaption></figure>
+        <figure class="reveal"><picture><source media="(prefers-color-scheme: dark)" srcset="img/win/awayke-settings-dark.png"><img src="img/win/awayke-settings-dark.png" alt="Settings: what stays awake and your own timer buttons" loading="lazy"></picture><figcaption>Settings: what stays awake and your own timer buttons</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
 
   <section id="install">
     <div class="wrap">

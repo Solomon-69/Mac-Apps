@@ -278,12 +278,7 @@
 
     <div class="stagebox">
       <div class="glow" aria-hidden="true"></div>
-      <div class="shot mac-only">
-        <picture class="float">
-          <source media="(prefers-color-scheme: dark)" srcset="showcase/memo-1-dark.png">
-          <img src="showcase/memo-1-light.png" width="1760" height="1120" fetchpriority="high" alt="The Memo panel open under its menu bar icon, showing pinned and recent items">
-        </picture>
-      </div>
+      <div class="shot mac-only"><div class="pv" style="--w:460px"><picture class="float"><source media="(prefers-color-scheme: dark)" srcset="img/shot-panel-dark.png"><img src="img/shot-panel-light.png" width="460" height="630" alt="The Memo panel open under its menu bar icon, showing pinned and recent items" fetchpriority="high"></picture></div></div>
       <div class="winstage win-only">
         <picture><source media="(prefers-color-scheme: dark)" srcset="img/win/memo-popup-dark.png"><img src="img/win/memo-popup-light.png" alt="The Memo history open above the Windows tray" loading="lazy"></picture>
         <picture class="tray"><source media="(prefers-color-scheme: dark)" srcset="img/win/memo-tray-dark.png"><img src="img/win/memo-tray-light.png" alt="" loading="lazy"></picture>
@@ -312,16 +307,7 @@
           <h3>Your history stays on your Mac</h3>
           <p>No account and no network access. Items from password managers, and items apps mark as hidden, are never saved.</p>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="v2">
-    <div class="wrap">
-      <p class="kicker reveal">New in V2</p>
-      <h2 class="reveal">Now on Windows too, and easier to share</h2>
-      <p class="intro reveal">Memo started on the Mac. V2 brings it to Windows and makes it simple to hand to a friend.</p>
-      <div class="points">
+      
         <div class="point reveal">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M4 5l7-1v7H4zM13 4l7-1v8h-7zM4 13h7v7l-7-1zM13 13h7v8l-7-1z"/></svg>
           <h3>A Windows version</h3>
@@ -341,25 +327,34 @@
     </div>
   </section>
 
+  <section id="welcome">
+    <div class="wrap">
+      <p class="kicker reveal">First launch</p>
+      <h2 class="reveal">A calm first minute</h2>
+      <p class="intro reveal">A short welcome with a frosted glass panel. It shows the shortcut, asks once for the permission it needs to paste for you, and ends with three tips. Each page plays its animation once.</p>
+      <div class="gallery welcome">
+        <figure class="reveal">
+          <img src="intro/memo-welcome-1.png" width="432" height="476" loading="lazy" alt="Memo welcome window, page 1: Everything you copy, one shortcut away">
+          <figcaption>Everything you copy, one shortcut away</figcaption>
+        </figure>
+        <figure class="reveal">
+          <img src="intro/memo-welcome-2.png" width="432" height="476" loading="lazy" alt="Memo welcome window, page 2: Paste straight into apps: allow it once">
+          <figcaption>Paste straight into apps: allow it once</figcaption>
+        </figure>
+        <figure class="reveal">
+          <img src="intro/memo-welcome-3.png" width="432" height="476" loading="lazy" alt="Memo welcome window, page 3: You're all set">
+          <figcaption>You're all set</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
   <section id="screens">
     <div class="wrap">
       <p class="kicker reveal">A closer look</p>
       <h2 class="reveal">Read it, find it, keep it</h2>
       <p class="intro reveal">Screenshots of the panel. Memo follows your light or dark setting.</p>
-      <div class="gallery mac-only">
-        <figure class="reveal">
-          <picture><source media="(prefers-color-scheme: dark)" srcset="showcase/memo-2-dark.png"><img src="showcase/memo-2-light.png" width="1760" height="1120" loading="lazy" alt="A long message expanded in the Memo panel, next to an expanded colour swatch"></picture>
-          <figcaption>Open any row to read the whole thing</figcaption>
-        </figure>
-        <figure class="reveal">
-          <picture><source media="(prefers-color-scheme: dark)" srcset="showcase/memo-3-dark.png"><img src="showcase/memo-3-light.png" width="1760" height="1120" loading="lazy" alt="Searching the Memo history: typing three letters narrows the list to one item"></picture>
-          <figcaption>Three letters are often enough</figcaption>
-        </figure>
-        <figure class="reveal">
-          <picture><source media="(prefers-color-scheme: dark)" srcset="showcase/memo-4-dark.png"><img src="showcase/memo-4-light.png" width="1760" height="1120" loading="lazy" alt="The Memo settings and the paused panel"></picture>
-          <figcaption>Pause recording or clean up history in Settings</figcaption>
-        </figure>
-      </div>
+      <div class="pvgrid mac-only"><figure class="reveal" style="--w:330px"><div class="pv"><picture><source media="(prefers-color-scheme: dark)" srcset="img/shot-panel-dark.png"><img src="img/shot-panel-light.png" width="330" height="453" alt="Pinned and recent items, one shortcut away" loading="lazy"></picture></div><figcaption>The Memo panel</figcaption></figure><figure class="reveal" style="--w:330px"><div class="pv"><picture><source media="(prefers-color-scheme: dark)" srcset="img/shot-expand-dark.png"><img src="img/shot-expand-light.png" width="330" height="408" alt="Open any item to read it in full" loading="lazy"></picture></div><figcaption>Open any item to read it all</figcaption></figure><figure class="reveal" style="--w:330px"><div class="pv"><picture><source media="(prefers-color-scheme: dark)" srcset="img/shot-search-dark.png"><img src="img/shot-search-light.png" width="330" height="408" alt="Search as you type" loading="lazy"></picture></div><figcaption>Find it in a few letters</figcaption></figure></div>
       <div class="wingal win-only">
         <figure class="reveal"><picture><source media="(prefers-color-scheme: dark)" srcset="img/win/memo-popup-dark.png"><img src="img/win/memo-popup-light.png" alt="The history window: press Ctrl+Shift+V anywhere" loading="lazy"></picture><figcaption>The history window: press Ctrl+Shift+V anywhere</figcaption></figure>
         <figure class="reveal"><picture><source media="(prefers-color-scheme: dark)" srcset="img/win/memo-settings-dark.png"><img src="img/win/memo-settings-dark.png" alt="Settings, with the look set to Dark" loading="lazy"></picture><figcaption>Settings, with the look set to Dark</figcaption></figure>
@@ -383,27 +378,6 @@
     </div>
   </section>
 
-  <section id="welcome">
-    <div class="wrap">
-      <p class="kicker reveal">Version 1.2</p>
-      <h2 class="reveal">A calm first minute</h2>
-      <p class="intro reveal">A short welcome with a frosted glass panel. It shows the shortcut, asks once for the permission it needs to paste for you, and ends with three tips. Each page plays its animation once.</p>
-      <div class="gallery welcome">
-        <figure class="reveal">
-          <img src="intro/memo-welcome-1.png" width="432" height="476" loading="lazy" alt="Memo welcome window, page 1: Everything you copy, one shortcut away">
-          <figcaption>Everything you copy, one shortcut away</figcaption>
-        </figure>
-        <figure class="reveal">
-          <img src="intro/memo-welcome-2.png" width="432" height="476" loading="lazy" alt="Memo welcome window, page 2: Paste straight into apps: allow it once">
-          <figcaption>Paste straight into apps: allow it once</figcaption>
-        </figure>
-        <figure class="reveal">
-          <img src="intro/memo-welcome-3.png" width="432" height="476" loading="lazy" alt="Memo welcome window, page 3: You're all set">
-          <figcaption>You're all set</figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
 
   <section id="install">
     <div class="wrap">

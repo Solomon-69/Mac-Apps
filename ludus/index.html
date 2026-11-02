@@ -118,18 +118,19 @@
   .stagebox { position: relative; display: grid; place-items: center; }
   @media (max-width: 880px) { .stagebox .glow { inset: -4% 0; } }
   .glow { position: absolute; inset: -6% -10%; pointer-events: none; background: radial-gradient(closest-side, var(--accent-soft), transparent 92%); -webkit-mask-image: radial-gradient(closest-side, #000 55%, transparent 100%); mask-image: radial-gradient(closest-side, #000 55%, transparent 100%); }
-  .menubar { position: relative; width: min(400px, 100%); }
+  .menubar { position: relative; width: min(500px, 100%); }
   /* menu bar: three columns with equal outer sides, so the icon sits on the panel's centre line (like the real app) */
-  .menubar .strip { height: 30px; border-radius: 10px; background: color-mix(in srgb, var(--ink) 7%, transparent); display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 14px; padding: 0 14px; }
-  .menubar .strip .side { display: flex; align-items: center; gap: 14px; }
+  .menubar .strip { height: 36px; border-radius: 13px; background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.66)); border: 1px solid rgba(255,255,255,.75); box-shadow: 0 1px 0 rgba(255,255,255,.9) inset, 0 -1px 0 rgba(40,28,16,.05) inset, 0 10px 24px -12px rgba(40,28,16,.38), 0 1px 3px rgba(40,28,16,.10); display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 14px; padding: 0 16px; }
+  @media (prefers-color-scheme: dark) { .menubar .strip { background: linear-gradient(180deg, rgba(72,66,58,.92), rgba(48,44,39,.78)); border-color: rgba(255,245,230,.14); box-shadow: 0 1px 0 rgba(255,245,230,.12) inset, 0 12px 26px -12px rgba(0,0,0,.7); } }
+  .menubar .strip .side { display: flex; align-items: center; gap: 16px; color: color-mix(in srgb, var(--ink) 78%, transparent); }
+  .menubar .strip .side svg { width: 15px; height: 15px; }
   .menubar .strip .side.l { justify-content: flex-end; }
   .menubar .strip .side.r { justify-content: flex-start; }
   .menubar .strip .side.r .clock { font-style: normal; margin-left: auto; font: 600 12px/1 var(--font); color: color-mix(in srgb, var(--ink) 70%, transparent); white-space: nowrap; }
-  .menubar .strip span { width: 16px; height: 5px; border-radius: 3px; background: color-mix(in srgb, var(--ink) 18%, transparent); }
   .menubar .strip .pad { width: 22px; height: 18px; color: var(--ink); background: none; display: grid; place-items: center; }
   .menubar .strip .pad svg { width: 20px; height: 13px; }
   /* the popover arrow: tip under the icon, base on the panel's top edge */
-  .shot .nub { position: absolute; left: 50%; top: 1px; width: 22px; height: 11px; transform: translate(-50%, -100%); z-index: 1; color: var(--panel); filter: drop-shadow(0 -1px 0 color-mix(in srgb, var(--ink) 12%, transparent)); }
+  .shot .nub { position: absolute; left: 50%; top: 2px; width: 30px; height: 14px; transform: translate(-50%, -100%); z-index: 1; color: var(--panel); filter: drop-shadow(0 -1px 0 color-mix(in srgb, var(--ink) 12%, transparent)); }
   .shot .nub svg { width: 100%; height: 100%; }
   /* Windows: the tray sits under the panel */
   .taskbar { display: none; position: relative; margin-top: 12px; height: 44px; border-radius: 10px; background: color-mix(in srgb, var(--ink) 7%, transparent); grid-template-columns: 1fr auto 1fr; align-items: center; gap: 12px; padding: 0 12px; font-family: "Segoe UI Variable Text", "Segoe UI", var(--font); }
@@ -158,7 +159,7 @@
   .install .card .yours { display: none; margin-left: auto; font: 600 12px/1 var(--font); color: var(--accent-deep); background: var(--accent-soft); padding: 5px 8px; border-radius: 999px; }
   .install .card.mine .yours { display: inline-block; }
   /* previews: solid screens with a soft shadow that never ends in a line (a filter, not a clipped picture) */
-  .shot picture img, .gallery picture img { filter: drop-shadow(0 18px 28px rgba(60, 36, 20, .16)) drop-shadow(0 2px 4px rgba(60, 36, 20, .08)); }
+  .shot picture img, .gallery picture img { filter: drop-shadow(0 26px 38px rgba(60, 36, 20, .26)) drop-shadow(0 3px 6px rgba(60, 36, 20, .14)); }
   @media (prefers-color-scheme: dark) { .shot picture img, .gallery picture img { filter: drop-shadow(0 18px 30px rgba(0, 0, 0, .5)) drop-shadow(0 2px 4px rgba(0, 0, 0, .3)); } }
 
   .appicon { display: block; width: 96px; height: 96px; margin: 0 0 18px -6px; animation: iconIn 1s var(--spring) both; }
@@ -170,7 +171,7 @@
   .shot picture img { transform: perspective(1200px) rotateX(var(--tx, 0deg)) rotateY(var(--ty, 0deg)); transition: transform .6s var(--ease-out); }
   @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
   .menubar .strip .pad { position: relative; }
-  .menubar .strip .pad::after { content: ""; position: absolute; inset: -5px -6px; border-radius: 7px; background: color-mix(in srgb, var(--ink) 12%, transparent); z-index: -1; animation: pill .5s var(--ease-out) both .1s; }
+  .menubar .strip .pad::after { content: ""; position: absolute; inset: -6px -8px; border-radius: 8px; background: color-mix(in srgb, var(--ink) 11%, transparent); box-shadow: inset 0 1px 0 rgba(255,255,255,.5); z-index: -1; animation: pill .5s var(--ease-out) both .1s; }
   @keyframes pill { from { opacity: 0; transform: scale(.7); } to { opacity: 1; transform: none; } }
 
   .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; align-items: start; }
@@ -275,7 +276,7 @@
     </a>
     <nav aria-label="Sections">
       <ul>
-        <li class="opt"><a href="#new">New</a></li>
+        <li class="opt"><a href="#new">Welcome</a></li>
         <li class="opt"><a href="#games">Games</a></li>
         <li><a href="#install">Install</a></li>
         <li class="opt"><a href="#faq">FAQ</a></li>
@@ -315,7 +316,7 @@
     <div class="stagebox">
       <div class="glow" aria-hidden="true"></div>
       <div class="menubar">
-        <div class="strip" aria-hidden="true"><div class="side l"><span></span><span></span></div><b class="pad"><svg viewBox="0 0 88 55"><use href="#ludus-mark"/></svg></b><div class="side r"><span></span><i class="clock">Wed 9:41</i></div></div>
+        <div class="strip" aria-hidden="true"><div class="side l"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15 15l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M2 9a15 15 0 0 1 20 0M5.5 12.5a10 10 0 0 1 13 0M9 16a5 5 0 0 1 6 0"/><circle cx="12" cy="19.5" r="1.4" fill="currentColor"/></svg><svg viewBox="0 0 24 24" style="width:19px"><rect x="2" y="7" width="17" height="10" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="4.5" y="9.5" width="10" height="5" rx="1" fill="currentColor"/><path d="M21 10.5v3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div><b class="pad"><svg viewBox="0 0 88 55"><use href="#ludus-mark"/></svg></b><div class="side r"><i class="clock">Wed 9:41</i></div></div>
         <div class="shot" id="heroShot">
           <i class="nub" aria-hidden="true"><svg viewBox="0 0 22 11"><path fill="currentColor" d="M0 11C5 11 8 1.5 11 0.5C14 1.5 17 11 22 11Z"/></svg></i>
           <picture class="float" data-shot="panel">
@@ -331,181 +332,6 @@
       </div>
     </div>
   </div>
-
-  <section id="about">
-    <div class="wrap">
-      <p class="kicker reveal">What it is</p>
-      <h2 class="reveal">A break you can close in one click</h2>
-      <p class="intro reveal">Ludus sits next to the clock. It opens as a small panel over whatever you are doing and closes the moment you click elsewhere. No windows to manage, no accounts, no ads.</p>
-      <div class="points">
-        <div class="point reveal">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4 4L19 7"/></svg>
-          <h3>Picks up where you left off</h3>
-          <p>Close the panel mid-game and it pauses. Open it later and the game is still there, along with your best scores.</p>
-        </div>
-        <div class="point reveal">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M4 12a8 8 0 1 0 16 0 8 8 0 0 0-16 0zM12 8v4l2.5 2"/></svg>
-          <h3>Rounds that fit a short break</h3>
-          <p>Every game is built to be played in a minute or two, with keyboard controls and mouse or trackpad where it makes sense.</p>
-        </div>
-        <div class="point reveal">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 3l7 3v5c0 4.5-3 8.3-7 9.5-4-1.2-7-5-7-9.5V6z"/></svg>
-          <h3>Private and offline</h3>
-          <p>Everything runs on your computer. Ludus only goes online if you choose Play online, Geo Guess or an update, and collects nothing.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="new">
-    <div class="wrap">
-      <p class="kicker reveal">Version 1.12.44</p>
-      <h2 class="reveal">43 games, and a calmer way in</h2>
-      <p class="intro reveal">Six new games, a redesigned welcome, a Geo Guess map that works like the real thing, and a few small things that make Ludus feel finished.</p>
-      <div class="gallery welcome">
-        <figure class="reveal">
-          <picture><source media="(prefers-color-scheme: dark)" srcset="intro/ludus-mac-1-dark.png"><img src="intro/ludus-mac-1-light.png" width="380" height="620" loading="lazy" alt="The welcome screen: Welcome to Ludus, 43 little games, one click away"></picture>
-          <figcaption>A short welcome, three pages</figcaption>
-        </figure>
-        <figure class="reveal">
-          <picture><source media="(prefers-color-scheme: dark)" srcset="intro/ludus-mac-2-dark.png"><img src="intro/ludus-mac-2-light.png" width="380" height="620" loading="lazy" alt="Welcome page two: It lives in your menu bar"></picture>
-          <figcaption>It lives in your menu bar</figcaption>
-        </figure>
-        <figure class="reveal">
-          <picture><source media="(prefers-color-scheme: dark)" srcset="intro/ludus-mac-3-dark.png"><img src="intro/ludus-mac-3-light.png" width="380" height="620" loading="lazy" alt="Welcome page three: Ready to play"></picture>
-          <figcaption>Then you are ready</figcaption>
-        </figure>
-      </div>
-      <div class="points four">
-        <div class="point reveal">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4 4L19 7"/></svg>
-          <h3>Six new games</h3>
-          <p>A balloon-fusing tower-defence game, a stick-figure brawler, a balloon tower-defence duel, a mosaic-hunting map game, a road-sign and street-detail spotting game and a language-guessing game.</p>
-        </div>
-        <div class="point reveal">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 3v9M7 6.5a7 7 0 1 0 10 0"/></svg>
-          <h3>Offline mode</h3>
-          <p>Everything except Online, Geo Guess photos and updates works with no internet at all. The Online page says so and waits quietly.</p>
-        </div>
-        <div class="point reveal">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M4 12a8 8 0 1 0 16 0 8 8 0 0 0-16 0zM12 8v4l2.5 2"/></svg>
-          <h3>The online dot</h3>
-          <p>A small dot on the Online tab: green and softly pulsing when you are connected, a hollow ring when you are not.</p>
-        </div>
-        <div class="point reveal">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 15V3M8 7l4-4 4 4M5 12v7h14v-7"/></svg>
-          <h3>An update button</h3>
-          <p>Settings, App: Check, then Update. Ludus checks the download against its SHA-256 fingerprint, swaps itself and reopens. It always asks first.</p>
-        </div>
-      </div>
-      <figure class="mapfig reveal">
-        <picture><source srcset="showcase/ludus-geomap.webp" type="image/webp"><img src="showcase/ludus-geomap.png" width="1056" height="616" loading="lazy" alt="The new Geo Guess map at four zoom levels: world, country, city and street, with soft green land and flat blue water"></picture>
-        <figcaption>The new Geo Guess map, from the whole world down to a single street. Vector tiles (MapLibre with free OpenFreeMap data), so zooming stays smooth. Always light, with a plain-colour fallback if the tiles cannot load.</figcaption>
-      </figure>
-    </div>
-  </section>
-
-  <section id="online">
-    <div class="wrap">
-      <p class="kicker reveal">Online</p>
-      <h2 class="reveal">Play online with up to four friends</h2>
-      <p class="intro reveal">Make a room, share the code and play together on Mac and Windows. No accounts, nothing to sign up for.</p>
-      <div class="points">
-        <div class="point reveal">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M16 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM8 12a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM2.5 19c.5-3 3-4.5 5.5-4.5s5 1.5 5.5 4.5M14 14.7c.7-.2 1.4-.2 2-.2 2.5 0 5 1.5 5.5 4.5"/></svg>
-          <h3>A room for up to four</h3>
-          <p>Create a room, then share its 5 character code or the invite link. Friends type the code or click the link and they are in.</p>
-        </div>
-        <div class="point reveal">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4 4L19 7"/></svg>
-          <h3>Single game or Tournament</h3>
-          <p>Play one game, or line up several in a Tournament. Every game you win is worth 1 point, and the scoreboard shows who is ahead.</p>
-        </div>
-        <div class="point reveal">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M4 12a8 8 0 1 0 16 0 8 8 0 0 0-16 0zM12 8v4l2.5 2"/></svg>
-          <h3>Rejoin with the same code</h3>
-          <p>Dropped out or closed the panel by mistake? Rejoin brings you back into the same room, with the same code.</p>
-        </div>
-        <div class="point reveal">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 3l7 3v5c0 4.5-3 8.3-7 9.5-4-1.2-7-5-7-9.5V6z"/></svg>
-          <h3>Works with older versions</h3>
-          <p>Friends on an older Ludus can still join your room. They play one game at a time, and everyone else can enjoy the new modes.</p>
-        </div>
-        <div class="point reveal">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0zM3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg>
-          <h3>Smooth for the person joining</h3>
-          <p>paddle game, Air Hockey, Tag, swallow-the-city game, claim-the-land game and snake arena game feel quick even on a slow connection, because the joiner's own moves show up at once.</p>
-        </div>
-        <div class="point reveal">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M4 5l7-1v7H4zM13 4l7-1v8h-7zM4 13h7v7l-7-1zM13 13h7v8l-7-1z"/></svg>
-          <h3>Mac and Windows together</h3>
-          <p>A Mac player and a Windows player can sit in the same room. Rooms are not private, so only share the code with people you trust.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="geoguess">
-    <div class="wrap">
-      <p class="kicker reveal">New game</p>
-      <h2 class="reveal">Geo Guess: where in the world is this?</h2>
-      <p class="intro reveal">A real street-level photo from somewhere on Earth. Look around, work out where you are and drop a pin on the map. Needs an internet connection for the photos.</p>
-      <div class="points">
-        <div class="point reveal">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0zM3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg>
-          <h3>Look around and move</h3>
-          <p>Turn the view to read the signs, the road and the trees, and move along the road to see more.</p>
-        </div>
-        <div class="point reveal">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M4 12a8 8 0 1 0 16 0 8 8 0 0 0-16 0zM12 8v4l2.5 2"/></svg>
-          <h3>A timer and three modes</h3>
-          <p>Play with a timer if you like. Choose Move, No move, or NMPZ, where you cannot move, pan or zoom.</p>
-        </div>
-        <div class="point reveal">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4 4L19 7"/></svg>
-          <h3>Five rounds</h3>
-          <p>Each game has five rounds. The closer your pin, the more points you get.</p>
-        </div>
-        <div class="point reveal">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M16 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM8 12a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM2.5 19c.5-3 3-4.5 5.5-4.5s5 1.5 5.5 4.5M14 14.7c.7-.2 1.4-.2 2-.2 2.5 0 5 1.5 5.5 4.5"/></svg>
-          <h3>Online for 2 to 4 players</h3>
-          <p>Play it in an online room and everyone gets the same places, so you can compare guesses.</p>
-        </div>
-        <div class="point reveal">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4 4L19 7"/></svg>
-          <h3>New covers and Rock Paper Scissors</h3>
-          <p>New artwork for swallow-the-city game, claim-the-land game, Sokoban and snake arena game, and a new Rock Paper Scissors, solo or against a friend online with secret picks.</p>
-        </div>
-        <div class="point reveal">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 15V3M8 7l4-4 4 4M5 12v7h14v-7"/></svg>
-          <h3>Share with a friend</h3>
-          <p>On a Mac, one click packs the app up and opens the share sheet, so you can send it to a friend by AirDrop.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="screens">
-    <div class="wrap">
-      <p class="kicker reveal">A closer look</p>
-      <h2 class="reveal">Small panel, lots to play</h2>
-      <div class="os-row"><p class="intro reveal">Screenshots of the panel<span class="os-name"> on a Mac</span>. Ludus follows your light or dark setting, or you can pick one.</p><div class="os-switch" role="group" aria-label="Show the Mac or Windows version"><button type="button" data-os-pick="mac" aria-pressed="true"><svg aria-hidden="true"><use href="#apple"/></svg>Mac</button><button type="button" data-os-pick="windows" aria-pressed="false"><svg aria-hidden="true"><use href="#windows"/></svg>Windows</button></div></div>
-      <div class="gallery">
-        <figure class="reveal">
-          <picture data-shot="home"><source media="(prefers-color-scheme: dark)" srcset="img/home-dark.png"><img src="img/home-light.png" width="448" height="648" loading="lazy" alt="The games list"></picture>
-          <figcaption>Every game in one list</figcaption>
-        </figure>
-        <figure class="reveal">
-          <picture data-shot="game"><source media="(prefers-color-scheme: dark)" srcset="img/game-dark.png"><img src="img/game-light.png" width="448" height="648" loading="lazy" alt="A game of 2048 in progress"></picture>
-          <figcaption>Close it mid-game, it waits for you</figcaption>
-        </figure>
-        <figure class="reveal">
-          <picture data-shot="settings"><source media="(prefers-color-scheme: dark)" srcset="img/settings-dark.png"><img src="img/settings-light.png" width="448" height="648" loading="lazy" alt="The settings screen"></picture>
-          <figcaption>Make it yours in Settings</figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
 
   <section id="games">
     <div class="wrap">
@@ -584,6 +410,182 @@
       <p class="note reveal">The panel stays open when you click other menu bar icons. On Windows there is no accidental zooming, and the panel now fits different screen sizes and scaling. The line-up grows with new releases. The app itself always shows the current list.</p>
     </div>
   </section>
+
+  <section id="about">
+    <div class="wrap">
+      <p class="kicker reveal">What it is</p>
+      <h2 class="reveal">A break you can close in one click</h2>
+      <p class="intro reveal">Ludus sits next to the clock. It opens as a small panel over whatever you are doing and closes the moment you click elsewhere. No windows to manage, no accounts, no ads.</p>
+      <div class="points">
+        <div class="point reveal">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4 4L19 7"/></svg>
+          <h3>Picks up where you left off</h3>
+          <p>Close the panel mid-game and it pauses. Open it later and the game is still there, along with your best scores.</p>
+        </div>
+        <div class="point reveal">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M4 12a8 8 0 1 0 16 0 8 8 0 0 0-16 0zM12 8v4l2.5 2"/></svg>
+          <h3>Rounds that fit a short break</h3>
+          <p>Every game is built to be played in a minute or two, with keyboard controls and mouse or trackpad where it makes sense.</p>
+        </div>
+        <div class="point reveal">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 3l7 3v5c0 4.5-3 8.3-7 9.5-4-1.2-7-5-7-9.5V6z"/></svg>
+          <h3>Private and offline</h3>
+          <p>Everything runs on your computer. Ludus only goes online if you choose Play online, Geo Guess or an update, and collects nothing.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="new">
+    <div class="wrap">
+      <p class="kicker reveal">First launch</p>
+      <h2 class="reveal">A calm way in</h2>
+      <p class="intro reveal">A short welcome, a Geo Guess map that works like the real thing, and a few small things that make Ludus feel finished.</p>
+      <div class="gallery welcome">
+        <figure class="reveal">
+          <picture><source media="(prefers-color-scheme: dark)" srcset="intro/ludus-mac-1-dark.png"><img src="intro/ludus-mac-1-light.png" width="380" height="620" loading="lazy" alt="The welcome screen: Welcome to Ludus, 43 little games, one click away"></picture>
+          <figcaption>A short welcome, three pages</figcaption>
+        </figure>
+        <figure class="reveal">
+          <picture><source media="(prefers-color-scheme: dark)" srcset="intro/ludus-mac-2-dark.png"><img src="intro/ludus-mac-2-light.png" width="380" height="620" loading="lazy" alt="Welcome page two: It lives in your menu bar"></picture>
+          <figcaption>It lives in your menu bar</figcaption>
+        </figure>
+        <figure class="reveal">
+          <picture><source media="(prefers-color-scheme: dark)" srcset="intro/ludus-mac-3-dark.png"><img src="intro/ludus-mac-3-light.png" width="380" height="620" loading="lazy" alt="Welcome page three: Ready to play"></picture>
+          <figcaption>Then you are ready</figcaption>
+        </figure>
+      </div>
+      <div class="points four">
+        <div class="point reveal">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4 4L19 7"/></svg>
+          <h3>Games for every mood</h3>
+          <p>A balloon-fusing tower-defence game, a stick-figure brawler, a balloon tower-defence duel, a mosaic-hunting map game, a road-sign and street-detail spotting game and a language-guessing game.</p>
+        </div>
+        <div class="point reveal">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 3v9M7 6.5a7 7 0 1 0 10 0"/></svg>
+          <h3>Offline mode</h3>
+          <p>Everything except Online, Geo Guess photos and updates works with no internet at all. The Online page says so and waits quietly.</p>
+        </div>
+        <div class="point reveal">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M4 12a8 8 0 1 0 16 0 8 8 0 0 0-16 0zM12 8v4l2.5 2"/></svg>
+          <h3>The online dot</h3>
+          <p>A small dot on the Online tab: green and softly pulsing when you are connected, a hollow ring when you are not.</p>
+        </div>
+        <div class="point reveal">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 15V3M8 7l4-4 4 4M5 12v7h14v-7"/></svg>
+          <h3>An update button</h3>
+          <p>Settings, App: Check, then Update. Ludus checks the download against its SHA-256 fingerprint, swaps itself and reopens. It always asks first.</p>
+        </div>
+      </div>
+      <figure class="mapfig reveal">
+        <picture><source srcset="showcase/ludus-geomap.webp" type="image/webp"><img src="showcase/ludus-geomap.png" width="1056" height="616" loading="lazy" alt="The new Geo Guess map at four zoom levels: world, country, city and street, with soft green land and flat blue water"></picture>
+        <figcaption>The new Geo Guess map, from the whole world down to a single street. Vector tiles (MapLibre with free OpenFreeMap data), so zooming stays smooth. Always light, with a plain-colour fallback if the tiles cannot load.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="online">
+    <div class="wrap">
+      <p class="kicker reveal">Online</p>
+      <h2 class="reveal">Play online with up to four friends</h2>
+      <p class="intro reveal">Make a room, share the code and play together on Mac and Windows. No accounts, nothing to sign up for.</p>
+      <div class="points">
+        <div class="point reveal">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M16 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM8 12a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM2.5 19c.5-3 3-4.5 5.5-4.5s5 1.5 5.5 4.5M14 14.7c.7-.2 1.4-.2 2-.2 2.5 0 5 1.5 5.5 4.5"/></svg>
+          <h3>A room for up to four</h3>
+          <p>Create a room, then share its 5 character code or the invite link. Friends type the code or click the link and they are in.</p>
+        </div>
+        <div class="point reveal">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4 4L19 7"/></svg>
+          <h3>Single game or Tournament</h3>
+          <p>Play one game, or line up several in a Tournament. Every game you win is worth 1 point, and the scoreboard shows who is ahead.</p>
+        </div>
+        <div class="point reveal">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M4 12a8 8 0 1 0 16 0 8 8 0 0 0-16 0zM12 8v4l2.5 2"/></svg>
+          <h3>Rejoin with the same code</h3>
+          <p>Dropped out or closed the panel by mistake? Rejoin brings you back into the same room, with the same code.</p>
+        </div>
+        <div class="point reveal">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 3l7 3v5c0 4.5-3 8.3-7 9.5-4-1.2-7-5-7-9.5V6z"/></svg>
+          <h3>Works with older versions</h3>
+          <p>Friends on an older Ludus can still join your room. They play one game at a time, and everyone else can enjoy the new modes.</p>
+        </div>
+        <div class="point reveal">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0zM3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg>
+          <h3>Smooth for the person joining</h3>
+          <p>paddle game, Air Hockey, Tag, swallow-the-city game, claim-the-land game and snake arena game feel quick even on a slow connection, because the joiner's own moves show up at once.</p>
+        </div>
+        <div class="point reveal">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M4 5l7-1v7H4zM13 4l7-1v8h-7zM4 13h7v7l-7-1zM13 13h7v8l-7-1z"/></svg>
+          <h3>Mac and Windows together</h3>
+          <p>A Mac player and a Windows player can sit in the same room. Rooms are not private, so only share the code with people you trust.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="geoguess">
+    <div class="wrap">
+      <p class="kicker reveal">Featured game</p>
+      <h2 class="reveal">Geo Guess: where in the world is this?</h2>
+      <p class="intro reveal">A real street-level photo from somewhere on Earth. Look around, work out where you are and drop a pin on the map. Needs an internet connection for the photos.</p>
+      <div class="points">
+        <div class="point reveal">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0zM3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg>
+          <h3>Look around and move</h3>
+          <p>Turn the view to read the signs, the road and the trees, and move along the road to see more.</p>
+        </div>
+        <div class="point reveal">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M4 12a8 8 0 1 0 16 0 8 8 0 0 0-16 0zM12 8v4l2.5 2"/></svg>
+          <h3>A timer and three modes</h3>
+          <p>Play with a timer if you like. Choose Move, No move, or NMPZ, where you cannot move, pan or zoom.</p>
+        </div>
+        <div class="point reveal">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4 4L19 7"/></svg>
+          <h3>Five rounds</h3>
+          <p>Each game has five rounds. The closer your pin, the more points you get.</p>
+        </div>
+        <div class="point reveal">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M16 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM8 12a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM2.5 19c.5-3 3-4.5 5.5-4.5s5 1.5 5.5 4.5M14 14.7c.7-.2 1.4-.2 2-.2 2.5 0 5 1.5 5.5 4.5"/></svg>
+          <h3>Online for 2 to 4 players</h3>
+          <p>Play it in an online room and everyone gets the same places, so you can compare guesses.</p>
+        </div>
+        <div class="point reveal">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4 4L19 7"/></svg>
+          <h3>Rock Paper Scissors</h3>
+          <p>Solo, or against a friend online with secret picks.</p>
+        </div>
+        <div class="point reveal">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 15V3M8 7l4-4 4 4M5 12v7h14v-7"/></svg>
+          <h3>Share with a friend</h3>
+          <p>On a Mac, one click packs the app up and opens the share sheet, so you can send it to a friend by AirDrop.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="screens">
+    <div class="wrap">
+      <p class="kicker reveal">A closer look</p>
+      <h2 class="reveal">Small panel, lots to play</h2>
+      <div class="os-row"><p class="intro reveal">Screenshots of the panel<span class="os-name"> on a Mac</span>. Ludus follows your light or dark setting, or you can pick one.</p><div class="os-switch" role="group" aria-label="Show the Mac or Windows version"><button type="button" data-os-pick="mac" aria-pressed="true"><svg aria-hidden="true"><use href="#apple"/></svg>Mac</button><button type="button" data-os-pick="windows" aria-pressed="false"><svg aria-hidden="true"><use href="#windows"/></svg>Windows</button></div></div>
+      <div class="gallery">
+        <figure class="reveal">
+          <picture data-shot="home"><source media="(prefers-color-scheme: dark)" srcset="img/home-dark.png"><img src="img/home-light.png" width="448" height="648" loading="lazy" alt="The games list"></picture>
+          <figcaption>Every game in one list</figcaption>
+        </figure>
+        <figure class="reveal">
+          <picture data-shot="game"><source media="(prefers-color-scheme: dark)" srcset="img/game-dark.png"><img src="img/game-light.png" width="448" height="648" loading="lazy" alt="A game of 2048 in progress"></picture>
+          <figcaption>Close it mid-game, it waits for you</figcaption>
+        </figure>
+        <figure class="reveal">
+          <picture data-shot="settings"><source media="(prefers-color-scheme: dark)" srcset="img/settings-dark.png"><img src="img/settings-light.png" width="448" height="648" loading="lazy" alt="The settings screen"></picture>
+          <figcaption>Make it yours in Settings</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
 
   <section id="install">
     <div class="wrap">

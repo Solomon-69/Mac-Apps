@@ -21,7 +21,7 @@ html.lenis, html.lenis body { height: auto; }
   .card:hover::after, .point:hover::after { opacity: 1; }
   .card[style*="--tint"]:hover { border-color: color-mix(in srgb, var(--tint) 45%, var(--line, transparent)); box-shadow: 0 22px 44px -22px color-mix(in srgb, var(--tint) 55%, transparent); }
 }
-.card[style*="--tint"] .go { color: var(--tint); }
+.card[style*="--tint"] .go { color: var(--bg); }
 
 /* buttons: arrows lean, press sinks to .97, primary buttons follow the pointer a little */
 .btn, .dlmac, .cmd, a.btn, button.btn { transition: transform .2s var(--mo-ease), box-shadow .2s var(--mo-ease), background-color .2s, opacity .2s; will-change: transform; }
@@ -40,7 +40,7 @@ a:not(.btn):not(.dlmac):not(.cardlink):hover { text-underline-offset: 4px; }
 @media (hover: hover) { .opt:hover, summary:hover { transform: translateX(2px); } }
 
 /* pictures and screenshots: gentle zoom inside their frame */
-.shot, .gallery figure, .stagebox, .winstage, .wingal figure { overflow: hidden; }
+.shot, .gallery figure, .stagebox, .winstage, .wingal figure, .pvgrid figure { overflow: visible; }
 .shot img, .gallery img, .gallery figure img, .stagebox img { transition: transform .6s var(--mo-ease); }
 @media (hover: hover) { .shot:hover img, .gallery figure:hover img { transform: scale(1.025); } }
 
@@ -53,3 +53,27 @@ a:not(.btn):not(.dlmac):not(.cardlink):hover { text-underline-offset: 4px; }
   .mo-ready .mo-reveal { opacity: 1; transform: none; transition: none; }
   .mo-progress { display: none; }
 }
+
+/* ---- big previews: clean cut-outs on a soft glow (no posters, no hard edges) ---- */
+.pv { position: relative; display: block; margin: 0 auto; width: min(var(--w, 460px), 100%); }
+.pv::before { content: ""; position: absolute; inset: -14% -22%; z-index: 0; pointer-events: none;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--accent, #7a5af5) 24%, transparent), color-mix(in srgb, var(--accent, #7a5af5) 8%, transparent) 55%, transparent 100%); filter: blur(10px); }
+.pv picture, .pv img { position: relative; z-index: 1; display: block; width: 100%; height: auto; }
+.pv img, .gallery .pv img, .shot .pv img { border-radius: 0 !important; box-shadow: none !important;
+  filter: drop-shadow(0 22px 34px rgba(20, 16, 40, .20)) drop-shadow(0 2px 5px rgba(20, 16, 40, .10)); }
+@media (prefers-color-scheme: dark) { .pv img { filter: drop-shadow(0 22px 34px rgba(0, 0, 0, .55)) drop-shadow(0 2px 5px rgba(0, 0, 0, .35)); } }
+.stagebox .pv { --w: 480px; }
+.pvgrid { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 56px 64px; margin-top: 12px; }
+.pvgrid figure { margin: 0; text-align: center; }
+.pvgrid figcaption { margin-top: 18px; font-size: 15px; color: var(--ink-2); }
+.pvgrid figure:hover .pv { transform: translateY(-4px); }
+.pvgrid .pv { transition: transform .5s cubic-bezier(.34,1.4,.5,1); }
+/* welcome windows: the screenshots come with square corners, so round and clip them cleanly */
+.gallery.welcome img { border-radius: 26px !important; background: transparent; }
+
+.pvgrid figure { width: min(var(--w, 340px), 100%); }
+.pvgrid .pv { width: 100%; }
+.pvgrid { gap: 56px 44px; }
+.gallery.welcome { max-width: 1000px !important; }
+.gallery.welcome img { box-shadow: none !important; filter: drop-shadow(0 20px 30px rgba(20, 16, 40, .22)) drop-shadow(0 2px 4px rgba(20, 16, 40, .10)); }
+@media (prefers-color-scheme: dark) { .gallery.welcome img { filter: drop-shadow(0 20px 30px rgba(0, 0, 0, .55)); } }
