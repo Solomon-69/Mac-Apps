@@ -1,0 +1,80 @@
+name: Windows download test
+
+# Downloads each app's Windows zip from the same link the website uses, checks its
+# fingerprint, unpacks it, starts the app on a real Windows machine and keeps screenshots.
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 6 * * 1'
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: windows-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        app: [Ludus, Memo, Nox, Awayke]
+    steps:
+      - name: Make sure WebView2 is installed
+        shell: pwsh
+        run: |
+          $keys = 'HKLM:\SOFTWARE\WOW6432Node\Microsoft\EdgeUpdate\Clients\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}',
+                  'HKCU:\Software\Microsoft\EdgeUpdate\Clients\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}'
+          if ($keys | Where-Object { Test-Path $_ }) { Write-Host 'WebView2 runtime present'; exit 0 }
+          Invoke-WebRequest 'https://go.microsoft.com/fwlink/p/?LinkId=2124703' -OutFile wv2.exe
+          Start-Process .\wv2.exe -ArgumentList '/silent','/install' -Wait
+
+      - name: Download, check, unpack, run
+        shell: powershell
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $app = '${{ matrix.app }}'
+          $base = "https://github.com/Solomon-69/$app/releases/latest/download"
+          New-Item -ItemType Directory -Force shots, dl | Out-Null
+          Invoke-WebRequest "$base/$app-windows.zip" -OutFile "dl/$app-windows.zip"
+          $sums = $null
+          foreach ($s in 'SHA256SUMS.txt','SHA256SUMS') {
+            try { Invoke-WebRequest "$base/$s" -OutFile dl/sums; $sums = Get-Content dl/sums; break } catch {}
+          }
+          $want = ($sums | Where-Object { $_ -match "\s\*?$app-windows\.zip$" } | ForEach-Object { ($_ -split '\s+')[0] }) | Select-Object -First 1
+          $got = (Get-FileHash "dl/$app-windows.zip" -Algorithm SHA256).Hash.ToLower()
+          if (-not $want) { throw "fingerprint not listed" }
+          if ($want -ne $got) { throw "fingerprint mismatch: $want vs $got" }
+          Write-Host "Fingerprint OK"
+          Expand-Archive "dl/$app-windows.zip" -DestinationPath "dl/x" -Force
+          $exe = Get-ChildItem dl/x -Recurse -Filter "$app.exe" | Select-Object -First 1
+          if (-not $exe) { throw "no $app.exe inside the zip" }
+          $ver = (Get-Item $exe.FullName).VersionInfo.ProductVersion
+          Write-Host "Found $($exe.FullName) version $ver"
+          $p = Start-Process $exe.FullName -PassThru
+          Start-Sleep -Seconds 15
+          Add-Type -AssemblyName System.Windows.Forms, System.Drawing
+          $b = [System.Windows.Forms.Screen]::PrimaryScreen.Bounds
+          $bmp = New-Object System.Drawing.Bitmap $b.Width, $b.Height
+          [System.Drawing.Graphics]::FromImage($bmp).CopyFromScreen($b.Location, [System.Drawing.Point]::Empty, $b.Size)
+          $bmp.Save("shots/$app-running.png")
+          $alive = -not $p.HasExited
+          $procs = Get-Process | Where-Object { $_.Path -like "$((Resolve-Path dl/x).Path)*" }
+          $result = [ordered]@{ app = $app; version = $ver; running = $alive; processes = @($procs | ForEach-Object { $_.ProcessName }); exitCode = $(if ($p.HasExited) { $p.ExitCode } else { $null }) }
+          $result | ConvertTo-Json | Tee-Object "shots/$app-result.json"
+          $procs | Stop-Process -Force -ErrorAction SilentlyContinue
+          if (-not $alive) { throw "$app closed by itself after starting (exit code $($p.ExitCode))" }
+
+      - name: Keep app logs
+        if: always()
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force shots | Out-Null
+          Copy-Item "$env:APPDATA\${{ matrix.app }}\*.log" shots -ErrorAction SilentlyContinue
+          Copy-Item "$env:LOCALAPPDATA\${{ matrix.app }}\*.log" shots -ErrorAction SilentlyContinue
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ${{ matrix.app }}-windows-download-test
+          path: shots
+          retention-days: 14
