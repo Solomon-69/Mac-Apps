@@ -24,7 +24,7 @@ Everything you copy, one shortcut away. Memo keeps a searchable history of text,
 
 <img src="memo/showcase/memo-1-light.png" width="420" alt="Memo panel"> <img src="memo/showcase/memo-3-light.png" width="420" alt="Searching Memo"> <img src="memo/intro/memo-welcome-1.png" width="260" alt="Memo welcome window">
 
-Version 1.1.1.
+Version 1.2.
 
 Download: [Mac](https://github.com/Solomon-69/Memo/releases/latest/download/Memo-mac.zip) | [Windows](https://github.com/Solomon-69/Memo/releases/latest/download/Memo-windows.zip)
 

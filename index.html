@@ -25,6 +25,11 @@ h1{font-size:clamp(34px,6vw,56px);line-height:1.05;letter-spacing:-.03em;margin:
 .go{margin-top:auto;padding-top:6px;font-weight:600;color:var(--accent)}
 .card:hover .go span{display:inline-block;transform:translateX(4px)}
 .go span{transition:transform .3s}
+.card{position:relative}
+.card .cardlink{display:flex;flex-direction:column;gap:12px;color:inherit;text-decoration:none;flex:1}
+.card .dlmac{display:flex;justify-content:space-between;align-items:center;min-height:44px;padding:0 16px;margin-top:8px;border-radius:12px;background:var(--ink);color:var(--bg);font-weight:600;text-decoration:none;transition:transform .2s cubic-bezier(.2,.8,.2,1)}
+.card .dlmac span{transition:transform .25s}.card .dlmac:hover span{transform:translateY(2px)}.card .dlmac:active{transform:scale(.97)}
+.card .dlmac small{font-weight:500;opacity:.7}
 .dl{margin-top:36px}
 .dl a{color:var(--accent);font-weight:600}
 footer{color:var(--ink-2);font-size:14px;margin-top:40px}
@@ -36,30 +41,30 @@ footer{color:var(--ink-2);font-size:14px;margin-top:40px}
   <h1>Four little apps for your Mac.</h1>
   <p class="lede">Free, quiet and made to stay out of your way. Pick one to see what it does and download it.</p>
   <div class="grid">
-    <a class="card" href="ludus/index.html" target="_blank" rel="noopener">
+    <div class="card"><a class="cardlink" href="ludus/index.html">
       <picture><source media="(prefers-color-scheme: dark)" srcset="ludus/img/icon-dark.png"><img src="ludus/img/icon-light.png" alt="Ludus icon"></picture>
       <h2>Ludus</h2><p>43 little games for little breaks, right from your menu bar. Works offline. Mac and Windows. Version 1.12.44.</p>
       <div class="go">See Ludus <span>&rarr;</span></div>
-    </a>
-    <a class="card" href="memo/index.html" target="_blank" rel="noopener">
+    </a><a class="dlmac" href="https://github.com/Solomon-69/Ludus/releases/latest/download/Ludus-mac.zip">Download for Mac <small>free</small><span>&darr;</span></a></div>
+    <div class="card"><a class="cardlink" href="memo/index.html">
       <picture><source media="(prefers-color-scheme: dark)" srcset="memo/img/icon-dark.png"><img src="memo/img/icon-light.png" alt="Memo icon"></picture>
-      <h2>Memo</h2><p>Everything you copy, one shortcut away. Search it and paste it back. Mac and Windows. Version 1.1.1.</p>
+      <h2>Memo</h2><p>Everything you copy, one shortcut away. Search it and paste it back. Mac and Windows. Version 1.2.</p>
       <div class="go">See Memo <span>&rarr;</span></div>
-    </a>
-    <a class="card" href="nox/index.html" target="_blank" rel="noopener">
+    </a><a class="dlmac" href="https://github.com/Solomon-69/Memo/releases/latest/download/Memo-mac.zip">Download for Mac <small>free</small><span>&darr;</span></a></div>
+    <div class="card"><a class="cardlink" href="nox/index.html">
       <img src="nox/img/icon.png" alt="Nox icon">
       <h2>Nox</h2><p>One switch for light and dark, on a schedule if you like. Mac and Windows. Version 1.4.1.</p>
       <div class="go">See Nox <span>&rarr;</span></div>
-    </a>
-    <a class="card" href="awayke/index.html" target="_blank" rel="noopener">
+    </a><a class="dlmac" href="https://github.com/Solomon-69/Nox/releases/latest/download/Nox.dmg">Download for Mac <small>free</small><span>&darr;</span></a></div>
+    <div class="card"><a class="cardlink" href="awayke/index.html">
       <img src="awayke/img/icon.png" alt="Awayke icon">
       <h2>Awayke</h2><p>Keep your MacBook awake with the lid closed. Mac. Version 1.7.0.</p>
       <div class="go">See Awayke <span>&rarr;</span></div>
-    </a>
+    </a><a class="dlmac" href="https://github.com/Solomon-69/Awayke/releases/latest/download/Awayke.dmg">Download for Mac <small>free</small><span>&darr;</span></a></div>
   </div>
-  <p class="dl"><a href="https://github.com/Solomon-69/Mac-Apps/releases" target="_blank" rel="noopener">All downloads</a> <span style="color:var(--ink-2);font-size:14px">(last published builds)</span></p>
+  <p class="dl"><a href="download/index.html">All downloads, Mac and Windows</a> <span style="color:var(--ink-2);font-size:14px">(always the newest builds)</span></p>
   <footer>By Solomon.</footer>
-<section style="max-width:720px;margin:48px auto;padding:0 20px;font:15px/1.6 system-ui,-apple-system,sans-serif;color:inherit"><h2 style="font-size:20px;margin:0 0 8px">Unsigned app: how to open it</h2><p>This app is not signed yet (Apple's developer account is paid, and one is not set up yet), so your computer warns you the first time. <b>Mac:</b> right-click the app, choose <b>Open</b>, then <b>Open</b> again (or System Settings &gt; Privacy &amp; Security &gt; <b>Open Anyway</b>). <b>Windows:</b> in SmartScreen click <b>More info</b>, then <b>Run anyway</b>. You can check your download against the SHA-256 fingerprints listed in the project's CHECKSUMS.md on GitHub.</p></section>
+<section style="max-width:720px;margin:48px auto;padding:0 20px;font:15px/1.6 system-ui,-apple-system,sans-serif;color:inherit"><h2 style="font-size:20px;margin:0 0 8px">Opening the app</h2><p><b>Mac:</b> every app here is signed and checked by Apple (notarized), so it opens like any normal app: unzip, drag to Applications, double-click. <b>Windows:</b> the first time, SmartScreen may warn you: click <b>More info</b>, then <b>Run anyway</b>. You can check a download against the SHA-256 fingerprints in each release (the SHA256SUMS file) on GitHub.</p></section>
 </main>
 </body>
 </html>
