@@ -8,6 +8,7 @@ import pathlib
 import numpy as np
 from PIL import Image, ImageDraw
 root = pathlib.Path(__file__).resolve().parent.parent
+INSET = 4
 SS = 4  # supersampling for smooth edges
 
 
@@ -37,6 +38,7 @@ def arrow_pts(cx, base, aw, ah):
 
 def popover(src, dst, dark):
     im = body(Image.open(root/src).convert("RGBA"))
+    im = im.crop((INSET, INSET, im.width - INSET, im.height - INSET))  # drop the dark rim baked into the screenshot edge
     w, h = im.size
     r = round(w * .05); ah = round(w * .036); aw = round(ah * 3.6)
     big = im.resize((w*SS, h*SS), Image.LANCZOS).convert("RGB")
