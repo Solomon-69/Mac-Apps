@@ -113,7 +113,7 @@
   "name": "Stats",
   "blurb": "How your Mac is doing, in plain words. Live tiles for processor, memory, storage, internet, battery and temperature, right from your menu bar.",
   "short": "How your Mac is doing, in plain words.",
-  "platforms": "Mac",
+  "platforms": "Mac and Windows",
   "mac": "Stats.dmg",
   "icon": "stats/img/icon.png",
   "version": "1.0.5",
@@ -128,6 +128,7 @@
   ],
   "shot": "assets/cards/stats-light.png",
   "side": "r",
-  "shot_dark": "assets/cards/stats-dark.png"
+  "shot_dark": "assets/cards/stats-dark.png",
+  "win": "Stats-windows.zip"
  }
 ]
