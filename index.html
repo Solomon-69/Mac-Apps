@@ -23,6 +23,11 @@ h1{font-size:clamp(34px,6vw,56px);line-height:1.05;letter-spacing:-.03em;margin:
 @media(max-width:1100px){.grid{--c:min(var(--cols,4),3)}}
 @media(max-width:760px){.grid{--c:min(var(--cols,4),2)}}
 @media(max-width:520px){.grid{--c:1}}
+/* scroll rail: pinned strip of app cards that slides in from the left as you scroll, ends at the right */
+.js-rail .rail{position:relative;margin-inline:calc(50% - 50vw)}
+.js-rail .railstick{position:sticky;top:0;height:100vh;display:flex;align-items:center;overflow:clip}
+.js-rail .rail .grid{max-width:none;margin:0;flex-wrap:nowrap;justify-content:flex-start;width:max-content;gap:20px;will-change:transform;padding:0 28px}
+.js-rail .rail .grid>.card{flex:0 0 min(380px,82vw);width:min(380px,82vw)}
 .card{display:flex;flex-direction:column;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:28px;color:inherit;text-decoration:none;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s}
 .card:hover{transform:translateY(-4px);box-shadow:0 18px 40px -18px rgba(0,0,0,.35)}
 .card:active{transform:scale(.98)}
@@ -162,7 +167,7 @@ h1 .w{display:inline-block;animation:hword .9s cubic-bezier(.2,.8,.2,1) both;ani
     <p class="sr" id="dlive" aria-live="polite" style="position:absolute;left:-9999px"></p>
   </div>
   <p class="sectitle">All apps</p>
-  <div class="grid" style="--cols:4">
+  <div class="rail" id="rail"><div class="railstick"><div class="grid" id="railtrack" style="--cols:4">
     <!-- APPS:START -->
     <div class="card" style="--tint:#c16545"><a class="cardlink" href="ludus/index.html">
       <span class="ico"><picture><source media="(prefers-color-scheme: dark)" srcset="ludus/img/icon-dark.png"><img src="ludus/img/icon-light.png" alt="Ludus icon"></picture></span>
@@ -200,7 +205,7 @@ h1 .w{display:inline-block;animation:hword .9s cubic-bezier(.2,.8,.2,1) both;ani
       <span class="go">See Menu Bar Guard <span>&rarr;</span></span>
     </a><div class="dls"><span class="dlh">Download, free</span><a class="dlmac" href="https://github.com/Solomon-69/MenuBarGuard/releases/latest/download/MenuBarGuard.dmg">Mac <span>&darr;</span></a></div></div>
     <!-- APPS:END -->
-  </div>
+  </div></div></div>
   <p class="dl"><a href="download/index.html">All downloads, Mac and Windows</a></p>
   <p class="note">Every download link always gives the newest build. Mac apps are signed and checked by Apple, so they open like any normal app: open the download, drag to Applications, double-click. On Windows, SmartScreen may warn you the first time: click <b>More info</b>, then <b>Run anyway</b>.</p>
   <footer>By Solomon.</footer>
@@ -259,6 +264,29 @@ h1 .w{display:inline-block;animation:hword .9s cubic-bezier(.2,.8,.2,1) both;ani
   stage.addEventListener('dragstart',function(e){e.preventDefault()});
   window.addEventListener('resize',place);
   render();
+})();
+</script>
+<script>
+(function(){
+  var rail=document.getElementById('rail'),tr=document.getElementById('railtrack');
+  if(!rail||!tr||matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+  var el=document.documentElement,W=0,vw=0,vh=0,travel=0,t=0;
+  el.classList.add('js-rail');
+  function measure(){
+    vw=el.clientWidth;vh=innerHeight;W=tr.offsetWidth;
+    var cw=tr.firstElementChild.offsetWidth;
+    travel=W; /* from fully off the left edge until the strip rests at the page start */
+    rail.style.height=(vh+travel*0.9)+'px';
+    draw();
+  }
+  function draw(){
+    t=0;var r=rail.getBoundingClientRect(),run=rail.offsetHeight-vh;
+    var p=Math.max(0,Math.min(1,run>0?-r.top/run:0));
+    tr.style.transform='translate3d('+(-travel*(1-p))+'px,0,0)';
+  }
+  addEventListener('scroll',function(){if(!t)t=requestAnimationFrame(draw)},{passive:true});
+  addEventListener('resize',measure);addEventListener('load',measure);
+  measure();
 })();
 </script>
 </body>
