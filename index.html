@@ -43,10 +43,23 @@ h1{font-size:clamp(34px,6vw,56px);line-height:1.05;letter-spacing:-.03em;margin:
 .note{color:var(--ink-2);font-size:14px;max-width:760px;margin:22px 0 0}.note b{color:var(--ink)}
 footer{color:var(--ink-2);font-size:14px;margin-top:28px}
 
+.hicons{display:flex;gap:10px;margin:0 0 26px;flex-wrap:wrap}
+.hicons button{all:unset;cursor:pointer;width:44px;height:44px;border-radius:11px;display:block;transition:transform .45s cubic-bezier(.2,.8,.2,1),filter .3s;animation:hpop .7s cubic-bezier(.2,.9,.25,1.15) both;animation-delay:var(--hd)}
+.hicons img{width:44px;height:44px;border-radius:11px;display:block;box-shadow:0 8px 18px -10px rgba(0,0,0,.6)}
+.hicons button:hover{transform:translateY(-4px)}.hicons button[aria-current="true"]{transform:translateY(-6px) scale(1.08)}
+.hicons button:focus-visible{outline:2px solid var(--ink-3);outline-offset:3px}
+@keyframes hpop{from{opacity:0;transform:translateY(14px) scale(.6)}}
+h1 .w{display:inline-block;animation:hword .9s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i)*70ms + 200ms)}
+@keyframes hword{from{opacity:0;transform:translateY(.45em);filter:blur(6px)}}
+.lede{animation:hword .9s .65s cubic-bezier(.2,.8,.2,1) both}
+.deck{position:relative;animation:hrise 1s .5s cubic-bezier(.2,.8,.2,1) both}
+@keyframes hrise{from{opacity:0;transform:translateY(40px)}}
+.aura{position:absolute;left:50%;top:44%;width:min(900px,120vw);height:520px;transform:translate(-50%,-50%);pointer-events:none;z-index:-1;background:radial-gradient(closest-side,color-mix(in srgb,var(--at,#888) 30%,transparent),transparent 70%);filter:blur(30px);opacity:.75;transition:background .8s}
+@media (prefers-reduced-motion:reduce){.hicons button,h1 .w,.lede,.deck{animation:none}}
 .deck{margin:0 0 56px;display:flex;flex-direction:column;align-items:center;gap:22px;outline:none}
-.deck:focus-visible .deckstage{outline:2px solid var(--accent);outline-offset:8px;border-radius:28px}
+.deck:focus-visible .deckstage{outline:none}
 .deckstage{position:relative;width:min(680px,calc(100% - 64px));height:400px;perspective:1400px;touch-action:pan-y;user-select:none}
-.dcard{position:absolute;inset:0;display:flex;align-items:stretch;gap:0;padding:0;border-radius:26px;overflow:hidden;background:linear-gradient(135deg,color-mix(in srgb,var(--tint) 14%,var(--surface)),color-mix(in srgb,var(--tint) 4%,var(--surface)) 70%);border:1px solid color-mix(in srgb,var(--tint) 28%,var(--line));box-shadow:0 26px 50px -30px color-mix(in srgb,var(--tint) 65%,#000);transform:translateX(calc(var(--d)*70px)) scale(calc(1 - var(--ad)*.07)) rotate(calc(var(--d)*2.2deg));z-index:calc(10 - var(--ad));opacity:calc(1 - var(--ad)*.28);transition:transform .55s cubic-bezier(.2,.8,.2,1),opacity .4s;will-change:transform;cursor:pointer;transform-origin:50% 100%}
+.dcard{position:absolute;inset:0;display:flex;align-items:stretch;gap:0;padding:0;border-radius:26px;overflow:hidden;background:linear-gradient(135deg,color-mix(in srgb,var(--tint) 14%,var(--surface)),color-mix(in srgb,var(--tint) 4%,var(--surface)) 70%);border:1px solid var(--line);box-shadow:0 30px 60px -34px rgba(0,0,0,.55);transform:translateX(calc(var(--d)*70px)) scale(calc(1 - var(--ad)*.07)) rotate(calc(var(--d)*2.2deg));z-index:calc(10 - var(--ad));opacity:calc(1 - var(--ad)*.28);transition:transform .55s cubic-bezier(.2,.8,.2,1),opacity .4s;will-change:transform;cursor:pointer;transform-origin:50% 100%}
 .dcard[data-front]{cursor:grab}
 .dcard[data-hide]{opacity:0;pointer-events:none}
 .deckstage.dragging .dcard[data-front]{transition:none;cursor:grabbing}
@@ -64,10 +77,10 @@ footer{color:var(--ink-2);font-size:14px;margin-top:28px}
 .dcard .acts a{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:12px;font-weight:650;font-size:15px;text-decoration:none;transition:transform .2s cubic-bezier(.2,.8,.2,1)}
 .dcard .acts a:active{transform:scale(.97)}
 .dcard .acts .p{background:var(--tint);color:#fff}
-.dcard .acts .p.w{background:transparent;color:var(--ink);border:1px solid var(--tint)}.dcard .acts .s{color:var(--ink);border:1px solid var(--line)}
+.dcard .acts .p.w{background:var(--tint);color:#fff}.dcard .acts .s{color:var(--ink);border:1px solid var(--line)}
 .dcard:not([data-front]) .acts a{pointer-events:none}
 .dcard .shot{flex:0 0 42%;position:relative;overflow:visible;transition:opacity .3s}
-.dcard .shot img{position:absolute;left:50%;top:34px;width:78%;height:auto;transform:translateX(-50%) rotate(3deg);transform-origin:50% 0;border-radius:18px;pointer-events:none}
+.dcard .shot img{position:absolute;left:50%;top:34px;width:78%;height:auto;transform:translateX(-50%) rotate(3deg);transform-origin:50% 0;filter:drop-shadow(0 18px 28px rgba(0,0,0,.35));pointer-events:none}
 .dcard[data-side="l"] .shot img{transform:translateX(-50%) rotate(-3deg)}
 .dcard[data-key="memo"] .shot img,.dcard[data-key="nox"] .shot img,.dcard[data-key="awayke"] .shot img{width:90%}
 .dcard .shot:hover img,.dcard:hover .shot img{transform:translateX(-50%) rotate(3deg)!important}
@@ -92,9 +105,11 @@ footer{color:var(--ink-2);font-size:14px;margin-top:28px}
 </head>
 <body>
 <main>
-  <h1>Little apps for your Mac.</h1>
+  <div class="hicons" id="hicons" aria-label="Jump to an app"></div>
+  <h1><span class="w" style="--i:0">Little</span> <span class="w" style="--i:1">apps</span> <span class="w" style="--i:2">for</span> <span class="w" style="--i:3">your</span> <span class="w" style="--i:4">Mac.</span></h1>
   <p class="lede">Free, quiet and made to stay out of your way. Pick one to see what it does and download it.</p>
   <div class="deck" id="deck" tabindex="0" role="region" aria-roledescription="carousel" aria-label="The apps, one card at a time. Use the arrow keys to switch.">
+    <div class="aura" id="aura" aria-hidden="true"></div>
     <div class="deckstage" id="deckstage" data-lenis-prevent>
     <!-- DECK:START -->
     <article class="dcard" data-name="Ludus" data-key="ludus" data-side="r" style="--tint:#c16545;--d:0;--ad:0">
@@ -127,7 +142,7 @@ footer{color:var(--ink-2);font-size:14px;margin-top:28px}
       <div class="acts"><a class="p" href="https://github.com/Solomon-69/Weather/releases/latest/download/Weather.dmg">Download for Mac</a><a class="s" href="weather/index.html">See Weather</a></div></div>
       <div class="shot" aria-hidden="false"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/cards/weather-dark.png"><img src="assets/cards/weather-light.png" alt="Weather open from the menu bar" loading="lazy"></picture></div>
     </article>
-    <article class="dcard" data-name="Stats" data-key="stats" data-side="r" style="--tint:#454952;--d:0;--ad:0">
+    <article class="dcard" data-name="Stats" data-key="stats" data-side="r" style="--tint:#5e6878;--d:0;--ad:0">
       <div class="txt"><span class="ico"><img src="stats/img/icon.png" alt="Stats icon"></span><h3>Stats</h3><p class="feat">Your Mac's health, in plain words</p>
       <ul class="chips"><li>Live graphs</li><li>Battery health</li><li>Temperature</li><li>Memory</li><li>Internet speed</li></ul>
       <div class="acts"><a class="p" href="https://github.com/Solomon-69/Stats/releases/latest/download/Stats.dmg">Download for Mac</a><a class="s" href="stats/index.html">See Stats</a></div></div>
@@ -166,9 +181,9 @@ footer{color:var(--ink-2);font-size:14px;margin-top:28px}
       <h2>Weather</h2><p>Weather in your menu bar, with a sky that moves. Mac. Version 1.1.1.</p>
       <span class="go">See Weather <span>&rarr;</span></span>
     </a><div class="dls"><span class="dlh">Download, free</span><a class="dlmac" href="https://github.com/Solomon-69/Weather/releases/latest/download/Weather.dmg">Mac <span>&darr;</span></a></div></div>
-    <div class="card" style="--tint:#454952"><a class="cardlink" href="stats/index.html">
+    <div class="card" style="--tint:#5e6878"><a class="cardlink" href="stats/index.html">
       <span class="ico"><img src="stats/img/icon.png" alt="Stats icon"></span>
-      <h2>Stats</h2><p>How your Mac is doing, in plain words. Live tiles for processor, memory, storage, internet, battery and temperature, right from your menu bar. Mac. Version 1.0.2.</p>
+      <h2>Stats</h2><p>How your Mac is doing, in plain words. Live tiles for processor, memory, storage, internet, battery and temperature, right from your menu bar. Mac. Version 1.0.3.</p>
       <span class="go">See Stats <span>&rarr;</span></span>
     </a><div class="dls"><span class="dlh">Download, free</span><a class="dlmac" href="https://github.com/Solomon-69/Stats/releases/latest/download/Stats.dmg">Mac <span>&darr;</span></a></div></div>
     <!-- APPS:END -->
@@ -184,6 +199,7 @@ footer{color:var(--ink-2);font-size:14px;margin-top:28px}
   var cards=[].slice.call(stage.querySelectorAll('.dcard')), n=cards.length, a=0;
   var dots=document.getElementById('ddots'), live=document.getElementById('dlive'), deck=document.getElementById('deck');
   var btns=cards.map(function(c,i){var b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Show '+c.dataset.name);b.onclick=function(){go(i)};dots.appendChild(b);return b});
+  var hi=document.getElementById('hicons'),hb=cards.map(function(c,i){var b=document.createElement('button');b.type='button';b.style.setProperty('--hd',(i*70)+'ms');b.setAttribute('aria-label','Show '+c.dataset.name);var im=c.querySelector('.ico img');b.innerHTML='<img alt="" src="'+(im?im.getAttribute('src'):'')+'">';b.onclick=function(){go(i)};hi&&hi.appendChild(b);return b});
   var pill=document.createElement('span');pill.className='pill';dots.appendChild(pill);
   function place(){var b=btns[a],x=b.offsetLeft+(b.offsetWidth-8)/2;pill.style.left=x+'px';pill.style.right=(dots.offsetWidth-x-8)+'px';pill.style.setProperty('--pt',cards[a].style.getPropertyValue('--tint'))}
   function off(i){var d=((i-a)%n+n)%n; if(d>n/2) d-=n; return d}
@@ -196,6 +212,8 @@ footer{color:var(--ink-2);font-size:14px;margin-top:28px}
     btns.forEach(function(b,i){b.setAttribute('aria-current',i===a?'true':'false')});
     live.textContent=cards[a].dataset.name+', '+(a+1)+' of '+n;
     place();
+    var au=document.getElementById('aura');if(au)au.style.setProperty('--at',cards[a].style.getPropertyValue('--tint'));
+    hb.forEach(function(b,i){b.setAttribute('aria-current',i===a?'true':'false')});
   }
   function go(i){var t=((i%n)+n)%n;dots.classList.toggle('back',t<a);a=t;render()}
   document.getElementById('dprev').onclick=function(){go(a-1)};
@@ -210,15 +228,15 @@ footer{color:var(--ink-2);font-size:14px;margin-top:28px}
     var now=Date.now(),dir=d>0?1:-1;
     if(now-lastOut<200&&now-lastIn>250) return;
     var atEnd=(dir>0&&a===n-1)||(dir<0&&a===0);
-    if(atEnd&&now-lastIn>350) return;
-    e.preventDefault(); lastIn=now; holdY=window.scrollY; holdUntil=now+600;
+    if(atEnd&&now>=lock) return;
+    e.preventDefault(); lastIn=now; holdY=window.scrollY; holdUntil=now+250;
     if(atEnd||now<lock) return;
     acc+=d; clearTimeout(reset); reset=setTimeout(function(){acc=0},160);
     if(Math.abs(acc)>=50){go(a+(acc>0?1:-1));acc=0;lock=now+420}
   },{passive:false});
   var x0=null,dx=0,moved=false;
-  stage.addEventListener('pointerdown',function(e){var c=e.target.closest('.dcard');if(!c)return;x0=e.clientX;dx=0;moved=false;if(c.hasAttribute('data-front')){stage.setPointerCapture(e.pointerId)}});
-  stage.addEventListener('pointermove',function(e){if(x0===null)return;dx=e.clientX-x0;if(Math.abs(dx)>6){moved=true;stage.classList.add('dragging');cards[a].style.transform='translateX('+dx+'px) rotate('+dx/30+'deg)'}});
+  stage.addEventListener('pointerdown',function(e){var c=e.target.closest('.dcard');if(!c)return;x0=e.clientX;dx=0;moved=false;stage._pid=e.pointerId});
+  stage.addEventListener('pointermove',function(e){if(x0===null)return;dx=e.clientX-x0;if(Math.abs(dx)>6){if(!moved&&cards[a].contains(e.target)){try{stage.setPointerCapture(stage._pid)}catch(_){}}moved=true;stage.classList.add('dragging');cards[a].style.transform='translateX('+dx+'px) rotate('+dx/30+'deg)'}});
   function end(){if(x0===null)return;var was=moved;stage.classList.remove('dragging');cards[a].style.transform='';if(was&&Math.abs(dx)>60){go(a+(dx<0?1:-1))}x0=null;if(was)stage.dataset.swiped='1'}
   stage.addEventListener('pointerup',end);stage.addEventListener('pointercancel',end);
   stage.addEventListener('click',function(e){

@@ -1,54 +1,74 @@
 #!/usr/bin/env python3
-"""Turns the real app panel screenshots into see-through glass for the deck cards:
-flat areas lose their baked-in background and go translucent (the card colour shows through),
-text/icons/edges stay solid. Also adds the menu bar arrow to panels that lack one."""
-import sys, pathlib
+"""Turns the real app panel screenshots into clean menu bar popovers for the deck cards:
+crops each screenshot to the panel body (dropping any baked-in shadow or old arrow),
+gives it smooth rounded corners and a thin edge, and adds one macOS style arrow
+(curved sides, rounded tip) centred on top. Everything is drawn 4x and scaled down
+so the edges stay smooth."""
+import pathlib
 import numpy as np
-from PIL import Image, ImageFilter, ImageDraw
+from PIL import Image, ImageDraw
 root = pathlib.Path(__file__).resolve().parent.parent
+SS = 4  # supersampling for smooth edges
 
-def lum(a): return a[..., 0]*.299 + a[..., 1]*.587 + a[..., 2]*.114
 
-def add_notch(im):
-    w, h = im.size; nh = int(w*.045); nw = int(w*.075)
-    out = Image.new("RGBA", (w, h+nh), (0, 0, 0, 0)); out.paste(im, (0, nh))
-    a = np.array(im); al = a[..., 3]
-    ys, xs = np.where(al > 200); top = ys.min(); band = a[top+int(h*.01):top+int(h*.03), :, :3][al[top+int(h*.01):top+int(h*.03)] > 200]
-    col = tuple(int(v) for v in band.mean(axis=0)) if len(band) else (60, 60, 60)
-    cx = w//2; d = ImageDraw.Draw(out)
-    d.polygon([(cx-nw, nh+2), (cx, 0), (cx+nw, nh+2)], fill=col+(255,))
-    out = out.filter(ImageFilter.GaussianBlur(.6)) if False else out
-    return out
+def body(im):
+    """Crop to the panel body: rows at least 90% as wide as the widest row."""
+    a = np.array(im)[..., 3]
+    w = (a > 200).sum(1); mx = w.max()
+    rows = np.where(w > .9 * mx)[0]
+    t, b = rows[0], rows[-1]
+    cols = np.where((a[t:b+1] > 200).mean(0) > .5)[0]
+    return im.crop((cols[0], t, cols[-1] + 1, b + 1))
 
-def glass(src, dst, dark, notch):
-    im = Image.open(root/src).convert("RGBA")
-    if notch: im = add_notch(im)
-    a = np.array(im).astype(np.float32); A = a[..., 3]/255
-    rgb = Image.fromarray(a[..., :3].astype(np.uint8))
-    blur = np.array(rgb.filter(ImageFilter.GaussianBlur(max(6, im.width//70)))).astype(np.float32)
-    D = np.abs(lum(a) - lum(blur)); w = np.clip(D*6/255, 0, 1)
-    wi = Image.fromarray((w*255).astype(np.uint8)).filter(ImageFilter.MaxFilter(3)).filter(ImageFilter.GaussianBlur(.8))
-    w = np.array(wi).astype(np.float32)/255
-    m = A > .9; g = lum(a)[m].mean() if m.any() else 128
-    neutral = np.array([g, g, g*1.02]) * (1 if dark else 1)
-    neutral = np.clip(neutral, 0, 255)
-    base = .40 if dark else .50
-    rgbn = neutral*(1-w[..., None]) + a[..., :3]*w[..., None]
-    alpha = A*(base + (1-base)*w)
-    out = np.dstack([rgbn, alpha*255]).clip(0, 255).astype(np.uint8)
-    Image.fromarray(out, "RGBA").save(root/dst, optimize=True)
+
+def bez(p0, p1, p2, p3, n=40):
+    t = np.linspace(0, 1, n)[:, None]
+    return ((1-t)**3)*p0 + 3*((1-t)**2)*t*p1 + 3*(1-t)*t*t*p2 + (t**3)*p3
+
+
+def arrow_pts(cx, base, aw, ah):
+    """macOS popover arrow: concave sides that flare into the body, soft round tip."""
+    L, R, tip = np.array([cx-aw/2, base]), np.array([cx+aw/2, base]), np.array([cx, base-ah])
+    left = bez(L, L + [aw*.22, 0], tip + [-aw*.12, ah*.18], tip + [-aw*.045, ah*.03])
+    cap = bez(tip + [-aw*.045, ah*.03], tip + [-aw*.015, -ah*.02], tip + [aw*.015, -ah*.02], tip + [aw*.045, ah*.03], 16)
+    right = bez(tip + [aw*.045, ah*.03], tip + [aw*.12, ah*.18], R - [aw*.22, 0], R)
+    return [tuple(p) for p in np.vstack([left, cap, right])]
+
+
+def popover(src, dst, dark):
+    im = body(Image.open(root/src).convert("RGBA"))
+    w, h = im.size
+    r = round(w * .05); ah = round(w * .032); aw = round(ah * 3.1)
+    big = im.resize((w*SS, h*SS), Image.LANCZOS).convert("RGB")
+    top = np.array(big)[SS*4:SS*10, w*SS//2 - aw*SS//2: w*SS//2 + aw*SS//2]
+    col = tuple(int(v) for v in np.median(top.reshape(-1, 3), 0))
+    H = (h + ah) * SS; W = w * SS; o = ah * SS
+    canvas = Image.new("RGB", (W, H), col); canvas.paste(big, (0, o))
+    mask = Image.new("L", (W, H), 0); d = ImageDraw.Draw(mask)
+    d.rounded_rectangle((0, o, W-1, H-1), r*SS, fill=255)
+    d.polygon(arrow_pts(W/2, o + SS*2, aw*SS, ah*SS + SS*2), fill=255)
+    edge = Image.new("L", (W, H), 0); e = ImageDraw.Draw(edge)
+    e.rounded_rectangle((0, o, W-1, H-1), r*SS, outline=255, width=SS)
+    e.polygon(arrow_pts(W/2, o + SS*4, aw*SS - SS*2, ah*SS), fill=0)
+    e.line(arrow_pts(W/2, o + SS*2, aw*SS, ah*SS + SS*2), fill=255, width=SS)
+    edge = Image.fromarray((np.array(edge) * (np.array(mask) > 0)).astype(np.uint8))
+    line = (255, 255, 255) if dark else (0, 0, 0)
+    canvas = Image.composite(Image.new("RGB", (W, H), line), canvas, edge.point(lambda v: v * (.16 if dark else .10)))
+    out = canvas.convert("RGBA"); out.putalpha(mask)
+    out.resize((w, h + ah), Image.LANCZOS).save(root/dst, optimize=True)
+
 
 JOBS = {
- "ludus":  [("ludus/img/home-light.png","light",True),("ludus/img/home-dark.png","dark",True)],
- "memo":   [("memo/img/hero-panel-light.png","light",False),("memo/img/hero-panel-dark.png","dark",False)],
- "nox":    [("nox/img/panel-light.png","light",False),("nox/img/panel-dark.png","dark",False)],
- "awayke": [("awayke/img/panel-light.png","light",True),("awayke/img/panel-dark.png","dark",True)],
- "stats":[("stats/img/panel-light.png","light",True),("stats/img/panel-dark.png","dark",True)],
- "weather":[("weather/img/panel-light.png","light",True),("weather/img/panel-dark.png","dark",True)],
+ "ludus":  [("ludus/img/home-light.png", "light"), ("ludus/img/home-dark.png", "dark")],
+ "memo":   [("memo/img/hero-panel-light.png", "light"), ("memo/img/hero-panel-dark.png", "dark")],
+ "nox":    [("nox/img/panel-light.png", "light"), ("nox/img/panel-dark.png", "dark")],
+ "awayke": [("awayke/img/panel-light.png", "light"), ("awayke/img/panel-dark.png", "dark")],
+ "stats":  [("stats/img/panel-light.png", "light"), ("stats/img/panel-dark.png", "dark")],
+ "weather": [("weather/img/panel-light.png", "light"), ("weather/img/panel-dark.png", "dark")],
 }
 if __name__ == "__main__":
     (root/"assets/cards").mkdir(parents=True, exist_ok=True)
     for k, lst in JOBS.items():
-        for src, mode, notch in lst:
-            glass(src, f"assets/cards/{k}-{mode}.png", mode == "dark", notch)
+        for src, mode in lst:
+            popover(src, f"assets/cards/{k}-{mode}.png", mode == "dark")
             print("made", k, mode)

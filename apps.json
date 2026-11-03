@@ -116,8 +116,8 @@
   "platforms": "Mac",
   "mac": "Stats.dmg",
   "icon": "stats/img/icon.png",
-  "version": "1.0.2",
-  "color": "#454952",
+  "version": "1.0.3",
+  "color": "#5e6878",
   "feature": "Your Mac's health, in plain words",
   "chips": [
    "Live graphs",

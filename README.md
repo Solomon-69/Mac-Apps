@@ -48,7 +48,7 @@ How your Mac is doing, in plain words. Live tiles for processor, memory, storage
 
 <img src="stats/img/panel-light.png" width="300" alt="Stats panel">
 
-Version 1.0.2. Release: [v1.0.2](https://github.com/Solomon-69/Stats/releases/tag/v1.0.2).
+Version 1.0.3. Release: [v1.0.3](https://github.com/Solomon-69/Stats/releases/tag/v1.0.3).
 
 Download: [Mac (.dmg)](https://github.com/Solomon-69/Stats/releases/latest/download/Stats.dmg) | [Mac (.zip)](https://github.com/Solomon-69/Stats/releases/latest/download/Stats-mac.zip)
 
