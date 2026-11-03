@@ -9,7 +9,7 @@
   "win": "Ludus-windows.zip",
   "icon": "ludus/img/icon-light.png",
   "icon_dark": "ludus/img/icon-dark.png",
-  "version": "1.12.65",
+  "version": "1.12.66",
   "color": "#c16545"
  },
  {
@@ -48,5 +48,16 @@
   "icon": "awayke/img/icon.png",
   "version": "1.7.2",
   "color": "#e66c0e"
+ },
+ {
+  "key": "nimbus",
+  "name": "Nimbus",
+  "blurb": "Weather in your menu bar, with a sky that moves.",
+  "short": "Weather in your menu bar, with a sky that moves.",
+  "platforms": "Mac",
+  "mac": "Nimbus.dmg",
+  "icon": "nimbus/img/icon.png",
+  "version": "1.0.0",
+  "color": "#3f82dc"
  }
 ]
