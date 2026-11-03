@@ -29,8 +29,11 @@ def tint(a):
         return "#a85432"
 
 def cols(n):
-    # one even row when it fits (up to 5), otherwise even rows with no lonely card on the last one
-    return {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 3, 7: 4, 8: 4, 9: 3, 10: 5, 12: 4}.get(n, 4)
+    # even rows, no lonely card: pick a column count (3 to 5) that divides n, closest to 4 (6 -> 3, 8 -> 4, 9 -> 3, 10 -> 5, 12 -> 4); else the fullest last row
+    if n <= 4: return n
+    ok = [c for c in (3, 4, 5) if n % c == 0]
+    if ok: return min(ok, key=lambda c: (abs(c - 4), c))
+    return max((3, 4, 5), key=lambda c: (n % c, -abs(c - 4)))
 
 def icon(a):
     img = f'<img src="{a["icon"]}" alt="{a["name"]} icon">'
@@ -40,13 +43,18 @@ def icon(a):
 
 def rel(a, f): return f"https://github.com/{OWNER}/{a['name']}/releases/latest/download/{f}"
 
+def dls(a, cls):
+    m = f'<a class="{cls}" href="{rel(a, a["mac"])}">Mac <span>&darr;</span></a>'
+    w = f'<a class="{cls}" href="{rel(a, a["win"])}">Windows <span>&darr;</span></a>' if a.get("win") else ""
+    return m + w
+
 def card(a):
     v = version(a); a["version"] = v
     return (f'    <div class="card" style="--tint:{tint(a)}"><a class="cardlink" href="{a["key"]}/index.html">\n'
             f'      <span class="ico">{icon(a)}</span>\n'
             f'      <h2>{a["name"]}</h2><p>{a["blurb"]} {a["platforms"]}. Version {v}.</p>\n'
             f'      <span class="go">See {a["name"]} <span>&rarr;</span></span>\n'
-            f'    </a><a class="dlmac" href="{rel(a, a["mac"])}">Download for Mac <small>free</small><span>&darr;</span></a></div>')
+            f'    </a><div class="dls"><span class="dlh">Download, free</span>{dls(a, "dlmac")}</div></div>')
 
 def deckcard(a):
     if not a.get("shot"):
@@ -55,17 +63,19 @@ def deckcard(a):
     shot = (f'<picture><source media="(prefers-color-scheme: dark)" srcset="{dark}"><img src="{a["shot"]}" alt="{a["name"]} open from the menu bar" loading="lazy"></picture>'
             if dark else f'<img src="{a["shot"]}" alt="{a["name"]} open from the menu bar" loading="lazy">')
     chips = "".join(f"<li>{c}</li>" for c in a.get("chips", []))
+    winbtn = f'<a class="p w" href="{rel(a, a["win"])}">Download for Windows</a>' if a.get("win") else ""
     return (f'    <article class="dcard" data-name="{a["name"]}" data-key="{a["key"]}" data-side="{a.get("side","r")}" style="--tint:{tint(a)};--d:0;--ad:0">\n'
             f'      <div class="txt"><span class="ico">{icon(a)}</span><h3>{a["name"]}</h3><p class="feat">{a["feature"]}</p>\n'
             f'      <ul class="chips">{chips}</ul>\n'
-            f'      <div class="acts"><a class="p" href="{rel(a, a["mac"])}">Download for Mac</a><a class="s" href="{a["key"]}/index.html">See {a["name"]}</a></div></div>\n'
+            f'      <div class="acts"><a class="p" href="{rel(a, a["mac"])}">Download for Mac</a>{winbtn}<a class="s" href="{a["key"]}/index.html">See {a["name"]}</a></div></div>\n'
             f'      <div class="shot" aria-hidden="false">{shot}</div>\n'
             f'    </article>')
 
 def deckcard_plain(a):
+    winbtn = f'<a class="p w" href="{rel(a, a["win"])}">Download for Windows</a>' if a.get("win") else ""
     return (f'    <article class="dcard plain" data-name="{a["name"]}" style="--tint:{tint(a)};--d:0;--ad:0">\n'
             f'      <div class="txt"><span class="ico">{icon(a)}</span><h3>{a["name"]}</h3><p class="feat">{a["short"]}</p>\n'
-            f'      <div class="acts"><a class="p" href="{rel(a, a["mac"])}">Download for Mac</a><a class="s" href="{a["key"]}/index.html">See {a["name"]}</a></div></div>\n'
+            f'      <div class="acts"><a class="p" href="{rel(a, a["mac"])}">Download for Mac</a>{winbtn}<a class="s" href="{a["key"]}/index.html">See {a["name"]}</a></div></div>\n'
             f'    </article>')
 
 def dcard(a):

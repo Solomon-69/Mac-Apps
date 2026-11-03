@@ -18,7 +18,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 -apple-system
 main{max-width:1280px;margin:0 auto;padding:clamp(40px,8vh,88px) 28px 40px;min-height:100vh;display:flex;flex-direction:column}
 h1{font-size:clamp(34px,6vw,56px);line-height:1.05;letter-spacing:-.03em;margin:0 0 14px}
 .lede{color:var(--ink-2);font-size:19px;max-width:560px;margin:0 0 44px}
-.grid{--c:var(--cols,4);--gap:20px;display:flex;flex-wrap:wrap;justify-content:center;gap:var(--gap);align-items:stretch}
+.grid{--c:var(--cols,4);--gap:20px;--cardw:380px;max-width:calc(var(--c)*var(--cardw) + (var(--c) - 1)*var(--gap));margin-inline:auto;display:flex;flex-wrap:wrap;justify-content:center;gap:var(--gap);align-items:stretch}
 .grid>.card{flex:0 0 calc((100% - var(--gap)*(var(--c) - 1))/var(--c));min-width:0}
 @media(max-width:1100px){.grid{--c:min(var(--cols,4),3)}}
 @media(max-width:760px){.grid{--c:min(var(--cols,4),2)}}
@@ -35,7 +35,7 @@ h1{font-size:clamp(34px,6vw,56px);line-height:1.05;letter-spacing:-.03em;margin:
 .go span{transition:transform .3s}
 .card{position:relative}
 .card .cardlink{display:flex;flex-direction:column;gap:12px;color:inherit;text-decoration:none;flex:1}
-.card .dlmac{display:flex;justify-content:space-between;align-items:center;min-height:44px;padding:0 16px;margin-top:8px;border-radius:12px;background:transparent;color:var(--ink);border:1px solid var(--line);font-weight:600;font-size:14px;text-decoration:none;transition:transform .2s cubic-bezier(.2,.8,.2,1),background .2s}.card .dlmac:hover{background:color-mix(in srgb,var(--ink) 6%,transparent)}
+.card .dls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:8px}.card .dls .dlh{flex:1 0 100%;font-size:12.5px;color:var(--ink-3);font-weight:500}.card .dls .dlmac{flex:1 1 0;margin-top:0}.card .dlmac{display:flex;justify-content:space-between;align-items:center;min-height:44px;padding:0 16px;margin-top:8px;border-radius:12px;background:transparent;color:var(--ink);border:1px solid var(--line);font-weight:600;font-size:14px;white-space:nowrap;gap:8px;text-decoration:none;transition:transform .2s cubic-bezier(.2,.8,.2,1),background .2s}.card .dlmac:hover{background:color-mix(in srgb,var(--ink) 6%,transparent)}
 .card .dlmac span{transition:transform .25s}.card .dlmac:hover span{transform:translateY(2px)}.card .dlmac:active{transform:scale(.97)}
 .card .dlmac small{font-weight:500;opacity:.7}
 .dl{margin-top:36px}
@@ -45,18 +45,18 @@ footer{color:var(--ink-2);font-size:14px;margin-top:28px}
 
 .deck{margin:0 0 56px;display:flex;flex-direction:column;align-items:center;gap:22px;outline:none}
 .deck:focus-visible .deckstage{outline:2px solid var(--accent);outline-offset:8px;border-radius:28px}
-.deckstage{position:relative;width:min(840px,calc(100% - 64px));height:400px;perspective:1400px;touch-action:pan-y;user-select:none}
+.deckstage{position:relative;width:min(680px,calc(100% - 64px));height:400px;perspective:1400px;touch-action:pan-y;user-select:none}
 .dcard{position:absolute;inset:0;display:flex;align-items:stretch;gap:0;padding:0;border-radius:26px;overflow:hidden;background:linear-gradient(135deg,color-mix(in srgb,var(--tint) 14%,var(--surface)),color-mix(in srgb,var(--tint) 4%,var(--surface)) 70%);border:1px solid color-mix(in srgb,var(--tint) 28%,var(--line));box-shadow:0 26px 50px -30px color-mix(in srgb,var(--tint) 65%,#000);transform:translateX(calc(var(--d)*70px)) scale(calc(1 - var(--ad)*.07)) rotate(calc(var(--d)*2.2deg));z-index:calc(10 - var(--ad));opacity:calc(1 - var(--ad)*.28);transition:transform .55s cubic-bezier(.2,.8,.2,1),opacity .4s;will-change:transform;cursor:pointer;transform-origin:50% 100%}
 .dcard[data-front]{cursor:grab}
 .dcard[data-hide]{opacity:0;pointer-events:none}
 .deckstage.dragging .dcard[data-front]{transition:none;cursor:grabbing}
-.dcard .txt{flex:1 1 55%;display:flex;flex-direction:column;justify-content:center;gap:10px;min-width:0;padding:34px 8px 34px 38px;transition:opacity .3s}
+.dcard .txt{flex:1 1 58%;display:flex;flex-direction:column;justify-content:center;gap:10px;min-width:0;padding:34px 8px 34px 38px;transition:opacity .3s}
 .dcard[data-side="l"]{flex-direction:row-reverse}
 .dcard[data-side="l"] .txt{padding:34px 38px 34px 8px}
 .dcard:not([data-front]) .txt,.dcard:not([data-front]) .shot{opacity:.0}
 .dcard .ico{display:block;width:52px;height:52px}.dcard .ico img{display:block;width:52px;height:52px;border-radius:12px}
 .dcard h3{margin:0;font-size:15px;font-weight:650;color:var(--ink-2);letter-spacing:0}
-.dcard .feat{margin:0;font-size:clamp(24px,3vw,32px);line-height:1.12;letter-spacing:-.025em;font-weight:700;color:var(--ink);text-wrap:balance}
+.dcard .feat{margin:0;font-size:clamp(22px,2.6vw,28px);line-height:1.12;letter-spacing:-.025em;font-weight:700;color:var(--ink);text-wrap:balance}
 .dcard.plain .feat{font-size:20px;font-weight:600}
 .chips{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin:2px 0 0;padding:0}
 .chips li{font-size:13px;line-height:1;padding:7px 11px;border-radius:999px;background:color-mix(in srgb,var(--tint) 13%,transparent);color:var(--ink);border:1px solid color-mix(in srgb,var(--tint) 24%,transparent)}
@@ -64,12 +64,15 @@ footer{color:var(--ink-2);font-size:14px;margin-top:28px}
 .dcard .acts a{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:12px;font-weight:650;font-size:15px;text-decoration:none;transition:transform .2s cubic-bezier(.2,.8,.2,1)}
 .dcard .acts a:active{transform:scale(.97)}
 .dcard .acts .p{background:var(--tint);color:#fff}
-.dcard .acts .s{color:var(--ink);border:1px solid var(--line)}
+.dcard .acts .p.w{background:transparent;color:var(--ink);border:1px solid var(--tint)}.dcard .acts .s{color:var(--ink);border:1px solid var(--line)}
 .dcard:not([data-front]) .acts a{pointer-events:none}
-.dcard .shot{flex:0 0 40%;position:relative;overflow:hidden;transition:opacity .3s}
-.dcard .shot img{position:absolute;left:50%;top:34px;width:78%;height:auto;transform:translateX(-50%) rotate(3deg);transform-origin:50% 0;border-radius:18px;filter:drop-shadow(0 22px 26px color-mix(in srgb,var(--tint) 45%,rgba(0,0,0,.35)));pointer-events:none}
+.dcard .shot{flex:0 0 42%;position:relative;overflow:visible;transition:opacity .3s}
+.dcard .shot img{position:absolute;left:50%;top:34px;width:78%;height:auto;transform:translateX(-50%) rotate(3deg);transform-origin:50% 0;border-radius:18px;pointer-events:none}
 .dcard[data-side="l"] .shot img{transform:translateX(-50%) rotate(-3deg)}
-.dcard[data-key="memo"] .shot img,.dcard[data-key="nox"] .shot img,.dcard[data-key="awayke"] .shot img{width:84%}
+.dcard[data-key="memo"] .shot img,.dcard[data-key="nox"] .shot img,.dcard[data-key="awayke"] .shot img{width:90%}
+.dcard .shot:hover img,.dcard:hover .shot img{transform:translateX(-50%) rotate(3deg)!important}
+.dcard[data-side="l"] .shot:hover img,.dcard[data-side="l"]:hover .shot img{transform:translateX(-50%) rotate(-3deg)!important}
+.grid .card:hover,.js .grid .reveal.in.card:hover{transform:none!important}.grid .card:hover .go span,.grid .card:hover .dlmac span{transform:none}
 .deckbar{display:flex;align-items:center;gap:10px}
 .deckbar button.arrow{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:18px;cursor:pointer;transition:transform .2s cubic-bezier(.2,.8,.2,1),background .2s}
 .deckbar button.arrow:hover{background:color-mix(in srgb,var(--ink) 6%,var(--surface))}
@@ -92,37 +95,37 @@ footer{color:var(--ink-2);font-size:14px;margin-top:28px}
   <h1>Little apps for your Mac.</h1>
   <p class="lede">Free, quiet and made to stay out of your way. Pick one to see what it does and download it.</p>
   <div class="deck" id="deck" tabindex="0" role="region" aria-roledescription="carousel" aria-label="The apps, one card at a time. Use the arrow keys to switch.">
-    <div class="deckstage" id="deckstage">
+    <div class="deckstage" id="deckstage" data-lenis-prevent>
     <!-- DECK:START -->
     <article class="dcard" data-name="Ludus" data-key="ludus" data-side="r" style="--tint:#c16545;--d:0;--ad:0">
       <div class="txt"><span class="ico"><picture><source media="(prefers-color-scheme: dark)" srcset="ludus/img/icon-dark.png"><img src="ludus/img/icon-light.png" alt="Ludus icon"></picture></span><h3>Ludus</h3><p class="feat">45 games, one click from your menu bar</p>
       <ul class="chips"><li>2048</li><li>Chess</li><li>Snake</li><li>Minefield</li><li>Play online</li></ul>
-      <div class="acts"><a class="p" href="https://github.com/Solomon-69/Ludus/releases/latest/download/Ludus.dmg">Download for Mac</a><a class="s" href="ludus/index.html">See Ludus</a></div></div>
-      <div class="shot" aria-hidden="false"><picture><source media="(prefers-color-scheme: dark)" srcset="ludus/img/home-dark.png"><img src="ludus/img/home-light.png" alt="Ludus open from the menu bar" loading="lazy"></picture></div>
+      <div class="acts"><a class="p" href="https://github.com/Solomon-69/Ludus/releases/latest/download/Ludus.dmg">Download for Mac</a><a class="p w" href="https://github.com/Solomon-69/Ludus/releases/latest/download/Ludus-windows.zip">Download for Windows</a><a class="s" href="ludus/index.html">See Ludus</a></div></div>
+      <div class="shot" aria-hidden="false"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/cards/ludus-dark.png"><img src="assets/cards/ludus-light.png" alt="Ludus open from the menu bar" loading="lazy"></picture></div>
     </article>
     <article class="dcard" data-name="Memo" data-key="memo" data-side="l" style="--tint:#3552aa;--d:0;--ad:0">
       <div class="txt"><span class="ico"><picture><source media="(prefers-color-scheme: dark)" srcset="memo/img/icon-dark.png"><img src="memo/img/icon-light.png" alt="Memo icon"></picture></span><h3>Memo</h3><p class="feat">Everything you copy, searchable and one shortcut away</p>
       <ul class="chips"><li>Search history</li><li>Pin favourites</li><li>Paste with 1 to 9</li></ul>
-      <div class="acts"><a class="p" href="https://github.com/Solomon-69/Memo/releases/latest/download/Memo.dmg">Download for Mac</a><a class="s" href="memo/index.html">See Memo</a></div></div>
-      <div class="shot" aria-hidden="false"><picture><source media="(prefers-color-scheme: dark)" srcset="memo/img/hero-panel-dark.png"><img src="memo/img/hero-panel-light.png" alt="Memo open from the menu bar" loading="lazy"></picture></div>
+      <div class="acts"><a class="p" href="https://github.com/Solomon-69/Memo/releases/latest/download/Memo.dmg">Download for Mac</a><a class="p w" href="https://github.com/Solomon-69/Memo/releases/latest/download/Memo-windows.zip">Download for Windows</a><a class="s" href="memo/index.html">See Memo</a></div></div>
+      <div class="shot" aria-hidden="false"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/cards/memo-dark.png"><img src="assets/cards/memo-light.png" alt="Memo open from the menu bar" loading="lazy"></picture></div>
     </article>
     <article class="dcard" data-name="Nox" data-key="nox" data-side="r" style="--tint:#5a44c3;--d:0;--ad:0">
       <div class="txt"><span class="ico"><img src="nox/img/icon.png" alt="Nox icon"></span><h3>Nox</h3><p class="feat">One click flips your whole Mac between light and dark</p>
       <ul class="chips"><li>Websites follow Mac</li><li>Dark at night</li><li>Smooth fade</li></ul>
-      <div class="acts"><a class="p" href="https://github.com/Solomon-69/Nox/releases/latest/download/Nox.dmg">Download for Mac</a><a class="s" href="nox/index.html">See Nox</a></div></div>
-      <div class="shot" aria-hidden="false"><picture><source media="(prefers-color-scheme: dark)" srcset="nox/img/panel-dark.png"><img src="nox/img/panel-light.png" alt="Nox open from the menu bar" loading="lazy"></picture></div>
+      <div class="acts"><a class="p" href="https://github.com/Solomon-69/Nox/releases/latest/download/Nox.dmg">Download for Mac</a><a class="p w" href="https://github.com/Solomon-69/Nox/releases/latest/download/Nox-windows.zip">Download for Windows</a><a class="s" href="nox/index.html">See Nox</a></div></div>
+      <div class="shot" aria-hidden="false"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/cards/nox-dark.png"><img src="assets/cards/nox-light.png" alt="Nox open from the menu bar" loading="lazy"></picture></div>
     </article>
     <article class="dcard" data-name="Awayke" data-key="awayke" data-side="l" style="--tint:#e66c0e;--d:0;--ad:0">
       <div class="txt"><span class="ico"><img src="awayke/img/icon.png" alt="Awayke icon"></span><h3>Awayke</h3><p class="feat">Close the lid. Your Mac stays awake.</p>
       <ul class="chips"><li>Lid closed</li><li>Auto-off timer</li><li>Low battery stop</li></ul>
-      <div class="acts"><a class="p" href="https://github.com/Solomon-69/Awayke/releases/latest/download/Awayke.dmg">Download for Mac</a><a class="s" href="awayke/index.html">See Awayke</a></div></div>
-      <div class="shot" aria-hidden="false"><picture><source media="(prefers-color-scheme: dark)" srcset="awayke/img/panel-dark.png"><img src="awayke/img/panel-light.png" alt="Awayke open from the menu bar" loading="lazy"></picture></div>
+      <div class="acts"><a class="p" href="https://github.com/Solomon-69/Awayke/releases/latest/download/Awayke.dmg">Download for Mac</a><a class="p w" href="https://github.com/Solomon-69/Awayke/releases/latest/download/Awayke-windows.zip">Download for Windows</a><a class="s" href="awayke/index.html">See Awayke</a></div></div>
+      <div class="shot" aria-hidden="false"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/cards/awayke-dark.png"><img src="assets/cards/awayke-light.png" alt="Awayke open from the menu bar" loading="lazy"></picture></div>
     </article>
     <article class="dcard" data-name="Weather" data-key="weather" data-side="r" style="--tint:#3f82dc;--d:0;--ad:0">
       <div class="txt"><span class="ico"><img src="weather/img/icon.png" alt="Weather icon"></span><h3>Weather</h3><p class="feat">The forecast under a sky that moves</p>
       <ul class="chips"><li>Next 12 hours</li><li>Rain</li><li>UV and wind</li><li>7 days</li></ul>
       <div class="acts"><a class="p" href="https://github.com/Solomon-69/Weather/releases/latest/download/Weather.dmg">Download for Mac</a><a class="s" href="weather/index.html">See Weather</a></div></div>
-      <div class="shot" aria-hidden="false"><img src="weather/img/panel-light.png" alt="Weather open from the menu bar" loading="lazy"></div>
+      <div class="shot" aria-hidden="false"><img src="assets/cards/weather-light.png" alt="Weather open from the menu bar" loading="lazy"></div>
     </article>
     <!-- DECK:END -->
     </div>
@@ -136,27 +139,27 @@ footer{color:var(--ink-2);font-size:14px;margin-top:28px}
       <span class="ico"><picture><source media="(prefers-color-scheme: dark)" srcset="ludus/img/icon-dark.png"><img src="ludus/img/icon-light.png" alt="Ludus icon"></picture></span>
       <h2>Ludus</h2><p>45 little games for little breaks, right from your menu bar. Works offline. Mac and Windows. Version 1.12.67.</p>
       <span class="go">See Ludus <span>&rarr;</span></span>
-    </a><a class="dlmac" href="https://github.com/Solomon-69/Ludus/releases/latest/download/Ludus.dmg">Download for Mac <small>free</small><span>&darr;</span></a></div>
+    </a><div class="dls"><span class="dlh">Download, free</span><a class="dlmac" href="https://github.com/Solomon-69/Ludus/releases/latest/download/Ludus.dmg">Mac <span>&darr;</span></a><a class="dlmac" href="https://github.com/Solomon-69/Ludus/releases/latest/download/Ludus-windows.zip">Windows <span>&darr;</span></a></div></div>
     <div class="card" style="--tint:#3552aa"><a class="cardlink" href="memo/index.html">
       <span class="ico"><picture><source media="(prefers-color-scheme: dark)" srcset="memo/img/icon-dark.png"><img src="memo/img/icon-light.png" alt="Memo icon"></picture></span>
       <h2>Memo</h2><p>Everything you copy, one shortcut away. Search it and paste it back. Mac and Windows. Version 1.4.</p>
       <span class="go">See Memo <span>&rarr;</span></span>
-    </a><a class="dlmac" href="https://github.com/Solomon-69/Memo/releases/latest/download/Memo.dmg">Download for Mac <small>free</small><span>&darr;</span></a></div>
+    </a><div class="dls"><span class="dlh">Download, free</span><a class="dlmac" href="https://github.com/Solomon-69/Memo/releases/latest/download/Memo.dmg">Mac <span>&darr;</span></a><a class="dlmac" href="https://github.com/Solomon-69/Memo/releases/latest/download/Memo-windows.zip">Windows <span>&darr;</span></a></div></div>
     <div class="card" style="--tint:#5a44c3"><a class="cardlink" href="nox/index.html">
       <span class="ico"><img src="nox/img/icon.png" alt="Nox icon"></span>
       <h2>Nox</h2><p>One switch for light and dark, on a schedule if you like. Mac and Windows. Version 1.5.3.</p>
       <span class="go">See Nox <span>&rarr;</span></span>
-    </a><a class="dlmac" href="https://github.com/Solomon-69/Nox/releases/latest/download/Nox.dmg">Download for Mac <small>free</small><span>&darr;</span></a></div>
+    </a><div class="dls"><span class="dlh">Download, free</span><a class="dlmac" href="https://github.com/Solomon-69/Nox/releases/latest/download/Nox.dmg">Mac <span>&darr;</span></a><a class="dlmac" href="https://github.com/Solomon-69/Nox/releases/latest/download/Nox-windows.zip">Windows <span>&darr;</span></a></div></div>
     <div class="card" style="--tint:#e66c0e"><a class="cardlink" href="awayke/index.html">
       <span class="ico"><img src="awayke/img/icon.png" alt="Awayke icon"></span>
       <h2>Awayke</h2><p>Keep your MacBook awake with the lid closed. Mac and Windows. Version 1.8.0.</p>
       <span class="go">See Awayke <span>&rarr;</span></span>
-    </a><a class="dlmac" href="https://github.com/Solomon-69/Awayke/releases/latest/download/Awayke.dmg">Download for Mac <small>free</small><span>&darr;</span></a></div>
+    </a><div class="dls"><span class="dlh">Download, free</span><a class="dlmac" href="https://github.com/Solomon-69/Awayke/releases/latest/download/Awayke.dmg">Mac <span>&darr;</span></a><a class="dlmac" href="https://github.com/Solomon-69/Awayke/releases/latest/download/Awayke-windows.zip">Windows <span>&darr;</span></a></div></div>
     <div class="card" style="--tint:#3f82dc"><a class="cardlink" href="weather/index.html">
       <span class="ico"><img src="weather/img/icon.png" alt="Weather icon"></span>
       <h2>Weather</h2><p>Weather in your menu bar, with a sky that moves. Mac. Version 1.1.1.</p>
       <span class="go">See Weather <span>&rarr;</span></span>
-    </a><a class="dlmac" href="https://github.com/Solomon-69/Weather/releases/latest/download/Weather.dmg">Download for Mac <small>free</small><span>&darr;</span></a></div>
+    </a><div class="dls"><span class="dlh">Download, free</span><a class="dlmac" href="https://github.com/Solomon-69/Weather/releases/latest/download/Weather.dmg">Mac <span>&darr;</span></a></div></div>
     <!-- APPS:END -->
   </div>
   <p class="dl"><a href="download/index.html">All downloads, Mac and Windows</a></p>
@@ -187,14 +190,18 @@ footer{color:var(--ink-2);font-size:14px;margin-top:28px}
   document.getElementById('dprev').onclick=function(){go(a-1)};
   document.getElementById('dnext').onclick=function(){go(a+1)};
   deck.addEventListener('keydown',function(e){if(e.key==='ArrowLeft'){go(a-1);e.preventDefault()}else if(e.key==='ArrowRight'){go(a+1);e.preventDefault()}});
-  /* scroll wheel / trackpad: horizontal swipe or vertical wheel over the deck switches cards; at the ends the page scrolls on as normal */
-  var acc=0,lock=0,reset=0;
+  /* wheel / trackpad over the deck switches cards and never moves the page. Only after the last card (or before the first) does a fresh scroll gesture pass through to the page. */
+  var acc=0,lock=0,reset=0,lastOut=0,lastIn=0,holdY=0,holdUntil=0;
+  window.addEventListener('wheel',function(e){if(!stage.contains(e.target))lastOut=Date.now()},{passive:true});
+  window.addEventListener('scroll',function(){if(Date.now()<holdUntil&&window.scrollY!==holdY)window.scrollTo(0,holdY)},{passive:true});
   stage.addEventListener('wheel',function(e){
     var d=Math.abs(e.deltaX)>Math.abs(e.deltaY)?e.deltaX:e.deltaY; if(!d) return;
-    var dir=d>0?1:-1;
-    if((dir>0&&a===n-1)||(dir<0&&a===0)) return;
-    e.preventDefault();
-    var now=Date.now(); if(now<lock) return;
+    var now=Date.now(),dir=d>0?1:-1;
+    if(now-lastOut<200&&now-lastIn>250) return;
+    var atEnd=(dir>0&&a===n-1)||(dir<0&&a===0);
+    if(atEnd&&now-lastIn>350) return;
+    e.preventDefault(); lastIn=now; holdY=window.scrollY; holdUntil=now+600;
+    if(atEnd||now<lock) return;
     acc+=d; clearTimeout(reset); reset=setTimeout(function(){acc=0},160);
     if(Math.abs(acc)>=50){go(a+(acc>0?1:-1));acc=0;lock=now+420}
   },{passive:false});
