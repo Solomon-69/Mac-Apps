@@ -22,7 +22,7 @@
   "win": "Memo-windows.zip",
   "icon": "memo/img/icon-light.png",
   "icon_dark": "memo/img/icon-dark.png",
-  "version": "1.3",
+  "version": "1.4",
   "color": "#3552aa"
  },
  {
@@ -57,7 +57,7 @@
   "platforms": "Mac",
   "mac": "Nimbus.dmg",
   "icon": "nimbus/img/icon.png",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "color": "#3f82dc"
  }
 ]
