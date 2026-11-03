@@ -101,6 +101,16 @@ h1 .w{display:inline-block;animation:hword .9s cubic-bezier(.2,.8,.2,1) both;ani
 @media (prefers-reduced-motion:reduce){.dcard{transform:translateX(calc(var(--d)*20px)) scale(calc(1 - var(--ad)*.04))!important}.dots .pill{transition:none!important}}
 .sectitle{font-size:14px;color:var(--ink-2);margin:0 0 16px;font-weight:600}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* scroll-driven strip: cards travel left to right as the page scrolls (wide screens, motion allowed) */
+.hs.on{position:relative}
+.hs.on .hspin{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;flex-direction:column;justify-content:center;margin-inline:calc(50% - 50vw)}
+.hs.on .sectitle{padding-inline:max(32px,calc(50vw - 640px));margin-bottom:22px}
+.hs.on .hstrip{max-width:none;width:max-content;flex-wrap:nowrap;flex-direction:row-reverse;justify-content:flex-start;padding-inline:max(32px,calc(50vw - 640px));margin:0;will-change:transform}
+.hs.on .hstrip>.card{flex:0 0 340px}
+.mo-ready .hs.on .mo-reveal{opacity:1!important;transform:none!important;transition:none!important}
+.hsbar{display:none}
+.hs.on .hsbar{display:block;margin:22px max(32px,calc(50vw - 640px)) 0;height:2px;border-radius:2px;background:var(--line);overflow:hidden}.hs.on .hsbar i{display:block;height:100%;width:100%;background:var(--ink-2);transform-origin:0 50%;transform:scaleX(0)}
 </style>
 <link rel="stylesheet" href="assets/site.css">
 <script src="assets/site.js" defer></script>
@@ -162,8 +172,8 @@ h1 .w{display:inline-block;animation:hword .9s cubic-bezier(.2,.8,.2,1) both;ani
     <div class="deckbar"><button class="arrow" id="dprev" aria-label="Previous app" type="button">&larr;</button><div class="dots" id="ddots"></div><button class="arrow" id="dnext" aria-label="Next app" type="button">&rarr;</button></div>
     <p class="sr" id="dlive" aria-live="polite" style="position:absolute;left:-9999px"></p>
   </div>
-  <p class="sectitle">All apps</p>
-  <div class="grid" style="--cols:4">
+  <section class="hs" id="hs"><div class="hspin"><p class="sectitle">All apps</p>
+  <div class="grid hstrip" style="--cols:4">
     <!-- APPS:START -->
     <div class="card" style="--tint:#c16545"><a class="cardlink" href="ludus/index.html">
       <span class="ico"><picture><source media="(prefers-color-scheme: dark)" srcset="ludus/img/icon-dark.png"><img src="ludus/img/icon-light.png" alt="Ludus icon"></picture></span>
@@ -202,6 +212,7 @@ h1 .w{display:inline-block;animation:hword .9s cubic-bezier(.2,.8,.2,1) both;ani
     </a><div class="dls"><span class="dlh">Download, free</span><a class="dlmac" href="https://github.com/Solomon-69/MenuBarGuard/releases/latest/download/MenuBarGuard.dmg">Mac <span>&darr;</span></a></div></div>
     <!-- APPS:END -->
   </div>
+  <div class="hsbar" aria-hidden="true"><i></i></div></div></section>
   <p class="dl"><a href="download/index.html">All downloads, Mac and Windows</a></p>
   <p class="note">Every download link always gives the newest build. Mac apps are signed and checked by Apple, so they open like any normal app: open the download, drag to Applications, double-click. On Windows, SmartScreen may warn you the first time: click <b>More info</b>, then <b>Run anyway</b>.</p>
   <footer>By Solomon.</footer>
@@ -260,6 +271,29 @@ h1 .w{display:inline-block;animation:hword .9s cubic-bezier(.2,.8,.2,1) both;ani
   stage.addEventListener('dragstart',function(e){e.preventDefault()});
   window.addEventListener('resize',place);
   render();
+})();
+
+(function(){
+  var hs=document.getElementById('hs'); if(!hs) return;
+  var pin=hs.querySelector('.hspin'),strip=hs.querySelector('.hstrip'),bar=hs.querySelector('.hsbar i');
+  var mq=matchMedia('(min-width:900px) and (prefers-reduced-motion:no-preference)'),over=0,on=false,tick=0;
+  function size(){
+    var want=mq.matches;
+    if(!want){hs.classList.remove('on');hs.style.height='';strip.style.transform='';on=false;return}
+    hs.classList.add('on');on=true;
+    over=Math.max(0,strip.scrollWidth-pin.clientWidth);
+    hs.style.height=(over+innerHeight)+'px';upd();
+  }
+  function upd(){
+    tick=0;if(!on)return;
+    var r=hs.getBoundingClientRect(),span=hs.offsetHeight-innerHeight;
+    var p=span>0?Math.min(1,Math.max(0,-r.top/span)):1;
+    strip.style.transform='translate3d('+(-over*(1-p))+'px,0,0)';
+    if(bar)bar.style.transform='scaleX('+p+')';
+  }
+  addEventListener('scroll',function(){if(!tick)tick=requestAnimationFrame(upd)},{passive:true});
+  addEventListener('resize',size);mq.addEventListener&&mq.addEventListener('change',size);
+  addEventListener('load',size);size();
 })();
 </script>
 </body>
