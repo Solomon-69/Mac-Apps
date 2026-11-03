@@ -28,17 +28,17 @@ Version 1.2.
 
 Download: [Mac](https://github.com/Solomon-69/Memo/releases/latest/download/Memo-mac.zip) | [Windows](https://github.com/Solomon-69/Memo/releases/latest/download/Memo-windows.zip)
 
-## Nimbus
+## Weather
 
-<img src="nimbus/img/icon.png" width="72" alt="Nimbus icon">
+<img src="weather/img/icon.png" width="72" alt="Weather icon">
 
 Weather in your menu bar, with a sky that moves. Live forecast from Open-Meteo (free, no account, no tracking), rain alerts, and unlimited saved places.
 
-<img src="nimbus/img/panel-light.png" width="300" alt="Nimbus panel"> <img src="nimbus/img/settings-light.png" width="300" alt="Nimbus settings">
+<img src="weather/img/panel-light.png" width="300" alt="Weather panel"> <img src="weather/img/settings-light.png" width="300" alt="Weather settings">
 
-Version 1.0.6. Release: [v1.0.6](https://github.com/Solomon-69/Nimbus/releases/tag/v1.0.6).
+Version 1.0.6. Release: [v1.0.6](https://github.com/Solomon-69/Weather/releases/tag/v1.0.6).
 
-Download: [Mac (.dmg)](https://github.com/Solomon-69/Nimbus/releases/latest/download/Nimbus.dmg) | [Mac (.zip)](https://github.com/Solomon-69/Nimbus/releases/latest/download/Nimbus-mac.zip)
+Download: [Mac (.dmg)](https://github.com/Solomon-69/Weather/releases/latest/download/Weather.dmg) | [Mac (.zip)](https://github.com/Solomon-69/Weather/releases/latest/download/Weather-mac.zip)
 
 ## Nox
 
@@ -85,4 +85,4 @@ To check that a download has not been changed, compare its SHA-256 fingerprint w
 
 Awayke is based on Sleepless by Adam Boudjemaa (MIT). Ludus uses Leaflet, Pannellum, Panoramax photos and Esri map tiles; see THIRD_PARTY.md in the [Ludus repository](https://github.com/Solomon-69/Ludus) (page: https://solomon-69.github.io/Ludus/). Not affiliated with or endorsed by Apple, Microsoft or the makers of any game or app these resemble; all trademarks belong to their owners.
 
-This page repository only shows the apps. Ludus is all rights reserved; Memo, Nimbus, Nox and Awayke are MIT licensed in their own repositories.
+This page repository only shows the apps. Ludus is all rights reserved; Memo, Weather, Nox and Awayke are MIT licensed in their own repositories.

@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
-# One-line Mac installer for Awayke, Ludus, Memo, Nimbus and Nox. Downloading with curl (not a browser)
+# One-line Mac installer for Awayke, Ludus, Memo, Weather and Nox. Downloading with curl (not a browser)
 # means macOS does not add its "cannot be verified" block, so the app just opens.
 #   curl -fsSL https://solomon-69.github.io/Mac-Apps/download/install.sh | bash -s ludus
-# Apps: awayke  ludus  memo  nimbus  nox.   Remove: rm -rf ~/Applications/<Name>.app
+# Apps: awayke  ludus  memo  weather  nox.   Remove: rm -rf ~/Applications/<Name>.app
 set -euo pipefail
 [ "$(uname -s)" = "Darwin" ] || { echo "This installer is for Mac."; exit 1; }
 KEY="$(echo "${1:-}" | tr '[:upper:]' '[:lower:]')"
 case "$KEY" in
-  awayke) NAME=Awayke ;; ludus) NAME=Ludus ;; memo) NAME=Memo ;; nimbus) NAME=Nimbus ;; nox) NAME=Nox ;;
-  *) echo "Usage: install.sh awayke|ludus|memo|nimbus|nox"; exit 1 ;;
+  awayke) NAME=Awayke ;; ludus) NAME=Ludus ;; memo) NAME=Memo ;; weather|nimbus) NAME=Weather ;; nox) NAME=Nox ;;
+  *) echo "Usage: install.sh awayke|ludus|memo|weather|nox"; exit 1 ;;
 esac
 REPO="Solomon-69/$NAME"
 DEST="${APP_DEST:-$HOME/Applications}"
@@ -33,7 +33,8 @@ APP="$(find "$TMP/x" -maxdepth 2 -name "$NAME.app" -print -quit)"
 [ -n "$APP" ] || { echo "The download had no $NAME.app inside."; exit 1; }
 EXE="$(/usr/libexec/PlistBuddy -c "Print :CFBundleExecutable" "$APP/Contents/Info.plist" 2>/dev/null || echo "$NAME")"
 pkill -x "$EXE" 2>/dev/null || true
-pkill -x "$NAME" 2>/dev/null || true
+# Never "pkill -x Weather": that name is Apple's own Weather app. Ours runs as WeatherBar (Nimbus before).
+if [ "$NAME" = "Weather" ]; then pkill -x Nimbus 2>/dev/null || true; rm -rf "$DEST/Nimbus.app"; else pkill -x "$NAME" 2>/dev/null || true; fi
 rm -rf "$DEST/$NAME.app"
 ditto "$APP" "$DEST/$NAME.app"
 xattr -dr com.apple.quarantine "$DEST/$NAME.app" 2>/dev/null || true

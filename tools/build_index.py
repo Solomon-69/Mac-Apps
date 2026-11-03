@@ -48,6 +48,13 @@ def card(a):
             f'      <span class="go">See {a["name"]} <span>&rarr;</span></span>\n'
             f'    </a><a class="dlmac" href="{rel(a, a["mac"])}">Download for Mac <small>free</small><span>&darr;</span></a></div>')
 
+def deckcard(a):
+    return (f'    <article class="dcard" data-name="{a["name"]}" style="--tint:{tint(a)};--d:0;--ad:0">\n'
+            f'      <span class="ico">{icon(a)}</span>\n'
+            f'      <div class="txt"><h3>{a["name"]}</h3><p>{a["short"]}</p><span class="meta">{a["platforms"]}. Version {a["version"]}. Free.</span>\n'
+            f'      <div class="acts"><a class="p" href="{rel(a, a["mac"])}">Download for Mac</a><a class="s" href="{a["key"]}/index.html">See {a["name"]}</a></div></div>\n'
+            f'    </article>')
+
 def dcard(a):
     ic = a["icon"]
     win = f'\n        <a class="btn alt" href="{rel(a, a["win"])}">Windows <small>{a["win"]}</small><span>&darr;</span></a>' if a.get("win") else ""
@@ -68,6 +75,7 @@ def put(path, start, end, body):
 
 n = len(apps)
 put("index.html", "<!-- APPS:START -->", "<!-- APPS:END -->", "\n".join(card(a) for a in apps))
+put("index.html", "<!-- DECK:START -->", "<!-- DECK:END -->", "\n".join(deckcard(a) for a in apps))
 put("download/index.html", "<!-- APPS:START -->", "<!-- APPS:END -->", "\n".join(dcard(a) for a in apps))
 p = root / "index.html"; s = p.read_text()
 s = re.sub(r"<h1>.*?</h1>", f"<h1>{WORDS.get(n, str(n))} little apps for your Mac.</h1>", s, count=1)

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Mac Apps by Solomon</title>
-<meta name="description" content="Five small, free apps for Mac: Ludus, Memo, Nox, Awayke and Nimbus.">
+<meta name="description" content="Five small, free apps for Mac: Ludus, Memo, Nox, Awayke and Weather.">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" type="image/png" href="memo/img/icon-light.png">
 <style>
@@ -15,9 +15,11 @@ body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 -apple-system
 main{max-width:1280px;margin:0 auto;padding:clamp(40px,8vh,88px) 28px 40px;min-height:100vh;display:flex;flex-direction:column}
 h1{font-size:clamp(34px,6vw,56px);line-height:1.05;letter-spacing:-.03em;margin:0 0 14px}
 .lede{color:var(--ink-2);font-size:19px;max-width:560px;margin:0 0 44px}
-.grid{display:grid;grid-template-columns:repeat(var(--cols,4),minmax(0,1fr));gap:20px;align-items:stretch;flex:1;align-content:center}
-@media(max-width:1100px){.grid{grid-template-columns:repeat(min(var(--cols,4),2),minmax(0,1fr))}}
-@media(max-width:560px){.grid{grid-template-columns:1fr}}
+.grid{--c:var(--cols,4);--gap:20px;display:flex;flex-wrap:wrap;justify-content:center;gap:var(--gap);align-items:stretch}
+.grid>.card{flex:0 0 calc((100% - var(--gap)*(var(--c) - 1))/var(--c));min-width:0}
+@media(max-width:1100px){.grid{--c:min(var(--cols,4),3)}}
+@media(max-width:760px){.grid{--c:min(var(--cols,4),2)}}
+@media(max-width:520px){.grid{--c:1}}
 .card{display:flex;flex-direction:column;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:28px;color:inherit;text-decoration:none;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s}
 .card:hover{transform:translateY(-4px);box-shadow:0 18px 40px -18px rgba(0,0,0,.35)}
 .card:active{transform:scale(.98)}
@@ -37,6 +39,37 @@ h1{font-size:clamp(34px,6vw,56px);line-height:1.05;letter-spacing:-.03em;margin:
 .dl a{color:var(--accent);font-weight:600}
 .note{color:var(--ink-2);font-size:14px;max-width:760px;margin:22px 0 0}.note b{color:var(--ink)}
 footer{color:var(--ink-2);font-size:14px;margin-top:28px}
+
+.deck{margin:0 0 56px;display:flex;flex-direction:column;align-items:center;gap:22px;outline:none}
+.deck:focus-visible .deckstage{outline:2px solid var(--accent);outline-offset:8px;border-radius:28px}
+.deckstage{position:relative;width:min(560px,calc(100% - 64px));height:300px;perspective:1200px;touch-action:pan-y;user-select:none}
+.dcard{position:absolute;inset:0;display:flex;align-items:center;gap:22px;padding:30px;border-radius:24px;background:color-mix(in srgb,var(--tint) 9%,var(--surface));border:1px solid color-mix(in srgb,var(--tint) 28%,var(--line));box-shadow:0 22px 44px -26px color-mix(in srgb,var(--tint) 60%,#000);transform:translateX(calc(var(--d)*64px)) scale(calc(1 - var(--ad)*.07)) rotate(calc(var(--d)*2.2deg));z-index:calc(10 - var(--ad));opacity:calc(1 - var(--ad)*.28);transition:transform .5s cubic-bezier(.2,.8,.2,1),opacity .4s,box-shadow .4s;will-change:transform;cursor:pointer;transform-origin:50% 100%}
+.dcard[data-front]{cursor:grab}
+.dcard[data-hide]{opacity:0;pointer-events:none}
+.deckstage.dragging .dcard[data-front]{transition:none;cursor:grabbing}
+.dcard .ico{flex:none;display:block;width:84px;height:84px}.dcard .ico img{display:block;width:84px;height:84px;border-radius:19px}
+.dcard .txt{display:flex;flex-direction:column;gap:6px;min-width:0}
+.dcard h3{margin:0;font-size:28px;letter-spacing:-.02em;line-height:1.1}
+.dcard p{margin:0;color:var(--ink-2);font-size:16px}
+.dcard .meta{font-size:13px;color:var(--ink-2);opacity:.85}
+.dcard .acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.dcard .acts a{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:12px;font-weight:650;font-size:15px;text-decoration:none;transition:transform .2s cubic-bezier(.2,.8,.2,1)}
+.dcard .acts a:active{transform:scale(.97)}
+.dcard .acts .p{background:var(--tint);color:#fff}
+.dcard .acts .s{color:var(--ink);border:1px solid var(--line)}
+.dcard .txt{transition:opacity .3s}.dcard:not([data-front]) .txt{opacity:0}
+.dcard:not([data-front]) .acts a{pointer-events:none}
+.deckbar{display:flex;align-items:center;gap:14px}
+.deckbar button.arrow{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:18px;cursor:pointer;transition:transform .2s cubic-bezier(.2,.8,.2,1),background .2s}
+.deckbar button.arrow:hover{background:color-mix(in srgb,var(--ink) 6%,var(--surface))}
+.deckbar button.arrow:active{transform:scale(.94)}
+.dots{display:flex;gap:8px}
+.dots button{width:44px;height:44px;border:0;background:none;padding:0;cursor:pointer;display:grid;place-items:center}
+.dots button i{display:block;width:10px;height:10px;border-radius:50%;background:var(--line);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--ink) 25%,transparent);transition:width .3s cubic-bezier(.2,.8,.2,1),background .3s}
+.dots button[aria-current="true"] i{width:26px;border-radius:6px;background:var(--tint)}
+@media(max-width:560px){.deckstage{height:380px;width:calc(100% - 40px)}.dcard{flex-direction:column;align-items:flex-start;gap:14px;padding:24px}.dcard .ico,.dcard .ico img{width:64px;height:64px}.dcard{transform:translateX(calc(var(--d)*30px)) scale(calc(1 - var(--ad)*.07)) rotate(calc(var(--d)*2.2deg))}}
+@media (prefers-reduced-motion:reduce){.dcard{transform:translateX(calc(var(--d)*20px)) scale(calc(1 - var(--ad)*.04))!important}}
+.sectitle{font-size:14px;color:var(--ink-2);margin:0 0 16px;font-weight:600}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 <link rel="stylesheet" href="assets/site.css">
@@ -46,6 +79,40 @@ footer{color:var(--ink-2);font-size:14px;margin-top:28px}
 <main>
   <h1>Five little apps for your Mac.</h1>
   <p class="lede">Free, quiet and made to stay out of your way. Pick one to see what it does and download it.</p>
+  <div class="deck" id="deck" tabindex="0" role="region" aria-roledescription="carousel" aria-label="The apps, one card at a time. Use the arrow keys to switch.">
+    <div class="deckstage" id="deckstage">
+    <!-- DECK:START -->
+    <article class="dcard" data-name="Ludus" style="--tint:#c16545;--d:0;--ad:0">
+      <span class="ico"><picture><source media="(prefers-color-scheme: dark)" srcset="ludus/img/icon-dark.png"><img src="ludus/img/icon-light.png" alt="Ludus icon"></picture></span>
+      <div class="txt"><h3>Ludus</h3><p>45 little games from your menu bar. Works offline.</p><span class="meta">Mac and Windows. Version 1.12.67. Free.</span>
+      <div class="acts"><a class="p" href="https://github.com/Solomon-69/Ludus/releases/latest/download/Ludus.dmg">Download for Mac</a><a class="s" href="ludus/index.html">See Ludus</a></div></div>
+    </article>
+    <article class="dcard" data-name="Memo" style="--tint:#3552aa;--d:0;--ad:0">
+      <span class="ico"><picture><source media="(prefers-color-scheme: dark)" srcset="memo/img/icon-dark.png"><img src="memo/img/icon-light.png" alt="Memo icon"></picture></span>
+      <div class="txt"><h3>Memo</h3><p>Everything you copy, one shortcut away.</p><span class="meta">Mac and Windows. Version 1.4. Free.</span>
+      <div class="acts"><a class="p" href="https://github.com/Solomon-69/Memo/releases/latest/download/Memo.dmg">Download for Mac</a><a class="s" href="memo/index.html">See Memo</a></div></div>
+    </article>
+    <article class="dcard" data-name="Nox" style="--tint:#5a44c3;--d:0;--ad:0">
+      <span class="ico"><img src="nox/img/icon.png" alt="Nox icon"></span>
+      <div class="txt"><h3>Nox</h3><p>One switch for light and dark.</p><span class="meta">Mac and Windows. Version 1.5.3. Free.</span>
+      <div class="acts"><a class="p" href="https://github.com/Solomon-69/Nox/releases/latest/download/Nox.dmg">Download for Mac</a><a class="s" href="nox/index.html">See Nox</a></div></div>
+    </article>
+    <article class="dcard" data-name="Awayke" style="--tint:#e66c0e;--d:0;--ad:0">
+      <span class="ico"><img src="awayke/img/icon.png" alt="Awayke icon"></span>
+      <div class="txt"><h3>Awayke</h3><p>Keeps your MacBook awake with the lid closed.</p><span class="meta">Mac and Windows. Version 1.8.0. Free.</span>
+      <div class="acts"><a class="p" href="https://github.com/Solomon-69/Awayke/releases/latest/download/Awayke.dmg">Download for Mac</a><a class="s" href="awayke/index.html">See Awayke</a></div></div>
+    </article>
+    <article class="dcard" data-name="Weather" style="--tint:#3f82dc;--d:0;--ad:0">
+      <span class="ico"><img src="weather/img/icon.png" alt="Weather icon"></span>
+      <div class="txt"><h3>Weather</h3><p>Weather in your menu bar, with a sky that moves.</p><span class="meta">Mac. Version 1.0.6. Free.</span>
+      <div class="acts"><a class="p" href="https://github.com/Solomon-69/Weather/releases/latest/download/Weather.dmg">Download for Mac</a><a class="s" href="weather/index.html">See Weather</a></div></div>
+    </article>
+    <!-- DECK:END -->
+    </div>
+    <div class="deckbar"><button class="arrow" id="dprev" aria-label="Previous app" type="button">&larr;</button><div class="dots" id="ddots"></div><button class="arrow" id="dnext" aria-label="Next app" type="button">&rarr;</button></div>
+    <p class="sr" id="dlive" aria-live="polite" style="position:absolute;left:-9999px"></p>
+  </div>
+  <p class="sectitle">All apps</p>
   <div class="grid" style="--cols:5">
     <!-- APPS:START -->
     <div class="card" style="--tint:#c16545"><a class="cardlink" href="ludus/index.html">
@@ -68,11 +135,11 @@ footer{color:var(--ink-2);font-size:14px;margin-top:28px}
       <h2>Awayke</h2><p>Keep your MacBook awake with the lid closed. Mac and Windows. Version 1.8.0.</p>
       <span class="go">See Awayke <span>&rarr;</span></span>
     </a><a class="dlmac" href="https://github.com/Solomon-69/Awayke/releases/latest/download/Awayke.dmg">Download for Mac <small>free</small><span>&darr;</span></a></div>
-    <div class="card" style="--tint:#3f82dc"><a class="cardlink" href="nimbus/index.html">
-      <span class="ico"><img src="nimbus/img/icon.png" alt="Nimbus icon"></span>
-      <h2>Nimbus</h2><p>Weather in your menu bar, with a sky that moves. Mac. Version 1.0.6.</p>
-      <span class="go">See Nimbus <span>&rarr;</span></span>
-    </a><a class="dlmac" href="https://github.com/Solomon-69/Nimbus/releases/latest/download/Nimbus.dmg">Download for Mac <small>free</small><span>&darr;</span></a></div>
+    <div class="card" style="--tint:#3f82dc"><a class="cardlink" href="weather/index.html">
+      <span class="ico"><img src="weather/img/icon.png" alt="Weather icon"></span>
+      <h2>Weather</h2><p>Weather in your menu bar, with a sky that moves. Mac. Version 1.0.6.</p>
+      <span class="go">See Weather <span>&rarr;</span></span>
+    </a><a class="dlmac" href="https://github.com/Solomon-69/Weather/releases/latest/download/Weather.dmg">Download for Mac <small>free</small><span>&darr;</span></a></div>
     <!-- APPS:END -->
   </div>
   <p class="dl"><a href="download/index.html">All downloads, Mac and Windows</a></p>
@@ -80,5 +147,38 @@ footer{color:var(--ink-2);font-size:14px;margin-top:28px}
   <footer>By Solomon.</footer>
 
 </main>
+<script>
+(function(){
+  var stage=document.getElementById('deckstage'); if(!stage) return;
+  var cards=[].slice.call(stage.querySelectorAll('.dcard')), n=cards.length, a=0;
+  var dots=document.getElementById('ddots'), live=document.getElementById('dlive'), deck=document.getElementById('deck');
+  cards.forEach(function(c,i){var b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Show '+c.dataset.name);b.style.setProperty('--tint',c.style.getPropertyValue('--tint'));b.innerHTML='<i></i>';b.onclick=function(){go(i)};dots.appendChild(b)});
+  function off(i){var d=((i-a)%n+n)%n; if(d>n/2) d-=n; return d}
+  function render(){
+    cards.forEach(function(c,i){var d=off(i),ad=Math.abs(d);
+      c.style.setProperty('--d',d);c.style.setProperty('--ad',Math.min(ad,3));
+      c.toggleAttribute('data-front',d===0);c.toggleAttribute('data-hide',ad>2);
+      c.setAttribute('aria-hidden',d===0?'false':'true');
+      if(d===0)c.removeAttribute('inert');else c.setAttribute('inert','');});
+    [].forEach.call(dots.children,function(b,i){b.setAttribute('aria-current',i===a?'true':'false')});
+    live.textContent=cards[a].dataset.name+', '+(a+1)+' of '+n;
+  }
+  function go(i){a=((i%n)+n)%n;render()}
+  document.getElementById('dprev').onclick=function(){go(a-1)};
+  document.getElementById('dnext').onclick=function(){go(a+1)};
+  deck.addEventListener('keydown',function(e){if(e.key==='ArrowLeft'){go(a-1);e.preventDefault()}else if(e.key==='ArrowRight'){go(a+1);e.preventDefault()}});
+  var x0=null,dx=0,moved=false;
+  stage.addEventListener('pointerdown',function(e){var c=e.target.closest('.dcard');if(!c)return;x0=e.clientX;dx=0;moved=false;if(c.hasAttribute('data-front')){stage.setPointerCapture(e.pointerId)}});
+  stage.addEventListener('pointermove',function(e){if(x0===null)return;dx=e.clientX-x0;if(Math.abs(dx)>6){moved=true;stage.classList.add('dragging');cards[a].style.transform='translateX('+dx+'px) rotate('+dx/30+'deg)'}});
+  function end(){if(x0===null)return;var was=moved;stage.classList.remove('dragging');cards[a].style.transform='';if(was&&Math.abs(dx)>60){go(a+(dx<0?1:-1))}x0=null;if(was)stage.dataset.swiped='1'}
+  stage.addEventListener('pointerup',end);stage.addEventListener('pointercancel',end);
+  stage.addEventListener('click',function(e){
+    if(stage.dataset.swiped){delete stage.dataset.swiped;e.preventDefault();return}
+    var c=e.target.closest('.dcard');if(c&&!c.hasAttribute('data-front')){e.preventDefault();go(cards.indexOf(c))}
+  },true);
+  stage.addEventListener('dragstart',function(e){e.preventDefault()});
+  render();
+})();
+</script>
 </body>
 </html>
