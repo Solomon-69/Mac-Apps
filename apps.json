@@ -107,5 +107,27 @@
   "shot": "assets/cards/weather-light.png",
   "side": "r",
   "shot_dark": "assets/cards/weather-dark.png"
+ },
+ {
+  "key": "stats",
+  "name": "Stats",
+  "blurb": "How your Mac is doing, in plain words. Live tiles for processor, memory, storage, internet, battery and temperature, right from your menu bar.",
+  "short": "How your Mac is doing, in plain words.",
+  "platforms": "Mac",
+  "mac": "Stats.dmg",
+  "icon": "stats/img/icon.png",
+  "version": "1.0.0",
+  "color": "#454952",
+  "feature": "Your Mac's health, in plain words",
+  "chips": [
+   "Live graphs",
+   "Battery health",
+   "Temperature",
+   "Memory",
+   "Internet speed"
+  ],
+  "shot": "assets/cards/stats-light.png",
+  "side": "r",
+  "shot_dark": "assets/cards/stats-dark.png"
  }
 ]

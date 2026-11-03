@@ -40,6 +40,18 @@ Version 1.1.1. Release: [v1.1.1](https://github.com/Solomon-69/Weather/releases/
 
 Download: [Mac (.dmg)](https://github.com/Solomon-69/Weather/releases/latest/download/Weather.dmg) | [Mac (.zip)](https://github.com/Solomon-69/Weather/releases/latest/download/Weather-mac.zip)
 
+## Stats
+
+<img src="stats/img/icon.png" width="72" alt="Stats icon">
+
+How your Mac is doing, in plain words. Live tiles for processor, memory, storage, internet, battery and temperature, right from your menu bar.
+
+<img src="stats/img/panel-light.png" width="300" alt="Stats panel">
+
+Version 1.0.0. Release: [v1.0.0](https://github.com/Solomon-69/Stats/releases/tag/v1.0.0).
+
+Download: [Mac (.dmg)](https://github.com/Solomon-69/Stats/releases/latest/download/Stats.dmg) | [Mac (.zip)](https://github.com/Solomon-69/Stats/releases/latest/download/Stats-mac.zip)
+
 ## Nox
 
 <img src="nox/img/icon.png" width="72" alt="Nox icon">
@@ -85,4 +97,4 @@ To check that a download has not been changed, compare its SHA-256 fingerprint w
 
 Awayke is based on Sleepless by Adam Boudjemaa (MIT). Ludus uses Leaflet, Pannellum, Panoramax photos and Esri map tiles; see THIRD_PARTY.md in the [Ludus repository](https://github.com/Solomon-69/Ludus) (page: https://solomon-69.github.io/Ludus/). Not affiliated with or endorsed by Apple, Microsoft or the makers of any game or app these resemble; all trademarks belong to their owners.
 
-This page repository only shows the apps. Ludus is all rights reserved; Memo, Weather, Nox and Awayke are MIT licensed in their own repositories.
+This page repository only shows the apps. Ludus is all rights reserved; Memo, Weather, Nox, Stats and Awayke are MIT licensed in their own repositories.
