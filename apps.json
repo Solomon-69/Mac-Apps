@@ -10,7 +10,18 @@
   "icon": "ludus/img/icon-light.png",
   "icon_dark": "ludus/img/icon-dark.png",
   "version": "1.12.67",
-  "color": "#c16545"
+  "color": "#c16545",
+  "feature": "45 games, one click from your menu bar",
+  "chips": [
+   "2048",
+   "Chess",
+   "Snake",
+   "Minefield",
+   "Play online"
+  ],
+  "shot": "ludus/img/home-light.png",
+  "shot_dark": "ludus/img/home-dark.png",
+  "side": "r"
  },
  {
   "key": "memo",
@@ -23,7 +34,16 @@
   "icon": "memo/img/icon-light.png",
   "icon_dark": "memo/img/icon-dark.png",
   "version": "1.4",
-  "color": "#3552aa"
+  "color": "#3552aa",
+  "feature": "Everything you copy, searchable and one shortcut away",
+  "chips": [
+   "Search history",
+   "Pin favourites",
+   "Paste with 1 to 9"
+  ],
+  "shot": "memo/img/hero-panel-light.png",
+  "shot_dark": "memo/img/hero-panel-dark.png",
+  "side": "l"
  },
  {
   "key": "nox",
@@ -35,7 +55,16 @@
   "win": "Nox-windows.zip",
   "icon": "nox/img/icon.png",
   "version": "1.5.3",
-  "color": "#5a44c3"
+  "color": "#5a44c3",
+  "feature": "One click flips your whole Mac between light and dark",
+  "chips": [
+   "Websites follow Mac",
+   "Dark at night",
+   "Smooth fade"
+  ],
+  "shot": "nox/img/panel-light.png",
+  "shot_dark": "nox/img/panel-dark.png",
+  "side": "r"
  },
  {
   "key": "awayke",
@@ -47,7 +76,16 @@
   "win": "Awayke-windows.zip",
   "icon": "awayke/img/icon.png",
   "version": "1.8.0",
-  "color": "#e66c0e"
+  "color": "#e66c0e",
+  "feature": "Close the lid. Your Mac stays awake.",
+  "chips": [
+   "Lid closed",
+   "Auto-off timer",
+   "Low battery stop"
+  ],
+  "shot": "awayke/img/panel-light.png",
+  "shot_dark": "awayke/img/panel-dark.png",
+  "side": "l"
  },
  {
   "key": "weather",
@@ -58,6 +96,15 @@
   "mac": "Weather.dmg",
   "icon": "weather/img/icon.png",
   "version": "1.1.0",
-  "color": "#3f82dc"
+  "color": "#3f82dc",
+  "feature": "The forecast under a sky that moves",
+  "chips": [
+   "Next 12 hours",
+   "Rain",
+   "UV and wind",
+   "7 days"
+  ],
+  "shot": "weather/img/panel-light.png",
+  "side": "r"
  }
 ]

@@ -49,9 +49,22 @@ def card(a):
             f'    </a><a class="dlmac" href="{rel(a, a["mac"])}">Download for Mac <small>free</small><span>&darr;</span></a></div>')
 
 def deckcard(a):
-    return (f'    <article class="dcard" data-name="{a["name"]}" style="--tint:{tint(a)};--d:0;--ad:0">\n'
-            f'      <span class="ico">{icon(a)}</span>\n'
-            f'      <div class="txt"><h3>{a["name"]}</h3><p>{a["short"]}</p><span class="meta">{a["platforms"]}. Version {a["version"]}. Free.</span>\n'
+    if not a.get("shot"):
+        return deckcard_plain(a)
+    dark = a.get("shot_dark")
+    shot = (f'<picture><source media="(prefers-color-scheme: dark)" srcset="{dark}"><img src="{a["shot"]}" alt="{a["name"]} open from the menu bar" loading="lazy"></picture>'
+            if dark else f'<img src="{a["shot"]}" alt="{a["name"]} open from the menu bar" loading="lazy">')
+    chips = "".join(f"<li>{c}</li>" for c in a.get("chips", []))
+    return (f'    <article class="dcard" data-name="{a["name"]}" data-key="{a["key"]}" data-side="{a.get("side","r")}" style="--tint:{tint(a)};--d:0;--ad:0">\n'
+            f'      <div class="txt"><span class="ico">{icon(a)}</span><h3>{a["name"]}</h3><p class="feat">{a["feature"]}</p>\n'
+            f'      <ul class="chips">{chips}</ul>\n'
+            f'      <div class="acts"><a class="p" href="{rel(a, a["mac"])}">Download for Mac</a><a class="s" href="{a["key"]}/index.html">See {a["name"]}</a></div></div>\n'
+            f'      <div class="shot" aria-hidden="false">{shot}</div>\n'
+            f'    </article>')
+
+def deckcard_plain(a):
+    return (f'    <article class="dcard plain" data-name="{a["name"]}" style="--tint:{tint(a)};--d:0;--ad:0">\n'
+            f'      <div class="txt"><span class="ico">{icon(a)}</span><h3>{a["name"]}</h3><p class="feat">{a["short"]}</p>\n'
             f'      <div class="acts"><a class="p" href="{rel(a, a["mac"])}">Download for Mac</a><a class="s" href="{a["key"]}/index.html">See {a["name"]}</a></div></div>\n'
             f'    </article>')
 
@@ -78,9 +91,9 @@ put("index.html", "<!-- APPS:START -->", "<!-- APPS:END -->", "\n".join(card(a) 
 put("index.html", "<!-- DECK:START -->", "<!-- DECK:END -->", "\n".join(deckcard(a) for a in apps))
 put("download/index.html", "<!-- APPS:START -->", "<!-- APPS:END -->", "\n".join(dcard(a) for a in apps))
 p = root / "index.html"; s = p.read_text()
-s = re.sub(r"<h1>.*?</h1>", f"<h1>{WORDS.get(n, str(n))} little apps for your Mac.</h1>", s, count=1)
+s = re.sub(r"<h1>.*?</h1>", "<h1>Little apps for your Mac.</h1>", s, count=1)
 s = re.sub(r'<div class="grid"[^>]*>', f'<div class="grid" style="--cols:{cols(n)}">', s, count=1)
-s = re.sub(r'(<meta name="description" content=")[^"]*', lambda m: m.group(1) + f"{WORDS.get(n, n)} small, free apps for Mac: " + ", ".join(a["name"] for a in apps[:-1]) + f" and {apps[-1]['name']}.", s, count=1)
+s = re.sub(r'(<meta name="description" content=")[^"]*', lambda m: m.group(1) + "Small, free apps for Mac: " + ", ".join(a["name"] for a in apps[:-1]) + f" and {apps[-1]['name']}.", s, count=1)
 p.write_text(s)
 (root / "apps.json").write_text(json.dumps(apps, indent=1))
 print("built", n, "apps,", cols(n), "columns")

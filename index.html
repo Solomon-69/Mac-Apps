@@ -4,9 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Mac Apps by Solomon</title>
-<meta name="description" content="Five small, free apps for Mac: Ludus, Memo, Nox, Awayke and Weather.">
+<meta name="description" content="Small, free apps for Mac: Ludus, Memo, Nox, Awayke and Weather.">
 <meta name="color-scheme" content="light dark">
-<link rel="icon" type="image/png" href="memo/img/icon-light.png">
+<link rel="icon" type="image/png" sizes="48x48" href="assets/favicon-48.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="shortcut icon" href="assets/favicon.ico">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <style>
 :root{--bg:#f4efe6;--surface:#fffcf7;--ink:#201c17;--ink-2:#6b6256;--line:rgba(32,28,23,.10);--accent:#a85432}
 @media (prefers-color-scheme:dark){:root{--bg:#1b1814;--surface:#25211b;--ink:#f3ede3;--ink-2:#a79d8f;--line:rgba(243,237,227,.12);--accent:#e07f57}}
@@ -42,33 +45,42 @@ footer{color:var(--ink-2);font-size:14px;margin-top:28px}
 
 .deck{margin:0 0 56px;display:flex;flex-direction:column;align-items:center;gap:22px;outline:none}
 .deck:focus-visible .deckstage{outline:2px solid var(--accent);outline-offset:8px;border-radius:28px}
-.deckstage{position:relative;width:min(560px,calc(100% - 64px));height:300px;perspective:1200px;touch-action:pan-y;user-select:none}
-.dcard{position:absolute;inset:0;display:flex;align-items:center;gap:22px;padding:30px;border-radius:24px;background:color-mix(in srgb,var(--tint) 9%,var(--surface));border:1px solid color-mix(in srgb,var(--tint) 28%,var(--line));box-shadow:0 22px 44px -26px color-mix(in srgb,var(--tint) 60%,#000);transform:translateX(calc(var(--d)*64px)) scale(calc(1 - var(--ad)*.07)) rotate(calc(var(--d)*2.2deg));z-index:calc(10 - var(--ad));opacity:calc(1 - var(--ad)*.28);transition:transform .5s cubic-bezier(.2,.8,.2,1),opacity .4s,box-shadow .4s;will-change:transform;cursor:pointer;transform-origin:50% 100%}
+.deckstage{position:relative;width:min(840px,calc(100% - 64px));height:400px;perspective:1400px;touch-action:pan-y;user-select:none}
+.dcard{position:absolute;inset:0;display:flex;align-items:stretch;gap:0;padding:0;border-radius:26px;overflow:hidden;background:linear-gradient(135deg,color-mix(in srgb,var(--tint) 14%,var(--surface)),color-mix(in srgb,var(--tint) 4%,var(--surface)) 70%);border:1px solid color-mix(in srgb,var(--tint) 28%,var(--line));box-shadow:0 26px 50px -30px color-mix(in srgb,var(--tint) 65%,#000);transform:translateX(calc(var(--d)*70px)) scale(calc(1 - var(--ad)*.07)) rotate(calc(var(--d)*2.2deg));z-index:calc(10 - var(--ad));opacity:calc(1 - var(--ad)*.28);transition:transform .55s cubic-bezier(.2,.8,.2,1),opacity .4s;will-change:transform;cursor:pointer;transform-origin:50% 100%}
 .dcard[data-front]{cursor:grab}
 .dcard[data-hide]{opacity:0;pointer-events:none}
 .deckstage.dragging .dcard[data-front]{transition:none;cursor:grabbing}
-.dcard .ico{flex:none;display:block;width:84px;height:84px}.dcard .ico img{display:block;width:84px;height:84px;border-radius:19px}
-.dcard .txt{display:flex;flex-direction:column;gap:6px;min-width:0}
-.dcard h3{margin:0;font-size:28px;letter-spacing:-.02em;line-height:1.1}
-.dcard p{margin:0;color:var(--ink-2);font-size:16px}
-.dcard .meta{font-size:13px;color:var(--ink-2);opacity:.85}
+.dcard .txt{flex:1 1 55%;display:flex;flex-direction:column;justify-content:center;gap:10px;min-width:0;padding:34px 8px 34px 38px;transition:opacity .3s}
+.dcard[data-side="l"]{flex-direction:row-reverse}
+.dcard[data-side="l"] .txt{padding:34px 38px 34px 8px}
+.dcard:not([data-front]) .txt,.dcard:not([data-front]) .shot{opacity:.0}
+.dcard .ico{display:block;width:52px;height:52px}.dcard .ico img{display:block;width:52px;height:52px;border-radius:12px}
+.dcard h3{margin:0;font-size:15px;font-weight:650;color:var(--ink-2);letter-spacing:0}
+.dcard .feat{margin:0;font-size:clamp(24px,3vw,32px);line-height:1.12;letter-spacing:-.025em;font-weight:700;color:var(--ink);text-wrap:balance}
+.dcard.plain .feat{font-size:20px;font-weight:600}
+.chips{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin:2px 0 0;padding:0}
+.chips li{font-size:13px;line-height:1;padding:7px 11px;border-radius:999px;background:color-mix(in srgb,var(--tint) 13%,transparent);color:var(--ink);border:1px solid color-mix(in srgb,var(--tint) 24%,transparent)}
 .dcard .acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
 .dcard .acts a{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:12px;font-weight:650;font-size:15px;text-decoration:none;transition:transform .2s cubic-bezier(.2,.8,.2,1)}
 .dcard .acts a:active{transform:scale(.97)}
 .dcard .acts .p{background:var(--tint);color:#fff}
 .dcard .acts .s{color:var(--ink);border:1px solid var(--line)}
-.dcard .txt{transition:opacity .3s}.dcard:not([data-front]) .txt{opacity:0}
 .dcard:not([data-front]) .acts a{pointer-events:none}
-.deckbar{display:flex;align-items:center;gap:14px}
+.dcard .shot{flex:0 0 40%;position:relative;overflow:hidden;transition:opacity .3s}
+.dcard .shot img{position:absolute;left:50%;top:34px;width:78%;height:auto;transform:translateX(-50%) rotate(3deg);transform-origin:50% 0;border-radius:18px;filter:drop-shadow(0 22px 26px color-mix(in srgb,var(--tint) 45%,rgba(0,0,0,.35)));pointer-events:none}
+.dcard[data-side="l"] .shot img{transform:translateX(-50%) rotate(-3deg)}
+.dcard[data-key="memo"] .shot img,.dcard[data-key="nox"] .shot img,.dcard[data-key="awayke"] .shot img{width:84%}
+.deckbar{display:flex;align-items:center;gap:10px}
 .deckbar button.arrow{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:18px;cursor:pointer;transition:transform .2s cubic-bezier(.2,.8,.2,1),background .2s}
 .deckbar button.arrow:hover{background:color-mix(in srgb,var(--ink) 6%,var(--surface))}
 .deckbar button.arrow:active{transform:scale(.94)}
-.dots{display:flex;gap:8px}
-.dots button{width:44px;height:44px;border:0;background:none;padding:0;cursor:pointer;display:grid;place-items:center}
-.dots button i{display:block;width:10px;height:10px;border-radius:50%;background:var(--line);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--ink) 25%,transparent);transition:width .3s cubic-bezier(.2,.8,.2,1),background .3s}
-.dots button[aria-current="true"] i{width:26px;border-radius:6px;background:var(--tint)}
-@media(max-width:560px){.deckstage{height:380px;width:calc(100% - 40px)}.dcard{flex-direction:column;align-items:flex-start;gap:14px;padding:24px}.dcard .ico,.dcard .ico img{width:64px;height:64px}.dcard{transform:translateX(calc(var(--d)*30px)) scale(calc(1 - var(--ad)*.07)) rotate(calc(var(--d)*2.2deg))}}
-@media (prefers-reduced-motion:reduce){.dcard{transform:translateX(calc(var(--d)*20px)) scale(calc(1 - var(--ad)*.04))!important}}
+.dots{position:relative;display:flex}
+.dots button{position:relative;width:34px;height:44px;border:0;background:none;padding:0;cursor:pointer}
+.dots button::before{content:"";position:absolute;left:50%;top:50%;width:8px;height:8px;margin:-4px 0 0 -4px;border-radius:50%;background:color-mix(in srgb,var(--ink) 22%,transparent)}
+.dots .pill{position:absolute;top:50%;height:8px;margin-top:-4px;border-radius:4px;background:var(--pt,var(--accent));pointer-events:none;transition:left .42s cubic-bezier(.3,.9,.3,1) .09s,right .42s cubic-bezier(.3,.9,.3,1),background .4s}
+.dots.back .pill{transition:left .42s cubic-bezier(.3,.9,.3,1),right .42s cubic-bezier(.3,.9,.3,1) .09s,background .4s}
+@media(max-width:620px){.deckstage{height:470px;width:calc(100% - 32px)}.dcard,.dcard[data-side="l"]{flex-direction:column}.dcard .txt,.dcard[data-side="l"] .txt{flex:0 0 auto;padding:24px 22px 0}.dcard .ico,.dcard .ico img{width:44px;height:44px}.dcard .shot{flex:1 1 auto;min-height:150px}.dcard .shot img,.dcard[data-key] .shot img{width:62%;top:8px}.dcard{transform:translateX(calc(var(--d)*30px)) scale(calc(1 - var(--ad)*.07)) rotate(calc(var(--d)*2.2deg))}.dcard .feat{font-size:22px}}
+@media (prefers-reduced-motion:reduce){.dcard{transform:translateX(calc(var(--d)*20px)) scale(calc(1 - var(--ad)*.04))!important}.dots .pill{transition:none!important}}
 .sectitle{font-size:14px;color:var(--ink-2);margin:0 0 16px;font-weight:600}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
@@ -77,35 +89,40 @@ footer{color:var(--ink-2);font-size:14px;margin-top:28px}
 </head>
 <body>
 <main>
-  <h1>Five little apps for your Mac.</h1>
+  <h1>Little apps for your Mac.</h1>
   <p class="lede">Free, quiet and made to stay out of your way. Pick one to see what it does and download it.</p>
   <div class="deck" id="deck" tabindex="0" role="region" aria-roledescription="carousel" aria-label="The apps, one card at a time. Use the arrow keys to switch.">
     <div class="deckstage" id="deckstage">
     <!-- DECK:START -->
-    <article class="dcard" data-name="Ludus" style="--tint:#c16545;--d:0;--ad:0">
-      <span class="ico"><picture><source media="(prefers-color-scheme: dark)" srcset="ludus/img/icon-dark.png"><img src="ludus/img/icon-light.png" alt="Ludus icon"></picture></span>
-      <div class="txt"><h3>Ludus</h3><p>45 little games from your menu bar. Works offline.</p><span class="meta">Mac and Windows. Version 1.12.67. Free.</span>
+    <article class="dcard" data-name="Ludus" data-key="ludus" data-side="r" style="--tint:#c16545;--d:0;--ad:0">
+      <div class="txt"><span class="ico"><picture><source media="(prefers-color-scheme: dark)" srcset="ludus/img/icon-dark.png"><img src="ludus/img/icon-light.png" alt="Ludus icon"></picture></span><h3>Ludus</h3><p class="feat">45 games, one click from your menu bar</p>
+      <ul class="chips"><li>2048</li><li>Chess</li><li>Snake</li><li>Minefield</li><li>Play online</li></ul>
       <div class="acts"><a class="p" href="https://github.com/Solomon-69/Ludus/releases/latest/download/Ludus.dmg">Download for Mac</a><a class="s" href="ludus/index.html">See Ludus</a></div></div>
+      <div class="shot" aria-hidden="false"><picture><source media="(prefers-color-scheme: dark)" srcset="ludus/img/home-dark.png"><img src="ludus/img/home-light.png" alt="Ludus open from the menu bar" loading="lazy"></picture></div>
     </article>
-    <article class="dcard" data-name="Memo" style="--tint:#3552aa;--d:0;--ad:0">
-      <span class="ico"><picture><source media="(prefers-color-scheme: dark)" srcset="memo/img/icon-dark.png"><img src="memo/img/icon-light.png" alt="Memo icon"></picture></span>
-      <div class="txt"><h3>Memo</h3><p>Everything you copy, one shortcut away.</p><span class="meta">Mac and Windows. Version 1.4. Free.</span>
+    <article class="dcard" data-name="Memo" data-key="memo" data-side="l" style="--tint:#3552aa;--d:0;--ad:0">
+      <div class="txt"><span class="ico"><picture><source media="(prefers-color-scheme: dark)" srcset="memo/img/icon-dark.png"><img src="memo/img/icon-light.png" alt="Memo icon"></picture></span><h3>Memo</h3><p class="feat">Everything you copy, searchable and one shortcut away</p>
+      <ul class="chips"><li>Search history</li><li>Pin favourites</li><li>Paste with 1 to 9</li></ul>
       <div class="acts"><a class="p" href="https://github.com/Solomon-69/Memo/releases/latest/download/Memo.dmg">Download for Mac</a><a class="s" href="memo/index.html">See Memo</a></div></div>
+      <div class="shot" aria-hidden="false"><picture><source media="(prefers-color-scheme: dark)" srcset="memo/img/hero-panel-dark.png"><img src="memo/img/hero-panel-light.png" alt="Memo open from the menu bar" loading="lazy"></picture></div>
     </article>
-    <article class="dcard" data-name="Nox" style="--tint:#5a44c3;--d:0;--ad:0">
-      <span class="ico"><img src="nox/img/icon.png" alt="Nox icon"></span>
-      <div class="txt"><h3>Nox</h3><p>One switch for light and dark.</p><span class="meta">Mac and Windows. Version 1.5.3. Free.</span>
+    <article class="dcard" data-name="Nox" data-key="nox" data-side="r" style="--tint:#5a44c3;--d:0;--ad:0">
+      <div class="txt"><span class="ico"><img src="nox/img/icon.png" alt="Nox icon"></span><h3>Nox</h3><p class="feat">One click flips your whole Mac between light and dark</p>
+      <ul class="chips"><li>Websites follow Mac</li><li>Dark at night</li><li>Smooth fade</li></ul>
       <div class="acts"><a class="p" href="https://github.com/Solomon-69/Nox/releases/latest/download/Nox.dmg">Download for Mac</a><a class="s" href="nox/index.html">See Nox</a></div></div>
+      <div class="shot" aria-hidden="false"><picture><source media="(prefers-color-scheme: dark)" srcset="nox/img/panel-dark.png"><img src="nox/img/panel-light.png" alt="Nox open from the menu bar" loading="lazy"></picture></div>
     </article>
-    <article class="dcard" data-name="Awayke" style="--tint:#e66c0e;--d:0;--ad:0">
-      <span class="ico"><img src="awayke/img/icon.png" alt="Awayke icon"></span>
-      <div class="txt"><h3>Awayke</h3><p>Keeps your MacBook awake with the lid closed.</p><span class="meta">Mac and Windows. Version 1.8.0. Free.</span>
+    <article class="dcard" data-name="Awayke" data-key="awayke" data-side="l" style="--tint:#e66c0e;--d:0;--ad:0">
+      <div class="txt"><span class="ico"><img src="awayke/img/icon.png" alt="Awayke icon"></span><h3>Awayke</h3><p class="feat">Close the lid. Your Mac stays awake.</p>
+      <ul class="chips"><li>Lid closed</li><li>Auto-off timer</li><li>Low battery stop</li></ul>
       <div class="acts"><a class="p" href="https://github.com/Solomon-69/Awayke/releases/latest/download/Awayke.dmg">Download for Mac</a><a class="s" href="awayke/index.html">See Awayke</a></div></div>
+      <div class="shot" aria-hidden="false"><picture><source media="(prefers-color-scheme: dark)" srcset="awayke/img/panel-dark.png"><img src="awayke/img/panel-light.png" alt="Awayke open from the menu bar" loading="lazy"></picture></div>
     </article>
-    <article class="dcard" data-name="Weather" style="--tint:#3f82dc;--d:0;--ad:0">
-      <span class="ico"><img src="weather/img/icon.png" alt="Weather icon"></span>
-      <div class="txt"><h3>Weather</h3><p>Weather in your menu bar, with a sky that moves.</p><span class="meta">Mac. Version 1.1.0. Free.</span>
+    <article class="dcard" data-name="Weather" data-key="weather" data-side="r" style="--tint:#3f82dc;--d:0;--ad:0">
+      <div class="txt"><span class="ico"><img src="weather/img/icon.png" alt="Weather icon"></span><h3>Weather</h3><p class="feat">The forecast under a sky that moves</p>
+      <ul class="chips"><li>Next 12 hours</li><li>Rain</li><li>UV and wind</li><li>7 days</li></ul>
       <div class="acts"><a class="p" href="https://github.com/Solomon-69/Weather/releases/latest/download/Weather.dmg">Download for Mac</a><a class="s" href="weather/index.html">See Weather</a></div></div>
+      <div class="shot" aria-hidden="false"><img src="weather/img/panel-light.png" alt="Weather open from the menu bar" loading="lazy"></div>
     </article>
     <!-- DECK:END -->
     </div>
@@ -152,7 +169,9 @@ footer{color:var(--ink-2);font-size:14px;margin-top:28px}
   var stage=document.getElementById('deckstage'); if(!stage) return;
   var cards=[].slice.call(stage.querySelectorAll('.dcard')), n=cards.length, a=0;
   var dots=document.getElementById('ddots'), live=document.getElementById('dlive'), deck=document.getElementById('deck');
-  cards.forEach(function(c,i){var b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Show '+c.dataset.name);b.style.setProperty('--tint',c.style.getPropertyValue('--tint'));b.innerHTML='<i></i>';b.onclick=function(){go(i)};dots.appendChild(b)});
+  var btns=cards.map(function(c,i){var b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Show '+c.dataset.name);b.onclick=function(){go(i)};dots.appendChild(b);return b});
+  var pill=document.createElement('span');pill.className='pill';dots.appendChild(pill);
+  function place(){var b=btns[a],x=b.offsetLeft+(b.offsetWidth-8)/2;pill.style.left=x+'px';pill.style.right=(dots.offsetWidth-x-8)+'px';pill.style.setProperty('--pt',cards[a].style.getPropertyValue('--tint'))}
   function off(i){var d=((i-a)%n+n)%n; if(d>n/2) d-=n; return d}
   function render(){
     cards.forEach(function(c,i){var d=off(i),ad=Math.abs(d);
@@ -160,13 +179,25 @@ footer{color:var(--ink-2);font-size:14px;margin-top:28px}
       c.toggleAttribute('data-front',d===0);c.toggleAttribute('data-hide',ad>2);
       c.setAttribute('aria-hidden',d===0?'false':'true');
       if(d===0)c.removeAttribute('inert');else c.setAttribute('inert','');});
-    [].forEach.call(dots.children,function(b,i){b.setAttribute('aria-current',i===a?'true':'false')});
+    btns.forEach(function(b,i){b.setAttribute('aria-current',i===a?'true':'false')});
     live.textContent=cards[a].dataset.name+', '+(a+1)+' of '+n;
+    place();
   }
-  function go(i){a=((i%n)+n)%n;render()}
+  function go(i){var t=((i%n)+n)%n;dots.classList.toggle('back',t<a);a=t;render()}
   document.getElementById('dprev').onclick=function(){go(a-1)};
   document.getElementById('dnext').onclick=function(){go(a+1)};
   deck.addEventListener('keydown',function(e){if(e.key==='ArrowLeft'){go(a-1);e.preventDefault()}else if(e.key==='ArrowRight'){go(a+1);e.preventDefault()}});
+  /* scroll wheel / trackpad: horizontal swipe or vertical wheel over the deck switches cards; at the ends the page scrolls on as normal */
+  var acc=0,lock=0,reset=0;
+  stage.addEventListener('wheel',function(e){
+    var d=Math.abs(e.deltaX)>Math.abs(e.deltaY)?e.deltaX:e.deltaY; if(!d) return;
+    var dir=d>0?1:-1;
+    if((dir>0&&a===n-1)||(dir<0&&a===0)) return;
+    e.preventDefault();
+    var now=Date.now(); if(now<lock) return;
+    acc+=d; clearTimeout(reset); reset=setTimeout(function(){acc=0},160);
+    if(Math.abs(acc)>=50){go(a+(acc>0?1:-1));acc=0;lock=now+420}
+  },{passive:false});
   var x0=null,dx=0,moved=false;
   stage.addEventListener('pointerdown',function(e){var c=e.target.closest('.dcard');if(!c)return;x0=e.clientX;dx=0;moved=false;if(c.hasAttribute('data-front')){stage.setPointerCapture(e.pointerId)}});
   stage.addEventListener('pointermove',function(e){if(x0===null)return;dx=e.clientX-x0;if(Math.abs(dx)>6){moved=true;stage.classList.add('dragging');cards[a].style.transform='translateX('+dx+'px) rotate('+dx/30+'deg)'}});
@@ -177,6 +208,7 @@ footer{color:var(--ink-2);font-size:14px;margin-top:28px}
     var c=e.target.closest('.dcard');if(c&&!c.hasAttribute('data-front')){e.preventDefault();go(cards.indexOf(c))}
   },true);
   stage.addEventListener('dragstart',function(e){e.preventDefault()});
+  window.addEventListener('resize',place);
   render();
 })();
 </script>
