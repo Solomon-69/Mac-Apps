@@ -46,7 +46,7 @@ footer{color:var(--ink-2);font-size:14px;margin-top:28px}
 .hicons{display:flex;gap:10px;margin:0 0 26px;flex-wrap:wrap}
 .hicons button{all:unset;cursor:pointer;width:44px;height:44px;border-radius:11px;display:block;transition:transform .45s cubic-bezier(.2,.8,.2,1),filter .3s;animation:hpop .7s cubic-bezier(.2,.9,.25,1.15) both;animation-delay:var(--hd)}
 .hicons img{width:44px;height:44px;border-radius:11px;display:block;box-shadow:0 8px 18px -10px rgba(0,0,0,.6)}
-.hicons button:hover{transform:translateY(-4px)}.hicons button::after{content:"";position:absolute;left:50%;bottom:-8px;width:16px;height:2px;margin-left:-8px;border-radius:2px;background:var(--ink);opacity:0;transform:scaleX(.2);transition:opacity .3s,transform .45s cubic-bezier(.34,1.4,.5,1)}.hicons button{position:relative}.hicons button[aria-current="true"]::after{opacity:.7;transform:none}.hicons img{transition:box-shadow .35s}
+.hicons button:hover{transform:translateY(-4px)}.hicons button{position:relative}.hicons img{transition:transform .5s cubic-bezier(.34,1.4,.5,1)}.hicons button[aria-current="true"] img{transform:rotate(8deg)}@media (prefers-reduced-motion:reduce){.hicons img{transition:none}}
 .hicons button:focus-visible{outline:2px solid var(--ink-3);outline-offset:3px}
 @keyframes hpop{from{opacity:0;transform:translateY(14px) scale(.6)}}
 h1 .w{display:inline-block;animation:hword .9s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i)*70ms + 200ms)}
