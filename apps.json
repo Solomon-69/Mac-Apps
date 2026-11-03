@@ -116,7 +116,7 @@
   "platforms": "Mac and Windows",
   "mac": "Stats.dmg",
   "icon": "stats/img/icon.png",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "color": "#5e6878",
   "feature": "Your Mac's health, in plain words",
   "chips": [
