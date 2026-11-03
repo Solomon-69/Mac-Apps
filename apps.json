@@ -130,5 +130,28 @@
   "side": "r",
   "shot_dark": "assets/cards/stats-dark.png",
   "win": "Stats-windows.zip"
+ },
+ {
+  "key": "menubarguard",
+  "name": "Menu Bar Guard",
+  "repo": "MenuBarGuard",
+  "blurb": "Keeps every menu bar icon visible on a notch MacBook by politely quitting the lowest-priority apps you allow, and bringing them back when there is room.",
+  "short": "Every menu bar icon stays visible.",
+  "platforms": "Mac",
+  "mac": "MenuBarGuard.dmg",
+  "icon": "menubarguard/img/icon.png",
+  "icon_dark": "menubarguard/img/icon-dark.png",
+  "version": "1.0.1",
+  "color": "#2f8f86",
+  "feature": "Never lose an icon behind the notch",
+  "chips": [
+   "Priority list",
+   "Padlock",
+   "Auto-quit, opt-in",
+   "Restores apps"
+  ],
+  "shot": "assets/cards/menubarguard-light.png",
+  "shot_dark": "assets/cards/menubarguard-dark.png",
+  "side": "l"
  }
 ]

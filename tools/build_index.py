@@ -10,7 +10,7 @@ WORDS = {1: "One", 2: "Two", 3: "Three", 4: "Four", 5: "Five", 6: "Six", 7: "Sev
 
 def version(a):
     try:
-        t = subprocess.run(["gh", "release", "view", "-R", f"{OWNER}/{a['name']}", "--json", "tagName", "-q", ".tagName"], capture_output=True, text=True, timeout=30).stdout.strip()
+        t = subprocess.run(["gh", "release", "view", "-R", f"{OWNER}/{a.get('repo', a['name'])}", "--json", "tagName", "-q", ".tagName"], capture_output=True, text=True, timeout=30).stdout.strip()
         if t: return t.lstrip("v")
     except Exception: pass
     return a.get("version", "")
@@ -41,7 +41,7 @@ def icon(a):
         return f'<picture><source media="(prefers-color-scheme: dark)" srcset="{a["icon_dark"]}">{img}</picture>'
     return img
 
-def rel(a, f): return f"https://github.com/{OWNER}/{a['name']}/releases/latest/download/{f}"
+def rel(a, f): return f"https://github.com/{OWNER}/{a.get('repo', a['name'])}/releases/latest/download/{f}"
 
 def dls(a, cls):
     m = f'<a class="{cls}" href="{rel(a, a["mac"])}">Mac <span>&darr;</span></a>'

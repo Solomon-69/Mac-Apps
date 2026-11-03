@@ -64,6 +64,7 @@ JOBS = {
  "nox":    [("nox/img/panel-light.png", "light"), ("nox/img/panel-dark.png", "dark")],
  "awayke": [("awayke/img/panel-light.png", "light"), ("awayke/img/panel-dark.png", "dark")],
  "stats":  [("stats/img/panel-light.png", "light"), ("stats/img/panel-dark.png", "dark")],
+ "menubarguard": [("menubarguard/img/panel-light.png", "light"), ("menubarguard/img/panel-dark.png", "dark")],
  "weather": [("weather/img/panel-light.png", "light"), ("weather/img/panel-dark.png", "dark")],
 }
 if __name__ == "__main__":
