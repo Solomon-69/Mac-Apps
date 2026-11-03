@@ -116,7 +116,7 @@ section[style*="max-width:720px"] { margin: 0 auto !important; padding: 0 20px !
 
 /* menu bar the dropdown arrow points to */
 .shot.mac-only { display: grid; justify-items: center; }
-.mbar { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 14px; height: 36px; padding: 0 16px; margin: 0 auto -2px; border-radius: 13px; background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.66)); border: 1px solid rgba(255,255,255,.75); box-shadow: 0 1px 0 rgba(255,255,255,.9) inset, 0 10px 24px -12px rgba(40,28,16,.32), 0 1px 3px rgba(40,28,16,.10); color: var(--ink); }
+.mbar { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 14px; height: 36px; padding: 0 16px; margin: 0 auto 2px; border-radius: 13px; background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.66)); border: 1px solid rgba(255,255,255,.75); box-shadow: 0 1px 0 rgba(255,255,255,.9) inset, 0 10px 24px -12px rgba(40,28,16,.32), 0 1px 3px rgba(40,28,16,.10); color: var(--ink); }
 @media (prefers-color-scheme: dark) { .mbar { background: linear-gradient(180deg, rgba(60,60,66,.92), rgba(40,40,46,.78)); border-color: rgba(255,255,255,.12); box-shadow: 0 1px 0 rgba(255,255,255,.1) inset, 0 12px 26px -12px rgba(0,0,0,.7); } }
 .mbar .side { display: flex; align-items: center; gap: 16px; color: color-mix(in srgb, var(--ink) 78%, transparent); }
 .mbar .side.l { justify-content: flex-end; }

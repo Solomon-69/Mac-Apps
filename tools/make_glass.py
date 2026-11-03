@@ -38,7 +38,7 @@ def arrow_pts(cx, base, aw, ah):
 def popover(src, dst, dark):
     im = body(Image.open(root/src).convert("RGBA"))
     w, h = im.size
-    r = round(w * .05); ah = round(w * .032); aw = round(ah * 3.1)
+    r = round(w * .05); ah = round(w * .046); aw = round(ah * 2.9)
     big = im.resize((w*SS, h*SS), Image.LANCZOS).convert("RGB")
     top = np.array(big)[SS*4:SS*10, w*SS//2 - aw*SS//2: w*SS//2 + aw*SS//2]
     col = tuple(int(v) for v in np.median(top.reshape(-1, 3), 0))
