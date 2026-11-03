@@ -36,7 +36,7 @@ Weather in your menu bar, with a sky that moves. Live forecast from Open-Meteo (
 
 <img src="nimbus/img/panel-light.png" width="300" alt="Nimbus panel"> <img src="nimbus/img/settings-light.png" width="300" alt="Nimbus settings">
 
-Version 1.0.2. Release: [v1.0.2](https://github.com/Solomon-69/Nimbus/releases/tag/v1.0.2).
+Version 1.0.3. Release: [v1.0.3](https://github.com/Solomon-69/Nimbus/releases/tag/v1.0.3).
 
 Download: [Mac (.dmg)](https://github.com/Solomon-69/Nimbus/releases/latest/download/Nimbus.dmg) | [Mac (.zip)](https://github.com/Solomon-69/Nimbus/releases/latest/download/Nimbus-mac.zip)
 
