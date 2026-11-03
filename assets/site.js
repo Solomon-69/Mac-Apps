@@ -45,6 +45,14 @@
       if (targets.length) {
         root.classList.add('mo-ready');
         targets.forEach(function (el, i) { el.classList.add('mo-reveal'); el.style.setProperty('--mo-d', Math.min(i % 6, 5) * 70 + 'ms'); });
+        // grid cards fade in left to right within their own row (column order), not by page-wide index
+        var gridCards = [].slice.call(document.querySelectorAll('.grid > *'));
+        function stagger() {
+          var rows = {};
+          gridCards.forEach(function (el) { var t = Math.round(el.offsetTop); (rows[t] = rows[t] || []).push(el); });
+          Object.keys(rows).forEach(function (k) { rows[k].sort(function (a, b) { return a.offsetLeft - b.offsetLeft; }).forEach(function (el, c) { el.style.setProperty('--mo-d', c * 90 + 'ms'); }); });
+        }
+        if (gridCards.length) { stagger(); addEventListener('resize', stagger); }
         var io = new IntersectionObserver(function (es) {
           es.forEach(function (e) { e.target.classList.toggle('mo-in', e.isIntersecting); });
         }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
