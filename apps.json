@@ -105,6 +105,7 @@
    "7 days"
   ],
   "shot": "assets/cards/weather-light.png",
-  "side": "r"
+  "side": "r",
+  "shot_dark": "assets/cards/weather-dark.png"
  }
 ]

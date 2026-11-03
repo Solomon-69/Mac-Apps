@@ -43,7 +43,7 @@ JOBS = {
  "memo":   [("memo/img/hero-panel-light.png","light",False),("memo/img/hero-panel-dark.png","dark",False)],
  "nox":    [("nox/img/panel-light.png","light",False),("nox/img/panel-dark.png","dark",False)],
  "awayke": [("awayke/img/panel-light.png","light",True),("awayke/img/panel-dark.png","dark",True)],
- "weather":[("weather/img/panel-light.png","light",True)],
+ "weather":[("weather/img/panel-light.png","light",True),("weather/img/panel-dark.png","dark",True)],
 }
 if __name__ == "__main__":
     (root/"assets/cards").mkdir(parents=True, exist_ok=True)
