@@ -131,6 +131,7 @@
   .glow { position: absolute; inset: -6% -10%; pointer-events: none; background: radial-gradient(closest-side, var(--accent-soft), transparent 92%); -webkit-mask-image: radial-gradient(closest-side, #000 55%, transparent 100%); mask-image: radial-gradient(closest-side, #000 55%, transparent 100%); }
   .shot { position: relative; width: min(560px, 100%); margin: 0 auto; animation: pop .9s var(--spring) both .2s; }
   .shot img { width: 100%; height: auto; border-radius: 14px; box-shadow: var(--shadow-lift); }
+  .shot img[src*="pop-"], .pv img { border-radius: 0; box-shadow: none; filter: drop-shadow(0 24px 30px rgba(0,0,0,.32)); backface-visibility: hidden; }
   .shot .float { display: block; animation: float 7s ease-in-out infinite 1.2s; }
   @keyframes pop { from { opacity: 0; transform: scale(.94) translateY(10px); } to { opacity: 1; transform: none; } }
   @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
