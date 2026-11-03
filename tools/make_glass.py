@@ -29,21 +29,21 @@ def bez(p0, p1, p2, p3, n=40):
 def arrow_pts(cx, base, aw, ah):
     """macOS popover arrow: concave sides that flare into the body, soft round tip."""
     L, R, tip = np.array([cx-aw/2, base]), np.array([cx+aw/2, base]), np.array([cx, base-ah])
-    left = bez(L, L + [aw*.22, 0], tip + [-aw*.12, ah*.18], tip + [-aw*.045, ah*.03])
-    cap = bez(tip + [-aw*.045, ah*.03], tip + [-aw*.015, -ah*.02], tip + [aw*.015, -ah*.02], tip + [aw*.045, ah*.03], 16)
-    right = bez(tip + [aw*.045, ah*.03], tip + [aw*.12, ah*.18], R - [aw*.22, 0], R)
+    left = bez(L, L + [aw*.20, 0], tip + [-aw*.16, ah*.30], tip + [-aw*.075, ah*.06])
+    cap = bez(tip + [-aw*.075, ah*.06], tip + [-aw*.03, -ah*.04], tip + [aw*.03, -ah*.04], tip + [aw*.075, ah*.06], 16)
+    right = bez(tip + [aw*.075, ah*.06], tip + [aw*.16, ah*.30], R - [aw*.20, 0], R)
     return [tuple(p) for p in np.vstack([left, cap, right])]
 
 
 def popover(src, dst, dark):
     im = body(Image.open(root/src).convert("RGBA"))
     w, h = im.size
-    r = round(w * .05); ah = round(w * .046); aw = round(ah * 2.9)
+    r = round(w * .05); ah = round(w * .036); aw = round(ah * 3.6)
     big = im.resize((w*SS, h*SS), Image.LANCZOS).convert("RGB")
     top = np.array(big)[SS*4:SS*10, w*SS//2 - aw*SS//2: w*SS//2 + aw*SS//2]
     col = tuple(int(v) for v in np.median(top.reshape(-1, 3), 0))
     H = (h + ah) * SS; W = w * SS; o = ah * SS
-    canvas = Image.new("RGB", (W, H), col); canvas.paste(big, (0, o))
+    canvas = Image.new("RGB", (W, H), col); canvas.paste(big.crop((0, SS*3, W, SS*3+1)).resize((W, o + SS*3)), (0, 0)); canvas.paste(big, (0, o))
     mask = Image.new("L", (W, H), 0); d = ImageDraw.Draw(mask)
     d.rounded_rectangle((0, o, W-1, H-1), r*SS, fill=255)
     d.polygon(arrow_pts(W/2, o + SS*2, aw*SS, ah*SS + SS*2), fill=255)
