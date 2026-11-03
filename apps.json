@@ -33,7 +33,7 @@
   "win": "Memo-windows.zip",
   "icon": "memo/img/icon-light.png",
   "icon_dark": "memo/img/icon-dark.png",
-  "version": "1.5.2",
+  "version": "1.5.3",
   "color": "#3552aa",
   "feature": "Everything you copy, searchable and one shortcut away",
   "chips": [
