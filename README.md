@@ -36,7 +36,7 @@ Weather in your menu bar, with a sky that moves. Live forecast from Open-Meteo (
 
 <img src="weather/img/panel-light.png" width="300" alt="Weather panel"> <img src="weather/img/settings-light.png" width="300" alt="Weather settings">
 
-Version 1.1.1. Release: [v1.1.1](https://github.com/Solomon-69/Weather/releases/tag/v1.1.1).
+Version 1.1.2. Release: [v1.1.1](https://github.com/Solomon-69/Weather/releases/tag/v1.1.1).
 
 Download: [Mac (.dmg)](https://github.com/Solomon-69/Weather/releases/latest/download/Weather.dmg) | [Mac (.zip)](https://github.com/Solomon-69/Weather/releases/latest/download/Weather-mac.zip)
 
