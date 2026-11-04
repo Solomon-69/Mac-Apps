@@ -287,7 +287,8 @@ html{scrollbar-width:none}html::-webkit-scrollbar,body::-webkit-scrollbar{displa
     var h=pin.offsetHeight;if(h>innerHeight-24){hs.classList.add('tight');h=pin.offsetHeight}
     var lr=cards[cards.length-1].getBoundingClientRect(),sr=strip.getBoundingClientRect();
     over=Math.max(0,Math.round(lr.right-sr.left+g-pin.clientWidth));
-    top=Math.max(8,Math.round((innerHeight-h)/2));
+    var extra=Math.max(0,document.documentElement.scrollHeight-(hs.getBoundingClientRect().bottom+scrollY));
+    top=Math.max(8,Math.round((innerHeight-h)/2),innerHeight-h-extra+2);
     pin.style.setProperty('--hst',top+'px');
     span=over*K;hs.style.height=(span+h)+'px';upd();
   }
