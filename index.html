@@ -38,12 +38,12 @@ h1{font-size:clamp(34px,6vw,56px);line-height:1.05;letter-spacing:-.03em;margin:
 .card .dls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:8px}.card .dls .dlh{flex:1 0 100%;font-size:12.5px;color:var(--ink-3);font-weight:500}.card .dls .dlmac{flex:1 1 0;margin-top:0}.card .dlmac{display:flex;justify-content:space-between;align-items:center;min-height:44px;padding:0 16px;margin-top:8px;border-radius:12px;background:transparent;color:var(--ink);border:1px solid var(--line);font-weight:600;font-size:14px;white-space:nowrap;gap:8px;text-decoration:none;transition:transform .2s cubic-bezier(.2,.8,.2,1),background .2s}.card .dlmac:hover{background:color-mix(in srgb,var(--ink) 6%,transparent)}
 .card .dlmac span{transition:transform .25s}.card .dlmac:hover span{transform:translateY(2px)}.card .dlmac:active{transform:scale(.97)}
 .card .dlmac small{font-weight:500;opacity:.7}
-.dl{margin-top:36px}
+.dl{margin-top:20px}
 .dl a{color:var(--accent);font-weight:600}
-.note{color:var(--ink-2);font-size:14px;max-width:760px;margin:22px 0 0}.note b{color:var(--ink)}
-footer{color:var(--ink-2);font-size:14px;margin-top:28px}
+.note{color:var(--ink-2);font-size:14px;max-width:760px;margin:14px 0 0}.note b{color:var(--ink)}
+footer{color:var(--ink-2);font-size:14px;margin-top:18px}
 
-.hicons{display:flex;gap:10px;margin:0 0 26px;flex-wrap:wrap}
+.hicons{display:flex;gap:10px;margin:0 0 18px;flex-wrap:wrap}
 .hicons button{all:unset;cursor:pointer;width:44px;height:44px;border-radius:11px;display:block;transition:transform .45s cubic-bezier(.2,.8,.2,1),filter .3s;animation:hpop .7s cubic-bezier(.2,.9,.25,1.15) both;animation-delay:var(--hd)}
 .hicons img{width:44px;height:44px;border-radius:11px;display:block;box-shadow:0 8px 18px -10px rgba(0,0,0,.6)}
 .hicons button:hover{transform:translateY(-4px)}.hicons button{position:relative}.hicons img{transition:transform .5s cubic-bezier(.34,1.4,.5,1)}.hicons button[aria-current="true"] img{transform:rotate(8deg)}@media (prefers-reduced-motion:reduce){.hicons img{transition:none}}
@@ -56,7 +56,7 @@ h1 .w{display:inline-block;animation:hword .9s cubic-bezier(.2,.8,.2,1) both;ani
 @keyframes hrise{from{opacity:0;transform:translateY(40px)}}
 .aura{position:absolute;left:50%;top:44%;width:min(900px,120vw);height:520px;transform:translate(-50%,-50%);pointer-events:none;z-index:-1;background:radial-gradient(closest-side,color-mix(in srgb,var(--at,#888) 30%,transparent),transparent 70%);filter:blur(30px);opacity:.75;transition:background .8s}
 @media (prefers-reduced-motion:reduce){.hicons button,h1 .w,.lede,.deck{animation:none}}
-.deck{margin:0 0 56px;display:flex;flex-direction:column;align-items:center;gap:22px;outline:none}
+.deck{margin:0 0 22px;display:flex;flex-direction:column;align-items:center;gap:22px;outline:none}
 .deck:focus-visible .deckstage{outline:none}
 .deckstage{position:relative;width:min(680px,calc(100% - 64px));height:400px;perspective:1400px;touch-action:pan-y;user-select:none}
 .dcard{position:absolute;inset:0;display:flex;align-items:stretch;gap:0;padding:0;border-radius:26px;overflow:hidden;background:linear-gradient(135deg,color-mix(in srgb,var(--tint) 14%,var(--surface)),color-mix(in srgb,var(--tint) 4%,var(--surface)) 70%);border:1px solid var(--line);box-shadow:0 30px 60px -34px rgba(0,0,0,.55);transform:translateX(calc(var(--d)*70px)) scale(calc(1 - var(--ad)*.07)) rotate(calc(var(--d)*2.2deg));z-index:calc(10 - var(--ad));opacity:calc(1 - var(--ad)*.28);transition:transform .55s cubic-bezier(.2,.8,.2,1),opacity .4s;will-change:transform;cursor:pointer;transform-origin:50% 100%}
@@ -104,7 +104,7 @@ h1 .w{display:inline-block;animation:hword .9s cubic-bezier(.2,.8,.2,1) both;ani
 
 /* scroll-driven strip: cards travel left to right as the page scrolls (wide screens, motion allowed) */
 .hs.on{position:relative}
-.hs.on .hspin{position:sticky;top:var(--hst,0px);overflow:hidden;display:flex;flex-direction:column;padding-block:28px;margin-inline:calc(50% - 50vw)}
+.hs.on .hspin{position:sticky;top:var(--hst,0px);overflow:hidden;display:flex;flex-direction:column;padding-block:12px;margin-inline:calc(50% - 50vw)}
 .hs.on .sectitle{padding-inline:max(32px,calc(50vw - 640px));margin-bottom:22px}
 .hs.on .hstrip{max-width:none;width:max-content;flex-wrap:nowrap;flex-direction:row;justify-content:flex-start;padding-inline:max(32px,calc(50vw - 640px));margin:0;will-change:transform}
 .hs.on .hstrip>.card{flex:0 0 340px;will-change:transform}
