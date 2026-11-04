@@ -275,8 +275,10 @@ h1 .w{display:inline-block;animation:hword .9s cubic-bezier(.2,.8,.2,1) both;ani
   var pin=hs.querySelector('.hspin'),strip=hs.querySelector('.hstrip'),cards=[].slice.call(strip.children);
   var mq=matchMedia('(min-width:900px) and (prefers-reduced-motion:no-preference)'),over=0,on=false,tick=0,top=0;
   function size(){
-    if(!mq.matches){hs.classList.remove('on');hs.style.height='';pin.style.removeProperty('--hst');strip.style.transform='';cards.forEach(function(c){c.style.transform=''});on=false;return}
+    if(!mq.matches){hs.classList.remove('on');hs.style.height='';pin.style.removeProperty('--hst');strip.style.transform='';cards.forEach(function(c){c.style.transform='';c.style.flex=''});on=false;return}
     hs.classList.add('on');on=true;
+    var cs=getComputedStyle(strip),g=parseFloat(cs.paddingLeft)||32,gap=parseFloat(cs.columnGap)||20,w=Math.floor((pin.clientWidth-2*g-3*gap)/4);
+    cards.forEach(function(c){c.style.flex='0 0 '+w+'px'});
     over=Math.max(0,strip.scrollWidth-pin.clientWidth);
     var h=pin.offsetHeight;top=Math.max(0,Math.round((innerHeight-h)/2));
     pin.style.setProperty('--hst',top+'px');
