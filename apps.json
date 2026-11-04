@@ -9,7 +9,7 @@
   "win": "Ludus-windows.zip",
   "icon": "ludus/img/icon-light.png",
   "icon_dark": "ludus/img/icon-dark.png",
-  "version": "1.12.67",
+  "version": "1.12.68",
   "color": "#c16545",
   "feature": "45 games, one click from your menu bar",
   "chips": [
