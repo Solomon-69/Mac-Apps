@@ -141,7 +141,7 @@
   "mac": "MenuBarGuard.dmg",
   "icon": "menubarguard/img/icon.png",
   "icon_dark": "menubarguard/img/icon-dark.png",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "color": "#2f8f86",
   "feature": "Never lose an icon behind the notch",
   "chips": [
