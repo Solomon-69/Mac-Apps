@@ -141,7 +141,7 @@
   "mac": "Roomy.dmg",
   "icon": "roomy/img/icon.png",
   "icon_dark": "roomy/img/icon-dark.png",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "color": "#2f8f86",
   "feature": "Never lose an icon behind the notch",
   "chips": [
