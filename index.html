@@ -14,6 +14,7 @@
 :root{--bg:#f4efe6;--surface:#fffcf7;--ink:#201c17;--ink-2:#6b6256;--line:rgba(32,28,23,.10);--accent:#a85432}
 @media (prefers-color-scheme:dark){:root{--bg:#1b1814;--surface:#25211b;--ink:#f3ede3;--ink-2:#a79d8f;--line:rgba(243,237,227,.12);--accent:#e07f57}}
 *{box-sizing:border-box}
+html,body{overscroll-behavior:none}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
 main{max-width:1280px;margin:0 auto;padding:clamp(40px,8vh,88px) 28px 40px;min-height:100vh;display:flex;flex-direction:column}
 h1{font-size:clamp(34px,6vw,56px);line-height:1.05;letter-spacing:-.03em;margin:0 0 14px}
@@ -104,7 +105,7 @@ h1 .w{display:inline-block;animation:hword .9s cubic-bezier(.2,.8,.2,1) both;ani
 .dots.back .pill{transition:left .42s cubic-bezier(.3,.9,.3,1),right .42s cubic-bezier(.3,.9,.3,1) .09s,background .4s}
 @media(max-width:620px){.deckstage{height:470px;width:calc(100% - 32px)}.dcard,.dcard[data-side="l"]{flex-direction:column}.dcard .txt,.dcard[data-side="l"] .txt{flex:0 0 auto;padding:24px 22px 0}.dcard .ico,.dcard .ico img{width:44px;height:44px}.dcard .shot{flex:1 1 auto;min-height:150px}.dcard .shot img,.dcard[data-key] .shot img{width:62%;top:8px}.dcard{transform:translateX(calc(var(--d)*30px)) scale(calc(1 - var(--ad)*.07)) rotate(calc(var(--d)*2.2deg))}.dcard .feat{font-size:22px}}
 @media (prefers-reduced-motion:reduce){.dcard{transform:translateX(calc(var(--d)*20px)) scale(calc(1 - var(--ad)*.04))!important}.dots .pill{transition:none!important}}
-.sectitle{font-size:14px;color:var(--ink-2);margin:0 0 16px;font-weight:600}
+.sectitle{scroll-margin-top:40px;padding-top:56px;font-size:14px;color:var(--ink-2);margin:0 0 16px;font-weight:600}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 <link rel="stylesheet" href="assets/site.css">
@@ -240,17 +241,17 @@ h1 .w{display:inline-block;animation:hword .9s cubic-bezier(.2,.8,.2,1) both;ani
   /* wheel / trackpad over the deck switches cards and never moves the page. Only after the last card (or before the first) does a fresh scroll gesture pass through to the page. */
   var acc=0,lock=0,reset=0,lastOut=0,lastIn=0,holdY=0,holdUntil=0;
   window.addEventListener('wheel',function(e){if(!stage.contains(e.target))lastOut=Date.now()},{passive:true});
-  window.addEventListener('scroll',function(){if(Date.now()<holdUntil&&window.scrollY!==holdY)window.scrollTo(0,holdY)},{passive:true});
+  
   stage.addEventListener('wheel',function(e){
     var d=Math.abs(e.deltaX)>Math.abs(e.deltaY)?e.deltaX:e.deltaY; if(!d) return;
     var now=Date.now(),dir=d>0?1:-1;
-    if(now-lastOut<200&&now-lastIn>250) return;
+    if(now-lastOut<120&&now-lastIn>150) return;
     var atEnd=(dir>0&&a===n-1)||(dir<0&&a===0);
     if(atEnd&&now>=lock) return;
-    e.preventDefault(); lastIn=now; holdY=window.scrollY; holdUntil=now+250;
+    e.preventDefault(); lastIn=now;
     if(atEnd||now<lock) return;
     acc+=d; clearTimeout(reset); reset=setTimeout(function(){acc=0},160);
-    if(Math.abs(acc)>=50){go(a+(acc>0?1:-1));acc=0;lock=now+420}
+    if(Math.abs(acc)>=50){go(a+(acc>0?1:-1));acc=0;lock=now+260}
   },{passive:false});
   var x0=null,dx=0,moved=false;
   stage.addEventListener('pointerdown',function(e){var c=e.target.closest('.dcard');if(!c)return;x0=e.clientX;dx=0;moved=false;stage._pid=e.pointerId});
