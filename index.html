@@ -108,6 +108,7 @@ h1 .w{display:inline-block;animation:hword .9s cubic-bezier(.2,.8,.2,1) both;ani
 .hs.on .sectitle{padding-inline:max(32px,calc(50vw - 640px));margin-bottom:22px}
 .hs.on .hstrip{max-width:none;width:max-content;flex-wrap:nowrap;flex-direction:row;justify-content:flex-start;padding-inline:max(32px,calc(50vw - 640px));margin:0;will-change:transform}
 .hs.on .hstrip>.card{flex:0 0 340px;will-change:transform}
+@media (min-width:900px) and (max-height:780px){.hs.on .card .cardlink>p{display:none}.hs.on .card{padding-block:18px}}
 .mo-ready .hs.on .mo-reveal{opacity:1!important;transform:none!important;transition:none!important}
 </style>
 <link rel="stylesheet" href="assets/site.css">
@@ -279,8 +280,11 @@ h1 .w{display:inline-block;animation:hword .9s cubic-bezier(.2,.8,.2,1) both;ani
     hs.classList.add('on');on=true;
     var cs=getComputedStyle(strip),g=parseFloat(cs.paddingLeft)||32,gap=parseFloat(cs.columnGap)||20,w=Math.floor((pin.clientWidth-2*g-3*gap)/4);
     cards.forEach(function(c){c.style.flex='0 0 '+w+'px'});
-    over=Math.max(0,strip.scrollWidth-pin.clientWidth);
-    var h=pin.offsetHeight;top=Math.max(0,Math.round((innerHeight-h)/2));
+    strip.style.transform='';
+    var lr=cards[cards.length-1].getBoundingClientRect(),sr=strip.getBoundingClientRect();
+    over=Math.max(0,Math.round(lr.right-sr.left+g-pin.clientWidth));
+    var h=pin.offsetHeight,ft=document.querySelector('footer'),extra=ft?Math.max(0,ft.getBoundingClientRect().bottom-hs.getBoundingClientRect().bottom):0;
+    top=Math.max(8,Math.min(Math.round((innerHeight-h)/2),innerHeight-h-extra-12));
     pin.style.setProperty('--hst',top+'px');
     hs.style.height=(over+h)+'px';upd();
   }
@@ -293,7 +297,7 @@ h1 .w{display:inline-block;animation:hword .9s cubic-bezier(.2,.8,.2,1) both;ani
   }
   addEventListener('scroll',function(){if(!tick)tick=requestAnimationFrame(upd)},{passive:true});
   addEventListener('resize',size);mq.addEventListener&&mq.addEventListener('change',size);
-  addEventListener('load',size);size();
+  addEventListener('load',size);size();setTimeout(size,700);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(size);
 })();
 </script>
 </body>
