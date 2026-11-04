@@ -75,7 +75,7 @@
   "mac": "Awayke.dmg",
   "win": "Awayke-windows.zip",
   "icon": "awayke/img/icon.png",
-  "version": "1.8.0",
+  "version": "1.8.1",
   "color": "#e66c0e",
   "feature": "Close the lid. Your Mac stays awake.",
   "chips": [
