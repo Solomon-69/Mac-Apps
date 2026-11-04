@@ -3,7 +3,7 @@
 Usage: python3 tools/sync_pages.py [key ...]   (default: all)"""
 import re, shutil, subprocess, sys, pathlib, tempfile
 root = pathlib.Path(__file__).resolve().parent.parent
-APPS = {"ludus": "Ludus", "memo": "Memo", "nox": "Nox", "awayke": "Awayke", "weather": "Weather", "stats": "Stats", "menubarguard": "MenuBarGuard"}
+APPS = {"ludus": "Ludus", "memo": "Memo", "nox": "Nox", "awayke": "Awayke", "weather": "Weather", "stats": "Stats", "roomy": "Roomy"}
 SITE = "https://solomon-69.github.io/Mac-Apps/"
 work = pathlib.Path(tempfile.mkdtemp(prefix="pages-"))
 def sh(*a, cwd=None): return subprocess.run(a, cwd=cwd, check=True, capture_output=True, text=True).stdout

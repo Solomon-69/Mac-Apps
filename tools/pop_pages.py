@@ -3,7 +3,7 @@
 import re, pathlib, sys
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 from make_glass import popover, root
-APPS = ["weather", "stats", "memo", "nox", "awayke", "ludus", "menubarguard"]
+APPS = ["weather", "stats", "memo", "nox", "awayke", "ludus", "roomy"]
 done = {}
 for k in APPS:
     p = root/k/"index.html"; h = p.read_text()

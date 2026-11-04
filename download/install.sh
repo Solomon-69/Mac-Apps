@@ -2,13 +2,13 @@
 # One-line Mac installer for Awayke, Ludus, Memo, Weather, Nox and Stats. Downloading with curl (not a browser)
 # means macOS does not add its "cannot be verified" block, so the app just opens.
 #   curl -fsSL https://solomon-69.github.io/Mac-Apps/download/install.sh | bash -s ludus
-# Apps: awayke  ludus  memo  weather  nox  stats  menubarguard.   Remove: rm -rf ~/Applications/<Name>.app
+# Apps: awayke  ludus  memo  weather  nox  stats  roomy.   Remove: rm -rf ~/Applications/<Name>.app
 set -euo pipefail
 [ "$(uname -s)" = "Darwin" ] || { echo "This installer is for Mac."; exit 1; }
 KEY="$(echo "${1:-}" | tr '[:upper:]' '[:lower:]')"
 case "$KEY" in
-  awayke) NAME=Awayke ;; ludus) NAME=Ludus ;; memo) NAME=Memo ;; weather|nimbus) NAME=Weather ;; nox) NAME=Nox ;; stats) NAME=Stats ;; menubarguard) NAME=MenuBarGuard ;;
-  *) echo "Usage: install.sh awayke|ludus|memo|weather|nox|stats|menubarguard"; exit 1 ;;
+  awayke) NAME=Awayke ;; ludus) NAME=Ludus ;; memo) NAME=Memo ;; weather|nimbus) NAME=Weather ;; nox) NAME=Nox ;; stats) NAME=Stats ;; roomy|menubarguard) NAME=Roomy ;;
+  *) echo "Usage: install.sh awayke|ludus|memo|weather|nox|stats|roomy"; exit 1 ;;
 esac
 REPO="Solomon-69/$NAME"
 DEST="${APP_DEST:-$HOME/Applications}"
