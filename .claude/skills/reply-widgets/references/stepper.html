@@ -1,0 +1,100 @@
+<h2 class="sr-only">Interactive numbered step-by-step guide with back and next buttons and arrow key support.</h2>
+<style>
+.wrap{padding:2px 2px 6px}
+.card{background:transparent;border:0;border-radius:24px;padding:14px 8px 8px;outline:none}
+.nodes{display:flex;align-items:center;margin:0 40px 22px 0}
+.nd{width:32px!important;height:32px!important;min-width:32px;border-radius:50%!important;flex:none;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:500;border:2px solid var(--border-stronger);color:var(--text-secondary);background:var(--surface-2);cursor:pointer;padding:0;transition:background .25s,border-color .25s,color .25s,box-shadow .25s}
+.nd:hover{background:rgba(120,120,120,.12)}
+.nd:active{background:rgba(120,120,120,.2)}
+.nd.done{background:#378ADD!important;border-color:#378ADD!important;color:#fff!important}
+.nd.done:hover{background:#2f7bc8}
+.nd.cur{background:#378ADD!important;border-color:#378ADD!important;color:#fff!important;box-shadow:0 0 0 5px rgba(55,138,221,.2)}
+.ln{flex:1;display:flex;gap:2px;margin:0 7px;align-items:center}
+.ln i{flex:1;height:4px;border-radius:2px;background:var(--border-stronger);transition:background .28s}
+.ln i.on{background:#378ADD}
+.bw{position:relative}
+.num{font-size:12px;color:var(--text-secondary);margin:0 0 4px;letter-spacing:.02em}
+.ttl{font-size:20px;font-weight:500;margin:0 0 8px;line-height:1.3}
+ul{margin:0 0 12px;padding:0;list-style:none;display:flex;flex-direction:column;gap:4px}
+li{display:flex;gap:10px;align-items:flex-start;font-size:15px;color:var(--text-secondary);line-height:1.5;padding:6px 10px;margin:0 -10px;border-radius:12px;cursor:default;transition:background .2s}
+li:before{content:"";flex:none;width:6px;height:6px;border-radius:50%;background:#378ADD;margin-top:9px}
+li:hover{background:rgba(120,120,120,.05)}
+li:active{background:rgba(120,120,120,.09)}
+.code{background:rgba(120,120,120,.04);border:0!important;border-radius:14px;padding:10px 14px;font-family:var(--font-mono);font-size:13px;margin:0 0 4px;min-height:20px;display:flex;justify-content:space-between;align-items:center;gap:10px;transition:background .2s}
+.code:hover{background:rgba(120,120,120,.065)}
+.code:active{background:rgba(120,120,120,.1)}
+.cp{width:30px;height:30px;border-radius:10px!important;padding:0;display:inline-flex;align-items:center;justify-content:center;font-size:16px;flex:none;border:0!important;background:transparent;transition:background .2s}
+.cp:hover{background:rgba(120,120,120,.1)}
+.cp:active{background:rgba(120,120,120,.16)}
+.foot{display:flex;justify-content:flex-end;gap:10px;align-items:center;margin-top:16px}
+.foot button.pill{border-radius:999px!important;padding:0 22px;height:42px;display:inline-flex;align-items:center;gap:8px;font-size:15px;border:0!important;box-shadow:none!important;background:rgba(120,120,120,.06)!important;transition:background .2s,opacity .2s}
+.foot button.pill:hover{background:rgba(120,120,120,.2)!important}
+.foot button.pill:active{background:rgba(120,120,120,.3)!important}
+.foot button.pill.off{opacity:0;pointer-events:none}
+a{color:var(--text-accent,#185FA5);text-decoration:underline;text-underline-offset:2px;cursor:pointer}
+a:hover{opacity:.75}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="wrap"><div class="card" id="c" tabindex="0">
+<div class="nodes" id="nodes"></div>
+<div class="bw" id="bw"><div id="bi"></div></div>
+<div class="foot"><button class="pill" id="bk" aria-label="Back"><i class="ti ti-arrow-left"></i>Back</button><button class="pill" id="nx" aria-label="Next">Next<i class="ti ti-arrow-right"></i></button></div>
+</div></div>
+
+<script>
+var S=[
+{t:"Open Safari",b:["Click the Safari icon in your Dock.","Or run this in Terminal to open it."],c:"open -a Safari"},
+{t:"Open the View menu",b:["Look at the very top of your screen.","Click View in the menu bar."]},
+{t:"Untick the option",b:["Click Always Show Toolbar in Full Screen.","The tick next to it should disappear."]},
+{t:"Check it worked",b:["Press Control + Command + F to go full screen.","Move the mouse away from the top edge.","The bar should slide up and hide."]}
+];
+var n=S.length,N=6,STEP=46,LAG=10,i=0,pend=[];
+var nodes=document.getElementById('nodes'),bi=document.getElementById('bi'),bw=document.getElementById('bw'),bk=document.getElementById('bk'),nx=document.getElementById('nx'),card=document.getElementById('c');
+var nd=[],ln=[];
+for(var k=0;k<n;k++){var b=document.createElement('button');b.className='nd';b.textContent=k+1;b.setAttribute('aria-label','Go to step '+(k+1));(function(k){b.onclick=function(){go(k)}})(k);nodes.appendChild(b);nd.push(b);
+if(k<n-1){var l=document.createElement('div');l.className='ln';for(var j=0;j<N;j++)l.appendChild(document.createElement('i'));nodes.appendChild(l);ln.push(l);}}
+function later(fn,ms){var o={fn:fn,done:0};o.t=setTimeout(function(){o.done=1;fn()},ms);pend.push(o)}
+function flush(){pend.forEach(function(o){if(!o.done){clearTimeout(o.t);o.done=1;o.fn()}});pend=[]}
+function lk(t){return t.replace(/(?<![@\w.\/-])(https?:\/\/[^\s<)]*[^\s<).,;:!?]|[a-z0-9][a-z0-9-]*(?:\.[a-z0-9-]+)*\.(?:fr|com|org|net|gov|io|co|uk|dev|edu|eu|ai)(?![a-z0-9-])(?:\/(?:[^\s<)]*[^\s<).,;:!?])?)?)/gi,function(u){var h=/^https?:/i.test(u)?u:'https://'+u;return '<a href="'+h+'" target="_blank" rel="noopener noreferrer">'+u+'</a>'})}
+function html(s){var h='<div class="num">Step '+(i+1)+' of '+n+'</div><div class="ttl">'+s.t+'</div><ul>';
+s.b.forEach(function(x){h+='<li><span>'+lk(x)+'</span></li>'});h+='</ul>';
+if(s.c)h+='<div class="code"><span>'+(/^\S+$/.test(s.c)?lk(s.c):s.c)+'</span><button class="cp" data-c="'+s.c+'" aria-label="Copy command"><i class="ti ti-copy"></i></button></div>';return h;}
+var KEY='stp:'+S.map(function(x){return x.t}).join('|');
+function load(){try{var v=localStorage.getItem(KEY);return v==null?0:Math.min(n-1,Math.max(0,+v||0))}catch(e){return 0}}
+function save(){try{localStorage.setItem(KEY,String(i))}catch(e){}}
+function mark(from,to,first){
+var fwd=to>from,st=STEP/Math.max(1,Math.abs(to-from));
+nd.forEach(function(e,k){var d=0;
+if(!first){
+if(fwd){if(k>from&&k<=to)d=(k-from)*N*st+LAG;}
+else{if(k>to&&k<from)d=(from-k)*N*st;else if(k==to)d=(from-to)*N*st+LAG;}}
+var cls='nd'+(k<to?' done':k==to?' cur':'');
+if(d==0){e.className=cls;}
+else later(function(){e.className=cls;if(k==to)e.animate([{transform:'scale(1)',boxShadow:'0 0 0 5px rgba(55,138,221,.2)'},{transform:'scale(1.035)',boxShadow:'0 0 0 6.5px rgba(55,138,221,.25)',offset:.45},{transform:'scale(1)',boxShadow:'0 0 0 5px rgba(55,138,221,.2)'}],{duration:480,easing:'cubic-bezier(.3,1,.4,1)'})},d);});
+ln.forEach(function(l,k){var segs=l.children,on=k<to;
+for(var j=0;j<N;j++){var s=segs[j],d=0;
+if(!first&&((fwd&&k>=from&&k<to)||(!fwd&&k>=to&&k<from))){
+if(fwd)d=((k-from)*N+j)*st;else d=((from-1-k)*N+(N-1-j))*st;
+s.style.transitionDelay=d+'ms';
+s.animate([{transform:'scaleY(1)'},{transform:'scaleY(2.2)',offset:.45},{transform:'scaleY(1)'}],{duration:300,delay:d,easing:'ease-in-out'});
+}else s.style.transitionDelay='0ms';
+s.classList.toggle('on',on);}});
+bk.classList.toggle('off',to==0);nx.classList.toggle('off',to==n-1);}
+function go(t,first){if(t<0||t>=n||(t==i&&!first))return;flush();var from=i,dir=t>i?1:-1;i=t;if(!first)save();
+var h0=bw.offsetHeight;bi.innerHTML=html(S[i]);mark(from,i,first);
+if(first)return;
+bw.style.height='auto';var h1=bw.offsetHeight;bw.style.overflow='hidden';
+var a=bw.animate([{height:h0+'px'},{height:h1+'px'}],{duration:340,easing:'cubic-bezier(.3,1,.4,1)'});
+a.onfinish=function(){bw.style.overflow='';bw.style.height=''};
+bi.animate([{opacity:0},{opacity:1}],{duration:340});bi.animate([{transform:'translateX('+(dir*20)+'px)'},{transform:'none'}],{duration:340,easing:'cubic-bezier(.3,1,.4,1)'});}
+bk.onclick=function(){go(i-1)};nx.onclick=function(){go(i+1)};
+function cpy(t,c){var ok=false;try{var a=document.createElement('textarea');a.value=t;a.setAttribute('readonly','');a.style.cssText='position:fixed;top:0;left:0;width:1px;height:1px;opacity:0';document.body.appendChild(a);a.focus();a.select();a.setSelectionRange(0,t.length);ok=document.execCommand('copy');a.remove()}catch(x){}
+function show(s){c.innerHTML=s?'<i class="ti ti-check"></i>':'<span style="font-size:12px;font-family:var(--font-sans);white-space:nowrap">Press ⌘C</span>';if(!s){var sp=c.parentNode.querySelector('.u')||c.parentNode.querySelector('span');if(sp){var r=document.createRange();r.selectNodeContents(sp);var g=getSelection();g.removeAllRanges();g.addRange(r)}}setTimeout(function(){c.innerHTML='<i class="ti ti-copy"></i>'},s?1400:4000)}
+if(ok){show(true);try{navigator.clipboard.writeText(t).catch(function(){})}catch(x){}return}
+try{navigator.clipboard.writeText(t).then(function(){show(true)},function(){show(false)})}catch(x){show(false)}}
+card.addEventListener('click',function(e){var c=e.target.closest('.cp');if(!c)return;cpy(c.dataset.c,c)});
+document.addEventListener('keydown',function(e){if(e.key=='ArrowRight')go(i+1);else if(e.key=='ArrowLeft')go(i-1);else return;e.preventDefault();});
+card.addEventListener('mousedown',function(){card.focus({preventScroll:true})});
+go(load(),true);
+</script>

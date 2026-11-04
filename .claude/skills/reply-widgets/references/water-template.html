@@ -1,0 +1,31 @@
+<h2 class="sr-only">Claude water use for a period, with one everyday comparison and a comparison to the average.</h2>
+<style>
+.w{border-radius:18px;padding:14px;background:linear-gradient(180deg,#1f3555 0%,#2c4a72 55%,#3a5d8a 100%);color:#fff;font-family:inherit}
+.hd{text-align:center;margin:0 0 10px}.hd b{display:block;font-size:15px}.hd span{font-size:12px;opacity:.7}
+.g{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.k{border-radius:16px;padding:12px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(8px)}
+.k.f{grid-column:1/3}
+.l{font-size:12px;opacity:.75}.v{font-size:22px;font-weight:600;margin:2px 0}.s{font-size:12px;opacity:.75}
+.bar{height:6px;border-radius:3px;background:rgba(255,255,255,.2);margin-top:8px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;border-radius:3px;background:linear-gradient(90deg,#4aa3ff,#f0a04b);transition:width .9s cubic-bezier(.2,.8,.2,1)}
+</style>
+<div class="w">
+ <div class="hd"><b id="tt">Water used this week</b><span id="sub">Claude, cooling only</span></div>
+ <div class="g">
+  <div class="k f"><div class="l">Water</div><div class="v" id="v">0 L</div><div class="s" id="c">about 0 bottles</div><div class="bar"><i id="b1"></i></div></div>
+  <div class="k"><div class="l">Versus average</div><div class="v" id="a">+0%</div><div class="s" id="as">usual week 0 L</div><div class="bar"><i id="b2"></i></div></div>
+  <div class="k"><div class="l">Same as</div><div class="v" id="e">0</div><div class="s" id="es">8-minute showers</div></div>
+ </div>
+</div>
+<script>
+/* Change only these: dollars of usage, average dollars, period name, toggle (0.6 cooling, 3.1 electricity too) */
+var D=2310,AVG=1662,PER='this week',LK=0.6,WH=60;
+var L=function(d){return d*WH/1000*LK},w=L(D),av=L(AVG);
+document.getElementById('tt').textContent='Water used '+PER;
+document.getElementById('v').textContent=Math.round(w)+' L';
+document.getElementById('c').textContent='about '+Math.round(w/0.5)+' bottles';
+document.getElementById('a').textContent=(w>=av?'+':'')+Math.round((w/av-1)*100)+'%';
+document.getElementById('as').textContent='usual week '+Math.round(av)+' L';
+document.getElementById('e').textContent=(w/72).toFixed(1);
+setTimeout(function(){document.getElementById('b1').style.width=Math.min(100,w/Math.max(w,av)*100)+'%';document.getElementById('b2').style.width=Math.min(100,av/Math.max(w,av)*100)+'%'},60);
+</script>

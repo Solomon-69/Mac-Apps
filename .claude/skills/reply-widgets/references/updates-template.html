@@ -1,0 +1,26 @@
+<h2 class="sr-only">Update list with waiting, in progress and done states.</h2>
+<style>
+.p{padding:2px 4px}
+.hd{font-size:12px;letter-spacing:.08em;color:var(--text-secondary);margin:0 0 12px}
+.r{display:flex;gap:10px;align-items:flex-start;padding:6px 10px;margin:0 -10px;border-radius:10px;font-size:14px;line-height:1.35;transition:background .2s}
+.r:hover{background:rgba(120,120,120,.06)}
+.c{flex:none;width:16px;height:16px;border-radius:50%;margin-top:1px;box-sizing:border-box;display:flex;align-items:center;justify-content:center;font-size:11px;transition:all .25s}
+.c.done{background:#378ADD;color:#fff}
+.c.now{border:2px solid #378ADD;box-shadow:0 0 0 3px rgba(55,138,221,.18)}
+.c.wait{border:2px dashed var(--border-stronger)}
+.r.dn .t{color:var(--text-secondary);text-decoration:line-through;text-decoration-color:rgba(120,120,120,.5)}
+.t small{display:block;font-size:13px;color:var(--text-secondary);text-decoration:none}
+</style>
+<div class="p"><div id="l"></div></div>
+<script>
+var T=[
+{t:"Stepper copied exactly",s:"done"},
+{t:"Uploaded to claude.ai",s:"done"},
+{t:"Online corner install",s:"wait"}
+];
+var O=['wait','now','done'],l=document.getElementById('l');
+function draw(){l.innerHTML='';T.forEach(function(x,k){var r=document.createElement('div');r.className='r'+(x.s=='done'?' dn':'');
+r.innerHTML='<span class="c '+x.s+'">'+(x.s=='done'?'<i class="ti ti-check"></i>':'')+'</span><span class="t">'+x.t+(x.n?'<small>'+x.n+'</small>':'')+'</span>';
+l.appendChild(r)})}
+draw();
+</script>
