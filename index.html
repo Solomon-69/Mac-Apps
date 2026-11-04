@@ -104,11 +104,12 @@ h1 .w{display:inline-block;animation:hword .9s cubic-bezier(.2,.8,.2,1) both;ani
 
 /* scroll-driven strip: cards travel left to right as the page scrolls (wide screens, motion allowed) */
 .hs.on{position:relative}
-.hs.on .hspin{position:sticky;top:var(--hst,0px);overflow:hidden;display:flex;flex-direction:column;padding-block:12px;margin-inline:calc(50% - 50vw)}
+.hs.on .hspin{position:sticky;top:var(--hst,0px);overflow:hidden;display:flex;flex-direction:column;padding-block:20px;margin-inline:calc(50% - 50vw)}
 .hs.on .sectitle{padding-inline:max(32px,calc(50vw - 640px));margin-bottom:22px}
 .hs.on .hstrip{max-width:none;width:max-content;flex-wrap:nowrap;flex-direction:row;justify-content:flex-start;padding-inline:max(32px,calc(50vw - 640px));margin:0;will-change:transform}
 .hs.on .hstrip>.card{flex:0 0 340px;will-change:transform}
-@media (min-width:900px) and (max-height:780px){.hs.on .card .cardlink>p{display:none}.hs.on .card{padding-block:18px}}
+@media (min-width:900px){.hs.on.tight .card .cardlink>p{display:none}.hs.on.tight .card{padding-block:18px}.hs.on .dl,.hs.on .note{padding-inline:max(32px,calc(50vw - 640px));margin-inline:0}.hs.on .dl{margin-top:16px}.hs.on .note{margin-top:10px}}
+html{scrollbar-width:none}html::-webkit-scrollbar,body::-webkit-scrollbar{display:none;width:0;height:0}
 .mo-ready .hs.on .mo-reveal{opacity:1!important;transform:none!important;transition:none!important}
 </style>
 <link rel="stylesheet" href="assets/site.css">
@@ -210,9 +211,10 @@ h1 .w{display:inline-block;animation:hword .9s cubic-bezier(.2,.8,.2,1) both;ani
       <span class="go">See Menu Bar Guard <span>&rarr;</span></span>
     </a><div class="dls"><span class="dlh">Download, free</span><a class="dlmac" href="https://github.com/Solomon-69/MenuBarGuard/releases/latest/download/MenuBarGuard.dmg">Mac <span>&darr;</span></a></div></div>
     <!-- APPS:END -->
-  </div></div></section>
+  </div>
   <p class="dl"><a href="download/index.html">All downloads, Mac and Windows</a></p>
   <p class="note">Every download link always gives the newest build. Mac apps are signed and checked by Apple, so they open like any normal app: open the download, drag to Applications, double-click. On Windows, SmartScreen may warn you the first time: click <b>More info</b>, then <b>Run anyway</b>.</p>
+  </div></section>
   <footer>By Solomon.</footer>
 
 </main>
@@ -274,26 +276,27 @@ h1 .w{display:inline-block;animation:hword .9s cubic-bezier(.2,.8,.2,1) both;ani
 (function(){
   var hs=document.getElementById('hs'); if(!hs) return;
   var pin=hs.querySelector('.hspin'),strip=hs.querySelector('.hstrip'),cards=[].slice.call(strip.children);
-  var mq=matchMedia('(min-width:900px) and (prefers-reduced-motion:no-preference)'),over=0,on=false,tick=0,top=0;
+  var mq=matchMedia('(min-width:900px) and (prefers-reduced-motion:no-preference)'),over=0,on=false,tick=0,top=0,span=0,K=2.4;
   function size(){
     if(!mq.matches){hs.classList.remove('on');hs.style.height='';pin.style.removeProperty('--hst');strip.style.transform='';cards.forEach(function(c){c.style.transform='';c.style.flex=''});on=false;return}
     hs.classList.add('on');on=true;
     var cs=getComputedStyle(strip),g=parseFloat(cs.paddingLeft)||32,gap=parseFloat(cs.columnGap)||20,w=Math.floor((pin.clientWidth-2*g-3*gap)/4);
     cards.forEach(function(c){c.style.flex='0 0 '+w+'px'});
     strip.style.transform='';
+    hs.classList.remove('tight');hs.style.height='';strip.style.transform='';
+    var h=pin.offsetHeight;if(h>innerHeight-24){hs.classList.add('tight');h=pin.offsetHeight}
     var lr=cards[cards.length-1].getBoundingClientRect(),sr=strip.getBoundingClientRect();
     over=Math.max(0,Math.round(lr.right-sr.left+g-pin.clientWidth));
-    var h=pin.offsetHeight,ft=document.querySelector('footer'),extra=ft?Math.max(0,ft.getBoundingClientRect().bottom-hs.getBoundingClientRect().bottom):0;
-    top=Math.max(8,Math.min(Math.round((innerHeight-h)/2),innerHeight-h-extra-12));
+    top=Math.max(8,Math.round((innerHeight-h)/2));
     pin.style.setProperty('--hst',top+'px');
-    hs.style.height=(over+h)+'px';upd();
+    span=over*K;hs.style.height=(span+h)+'px';upd();
   }
   function upd(){
     tick=0;if(!on)return;
-    var r=hs.getBoundingClientRect(),p=over>0?Math.min(1,Math.max(0,(top-r.top)/over)):1;
+    var r=hs.getBoundingClientRect(),p=span>0?Math.min(1,Math.max(0,(top-r.top)/span)):1;
     strip.style.transform='translate3d('+(-over*p)+'px,0,0)';
-    var vw=innerWidth;
-    cards.forEach(function(c){var b=c.getBoundingClientRect(),t=Math.min(1,Math.max(0,1-(b.left+b.width/2)/vw));c.style.transform='translate3d(0,'+(-14*t).toFixed(1)+'px,0)'});
+    var vw=innerWidth,fade=p>0.96?Math.max(0,(1-p)/0.04):1;
+    cards.forEach(function(c){var b=c.getBoundingClientRect(),d=Math.abs(b.left+b.width/2-vw/2)/(vw*0.42),t=Math.max(0,1-d);t=t*t*(3-2*t)*fade;c.style.setProperty('transform','translate3d(0,'+(-22*t).toFixed(1)+'px,0) scale('+(1+0.035*t).toFixed(4)+')','important')});
   }
   addEventListener('scroll',function(){if(!tick)tick=requestAnimationFrame(upd)},{passive:true});
   addEventListener('resize',size);mq.addEventListener&&mq.addEventListener('change',size);
