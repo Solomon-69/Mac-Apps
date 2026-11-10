@@ -153,5 +153,26 @@
   "shot": "assets/cards/roomy-light.png",
   "shot_dark": "assets/cards/roomy-dark.png",
   "side": "l"
+ },
+ {
+  "key": "handy",
+  "name": "Handy",
+  "repo": "Handy",
+  "blurb": "Talk instead of type. Hold Option and Space, speak, and Handy pastes the text. It works offline, so nothing you say leaves your Mac.",
+  "short": "Talk instead of type, offline.",
+  "platforms": "Mac",
+  "mac": "Handy.dmg",
+  "icon": "handy/img/icon.png",
+  "version": "0.11.0",
+  "color": "#2f6bff",
+  "feature": "Hold Option and Space, speak, done",
+  "chips": [
+   "Works offline",
+   "Hold or tap",
+   "Fixes mid-sentence changes",
+   "Smart prompt mode",
+   "Dictionary and snippets"
+  ],
+  "side": "l"
  }
 ]
