@@ -158,7 +158,7 @@
   "key": "murmur",
   "name": "murmur",
   "repo": "murmur",
-  "blurb": "Talk instead of type. Hold Control, Shift and Space, speak, and murmur pastes the text. It works offline, so nothing you say leaves your Mac.",
+  "blurb": "Talk instead of type. Hold Control, Shift and Space, speak, and murmur pastes the text. It works offline, so nothing you say is sent anywhere.",
   "short": "Talk instead of type, offline.",
   "platforms": "Mac",
   "mac": "murmur.dmg",
