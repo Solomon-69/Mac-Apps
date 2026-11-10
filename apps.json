@@ -155,23 +155,23 @@
   "side": "l"
  },
  {
-  "key": "handy",
-  "name": "Handy",
-  "repo": "Handy",
-  "blurb": "Talk instead of type. Hold Option and Space, speak, and Handy pastes the text. It works offline, so nothing you say leaves your Mac.",
+  "key": "murmur",
+  "name": "murmur",
+  "repo": "murmur",
+  "blurb": "Talk instead of type. Hold Option and Space, speak, and murmur pastes the text. It works offline, so nothing you say leaves your Mac.",
   "short": "Talk instead of type, offline.",
   "platforms": "Mac",
-  "mac": "Handy.dmg",
-  "icon": "handy/img/icon.png",
+  "mac": "murmur.dmg",
+  "icon": "murmur/img/icon.png",
   "version": "0.11.0",
-  "color": "#2f6bff",
+  "color": "#4a4a50",
   "feature": "Hold Option and Space, speak, done",
   "chips": [
    "Works offline",
    "Hold or tap",
-   "Fixes mid-sentence changes",
-   "Smart prompt mode",
-   "Dictionary and snippets"
+   "Smart prompt capsule",
+   "Colour themes",
+   "Quiet mic boost"
   ],
   "side": "l"
  }
