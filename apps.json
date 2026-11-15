@@ -173,6 +173,8 @@
    "Colour themes",
    "Quiet mic boost"
   ],
-  "side": "l"
+  "side": "l",
+  "shot": "assets/cards/murmur-light.png",
+  "shot_dark": "assets/cards/murmur-dark.png"
  }
 ]
