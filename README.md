@@ -98,3 +98,5 @@ To check that a download has not been changed, compare its SHA-256 fingerprint w
 Awayke is based on Sleepless by Adam Boudjemaa (MIT). Ludus uses Leaflet, Pannellum, Panoramax photos and Esri map tiles; see THIRD_PARTY.md in the [Ludus repository](https://github.com/Solomon-69/Ludus) (page: https://solomon-69.github.io/Ludus/). Not affiliated with or endorsed by Apple, Microsoft or the makers of any game or app these resemble; all trademarks belong to their owners.
 
 This page repository only shows the apps. Ludus is all rights reserved; Memo, Weather, Nox, Stats and Awayke are MIT licensed in their own repositories.
+
+Live site: https://solomon-69.github.io/Mac-Apps/
