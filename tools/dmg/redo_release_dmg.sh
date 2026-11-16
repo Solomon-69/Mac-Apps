@@ -14,7 +14,8 @@ ditto -x -k "old/$NAME-mac.zip" x
 APP=$(find x -maxdepth 2 -name '*.app' | head -1)
 [[ -n $APP ]] || { echo "no app in zip"; exit 1; }
 spctl --assess --type execute "$APP"   # the app inside must already be notarized
-python3 "$HERE/make_dmg.py" --app "$APP" --name "$NAME" --style "$STYLE" --color "$COLOR" --out "$NAME.dmg" >/dev/null
+ARGS=(); [[ $STYLE != - ]] && ARGS+=(--style "$STYLE"); [[ $COLOR != - ]] && ARGS+=(--color "$COLOR")
+python3 "$HERE/make_dmg.py" --app "$APP" --name "$NAME" "${ARGS[@]}" --out "$NAME.dmg" >/dev/null
 codesign --force --timestamp --sign "$ID" "$NAME.dmg"
 xcrun notarytool submit "$NAME.dmg" --keychain-profile notary --wait | tail -1
 xcrun stapler staple "$NAME.dmg" >/dev/null

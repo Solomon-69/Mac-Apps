@@ -6,12 +6,21 @@ Applications spot); each app gets its own colour and background art.
 Uses dmgbuild, which writes the window layout straight into the image, so
 the background shows every time the disk image is opened, on any Mac.
 
-Usage: make_dmg.py --app X.app --name Ludus --style ludus --color "#c16545" --out Ludus.dmg
+Usage: make_dmg.py --app X.app --name Ludus --out Ludus.dmg   (style and colour come from PRESETS)
 """
 import argparse, math, os, random, subprocess, tempfile
 from PIL import Image, ImageDraw, ImageFont
 
 W, H = 660, 420
+# Where Finder opens the window. Finder counts from the BOTTOM-left of the screen, and the spot is fixed
+# inside the image, so it can't follow each Mac's screen. (405, 268) is the exact middle of a 13"/15"
+# MacBook Air (1470x956) and within about 20 points of the middle on a 14" MacBook Pro.
+# (200, 140) was the old value: bottom-left.
+WINDOW_POS = (405, 268)
+# Each app's look, so a release only needs --app and --name.
+PRESETS = {"Ludus": ("ludus", "#c16545"), "Awayke": ("awayke", "#e66c0e"), "Memo": ("memo", "#3552aa"),
+           "Nox": ("nox", "#5a44c3"), "Roomy": ("roomy", "#2f8f86"), "Stats": ("stats", "#5e6878"),
+           "Weather": ("weather", "#3f82dc"), "murmur": ("murmur", "#4a4a50")}
 APP_POS, APPS_POS = (190, 250), (470, 250)
 INK = (44, 40, 36)
 SUP = "/System/Library/Fonts/Supplemental/"
@@ -141,10 +150,13 @@ def applications_alias(tmp):
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("--app", required=True); p.add_argument("--name", required=True)
-    p.add_argument("--style", required=True); p.add_argument("--color", required=True)
+    p.add_argument("--style"); p.add_argument("--color")
     p.add_argument("--out", required=True); p.add_argument("--volname")
     p.add_argument("--background-only", action="store_true")
     a = p.parse_args()
+    if not (a.style and a.color):
+        if a.name not in PRESETS: p.error("--style and --color are needed for an app without a preset")
+        a.style, a.color = a.style or PRESETS[a.name][0], a.color or PRESETS[a.name][1]
     tmp = tempfile.mkdtemp()
     one, two, tiff = (os.path.join(tmp, n) for n in ("bg.png", "bg@2x.png", "bg.tiff"))
     render(a.name, a.style, a.color, one, 1)
@@ -160,7 +172,7 @@ def main():
     settings = {
         "files": [app, alias],
         "background": tiff, "icon_locations": {base: APP_POS, "Applications": APPS_POS},
-        "window_rect": ((200, 140), (W, H)), "icon_size": 104, "text_size": 15,
+        "window_rect": (WINDOW_POS, (W, H)), "icon_size": 104, "text_size": 15,
         "show_status_bar": False, "show_tab_view": False, "show_toolbar": False,
         "show_pathbar": False, "show_sidebar": False, "default_view": "icon-view",
         "hide_extensions": [base], "format": "UDZO", "filesystem": "HFS+",
