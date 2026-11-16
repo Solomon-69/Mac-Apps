@@ -38,5 +38,8 @@ if [ "$NAME" = "Weather" ]; then pkill -x Nimbus 2>/dev/null || true; rm -rf "$D
 rm -rf "$DEST/$NAME.app"
 ditto "$APP" "$DEST/$NAME.app"
 xattr -dr com.apple.quarantine "$DEST/$NAME.app" 2>/dev/null || true
+# New date + re-register so Finder and the Dock show the new icon, not a cached old one.
+touch "$DEST/$NAME.app"
+/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -f "$DEST/$NAME.app" >/dev/null 2>&1 || true
 echo "Installed $DEST/$NAME.app"
 [ -n "${APP_NO_OPEN:-}" ] || open "$DEST/$NAME.app"
