@@ -236,7 +236,7 @@ html{scrollbar-width:none;overflow-x:clip}html::-webkit-scrollbar,body::-webkit-
   var cards=[].slice.call(stage.querySelectorAll('.dcard')), n=cards.length, a=0;
   var dots=document.getElementById('ddots'), live=document.getElementById('dlive'), deck=document.getElementById('deck');
   var btns=cards.map(function(c,i){var b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Show '+c.dataset.name);b.onclick=function(){go(i)};dots.appendChild(b);return b});
-  var hi=document.getElementById('hicons'),hb=cards.map(function(c,i){var b=document.createElement('button');b.type='button';b.style.setProperty('--hd',(i*70)+'ms');b.setAttribute('aria-label','Show '+c.dataset.name);var im=c.querySelector('.ico img');b.innerHTML='<img alt="" src="assets/hero/'+c.dataset.key+'.png">';b.onclick=function(){go(i)};hi&&hi.appendChild(b);return b});
+  var hi=document.getElementById('hicons'),hb=cards.map(function(c,i){var b=document.createElement('button');b.type='button';b.style.setProperty('--hd',(i*70)+'ms');b.setAttribute('aria-label','Show '+c.dataset.name);var im=c.querySelector('.ico img');b.innerHTML='<img alt="" src="assets/hero/'+c.dataset.key+'.png">';var bi=b.firstChild;bi.onerror=function(){bi.onerror=null;if(im)bi.src=im.currentSrc||im.src};b.onclick=function(){go(i)};hi&&hi.appendChild(b);return b});
   var pill=document.createElement('span');pill.className='pill';dots.appendChild(pill);
   function place(){var b=btns[a],x=b.offsetLeft+(b.offsetWidth-8)/2;pill.style.left=x+'px';pill.style.right=(dots.offsetWidth-x-8)+'px';pill.style.setProperty('--pt',cards[a].style.getPropertyValue('--tint'))}
   function off(i){var d=((i-a)%n+n)%n; if(d>n/2) d-=n; return d}
