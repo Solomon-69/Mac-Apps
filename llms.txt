@@ -1,0 +1,14 @@
+# Mac Apps by Solomon
+
+> Small, free apps for Mac (some also for Windows), made by Solomon. No account, no ads. Download page: https://solomon-69.github.io/Mac-Apps/download/
+
+## Apps
+
+- [Ludus](https://solomon-69.github.io/Mac-Apps/ludus/): 45 little games for little breaks, right from your menu bar. Works offline. Free. Platforms: Mac and Windows. Version 1.12.78.
+- [Memo](https://solomon-69.github.io/Mac-Apps/memo/): Everything you copy, one shortcut away. Search it and paste it back. Free. Platforms: Mac and Windows. Version 1.5.5.
+- [Nox](https://solomon-69.github.io/Mac-Apps/nox/): One switch for light and dark, on a schedule if you like. Free. Platforms: Mac and Windows. Version 1.5.6.
+- [Awayke](https://solomon-69.github.io/Mac-Apps/awayke/): Keep your MacBook awake with the lid closed. Free. Platforms: Mac and Windows. Version 1.8.2.
+- [Weather](https://solomon-69.github.io/Mac-Apps/weather/): Weather in your menu bar, with a sky that moves. Free. Platforms: Mac. Version 1.1.6.
+- [Stats](https://solomon-69.github.io/Mac-Apps/stats/): How your Mac is doing, in plain words. Live tiles for processor, memory, storage, internet, battery and temperature, right from your menu bar. Free. Platforms: Mac and Windows. Version 1.0.17.
+- [Roomy](https://solomon-69.github.io/Mac-Apps/roomy/): Keeps every menu bar icon visible on a notch MacBook by politely quitting the lowest-priority apps you allow, and bringing them back when there is room. Free. Platforms: Mac. Version 1.3.3.
+- [murmur](https://solomon-69.github.io/Mac-Apps/murmur/): Talk instead of type. Hold Option and Space, speak, and murmur pastes the text. Your voice never leaves your Mac; only text you turn into a prompt or clean up goes online to be rewritten. Free. Platforms: Mac. Version 0.12.3.
