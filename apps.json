@@ -163,7 +163,7 @@
   "platforms": "Mac",
   "mac": "murmur.dmg",
   "icon": "murmur/img/icon.png",
-  "version": "0.12.9",
+  "version": "0.12.10",
   "color": "#4a4a50",
   "feature": "Hold Option and Space, speak, done",
   "chips": [
