@@ -67,7 +67,6 @@ JOBS = {
  "awayke": [("awayke/img/panel-light.png", "light"), ("awayke/img/panel-dark.png", "dark")],
  "stats":  [("stats/img/panel-light.png", "light"), ("stats/img/panel-dark.png", "dark")],
  "roomy": [("roomy/img/panel-light.png", "light"), ("roomy/img/panel-dark.png", "dark")],
- "weather": [("weather/img/panel-light.png", "light"), ("weather/img/panel-dark.png", "dark")],
 }
 if __name__ == "__main__":
     (root/"assets/cards").mkdir(parents=True, exist_ok=True)

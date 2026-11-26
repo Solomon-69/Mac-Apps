@@ -6,12 +6,10 @@ iCloud does not keep the two Macs the same (the shared folder is empty on the M3
 |---|---|---|
 | Memo | ~/Code/Memo | Solomon-69/Memo |
 | Stats | ~/Code/Stats | Solomon-69/Stats |
-| Weather | ~/Code/Weather | Solomon-69/Weather |
 | Roomy | ~/Code/Roomy | Solomon-69/Roomy |
 | Awayke | ~/Code/Awayke | Solomon-69/Awayke |
 | Nox | ~/Code/nox-crashfix | Solomon-69/Nox |
 | Ludus | ~/Code/ludus-fb | Solomon-69/Ludus |
-| Murmur | ~/Code/murmur | Solomon-69/murmur |
 | Mac-Apps site | ~/Code/Mac-Apps | Solomon-69/Mac-Apps |
 
 Rules:
