@@ -20,7 +20,7 @@ WINDOW_POS = (405, 268)
 # Each app's look, so a release only needs --app and --name.
 PRESETS = {"Ludus": ("ludus", "#c16545"), "Awayke": ("awayke", "#e66c0e"), "Memo": ("memo", "#3552aa"),
            "Nox": ("nox", "#5a44c3"), "Roomy": ("roomy", "#2f8f86"), "Stats": ("stats", "#5e6878"),
-           "Weather": ("weather", "#3f82dc"), "murmur": ("murmur", "#4a4a50")}
+           "murmur": ("murmur", "#4a4a50")}
 APP_POS, APPS_POS = (190, 250), (470, 250)
 INK = (44, 40, 36)
 SUP = "/System/Library/Fonts/Supplemental/"
@@ -71,11 +71,6 @@ def art(d, s, style, accent, rnd):
             d.line([s * (W - r0 * math.cos(a)), s * r0 * math.sin(a), s * (W - r1 * math.cos(a)), s * r1 * math.sin(a)],
                    fill=accent + (55,), width=4 * s)
         d.ellipse([s * (W - 52), s * -52, s * (W + 52), s * 52], fill=accent + (70,))
-    elif style == "weather":  # soft clouds
-        for cx, cy, k in [(90, 70, 1.0), (560, 110, .8), (420, 360, 1.1), (110, 360, .7)]:
-            for dx, dy, r in [(-34, 8, 26), (0, -6, 34), (36, 8, 26)]:
-                r *= k
-                d.ellipse([s * (cx + dx * k - r), s * (cy + dy * k - r), s * (cx + dx * k + r), s * (cy + dy * k + r)], fill=accent + (26,))
     elif style == "stats":  # one simple line chart with its data points
         pts = [(x, 372 - 26 * math.sin(x / 85) - x * .07) for x in range(-10, W + 20, 60)]
         d.polygon([(s * x, s * y) for x, y in pts] + [(s * (W + 20), s * H), (s * -10, s * H)], fill=accent + (16,))

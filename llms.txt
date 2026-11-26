@@ -10,3 +10,4 @@
 - [Awayke](https://solomon-69.github.io/Mac-Apps/awayke/): Keep your MacBook awake with the lid closed. Free. Platforms: Mac and Windows. Version 1.8.4.
 - [Stats](https://solomon-69.github.io/Mac-Apps/stats/): How your Mac is doing, in plain words. Live tiles for processor, memory, storage, internet, battery and temperature, right from your menu bar. Free. Platforms: Mac and Windows. Version 1.0.18.
 - [Roomy](https://solomon-69.github.io/Mac-Apps/roomy/): Keeps every menu bar icon visible on a notch MacBook by politely quitting the lowest-priority apps you allow, and bringing them back when there is room. Free. Platforms: Mac. Version 1.3.5.
+- [murmur](https://solomon-69.github.io/Mac-Apps/murmur/): Talk instead of type. Hold Option and Space, speak, and murmur pastes the text. Your voice never leaves your Mac; only text you turn into a prompt or clean up goes online to be rewritten. Free. Platforms: Mac. Version 0.12.10.

@@ -132,5 +132,28 @@
   "shot": "assets/cards/roomy-light.png",
   "shot_dark": "assets/cards/roomy-dark.png",
   "side": "l"
+ },
+ {
+  "key": "murmur",
+  "name": "murmur",
+  "repo": "murmur",
+  "blurb": "Talk instead of type. Hold Option and Space, speak, and murmur pastes the text. Your voice never leaves your Mac; only text you turn into a prompt or clean up goes online to be rewritten.",
+  "short": "Talk instead of type, offline.",
+  "platforms": "Mac",
+  "mac": "murmur.dmg",
+  "icon": "murmur/img/icon.png",
+  "version": "0.12.10",
+  "color": "#4a4a50",
+  "feature": "Hold Option and Space, speak, done",
+  "chips": [
+   "Voice stays on your Mac",
+   "Hold or tap",
+   "Fast prompt and clean-up",
+   "Colour themes",
+   "Quiet mic boost"
+  ],
+  "side": "l",
+  "shot": "assets/cards/murmur-light.png",
+  "shot_dark": "assets/cards/murmur-dark.png"
  }
 ]
